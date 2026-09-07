@@ -15,11 +15,6 @@ export default function PricingPreview() {
       <div className="max-w-6xl mx-auto">
         {/* ─── Header ──────────────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200/90 text-xs sm:text-sm font-medium text-slate-700 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-            <span>Transparent Commercial Structure</span>
-          </div>
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.18]">
             Predictable plans. Zero hidden take rates.
           </h2>
@@ -130,10 +125,6 @@ export default function PricingPreview() {
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="rounded-[28px] bg-neutral-900 text-white border border-neutral-800 shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-6 sm:p-8 flex flex-col justify-between relative"
                 >
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white text-neutral-900 text-[10px] font-bold tracking-wider uppercase shadow-sm">
-                    MOST POPULAR
-                  </div>
-
                   <div>
                     <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
                       GROWTH
@@ -301,10 +292,6 @@ export default function PricingPreview() {
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="rounded-[28px] bg-neutral-900 text-white border border-neutral-800 shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-6 sm:p-8 flex flex-col justify-between relative"
                 >
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white text-neutral-900 text-[10px] font-bold tracking-wider uppercase shadow-sm">
-                    RECOMMENDED
-                  </div>
-
                   <div>
                     <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
                       PRO PARTNER

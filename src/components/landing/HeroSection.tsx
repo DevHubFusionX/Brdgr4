@@ -26,17 +26,6 @@ export default function HeroSection() {
         />
 
         <div className="relative z-10 px-6 sm:px-12 md:px-16 py-14 sm:py-18 md:py-20 lg:py-24 text-center flex flex-col items-center">
-          {/* ─── Tagline Badge ──────────────────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={isHeroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/90 border border-slate-200/80 text-xs sm:text-sm font-medium text-slate-600 mb-5 sm:mb-7"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-            <span>The bridge to better partnerships</span>
-          </motion.div>
-
           {/* ─── Headline: Brand Essence with WordReveal ────────────────────── */}
           <WordReveal
             as="h1"
@@ -45,10 +34,10 @@ export default function HeroSection() {
             stagger={0.06}
             initialOpacity={0.15}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal text-neutral-900 tracking-[-0.025em] leading-[1.14] max-w-3xl sm:max-w-4xl"
-            text="Partnership infrastructure for measurable growth"
+            text="One place to find partners, work together, and get paid"
           />
 
-          {/* ─── Subtitle: Brand Promise & Purpose with WordReveal ──────────── */}
+          {/* ─── Subtitle: Brand Promise & Hook with WordReveal ──────────── */}
           <WordReveal
             as="p"
             trigger={isHeroReady}
@@ -56,7 +45,7 @@ export default function HeroSection() {
             stagger={0.035}
             initialOpacity={0.15}
             className="mt-5 sm:mt-6 md:mt-7 max-w-xl sm:max-w-2xl text-base sm:text-lg md:text-[19px] text-neutral-600 font-normal leading-relaxed"
-            text="The right partnership. Properly managed. Reliably paid. Making high-performing partnerships easier to build and sustain."
+            text="Safe agreements and fast payouts built right in. From first handshake to every payday."
           />
 
           {/* ─── Pill Action Buttons ────────────────────────────────────────── */}

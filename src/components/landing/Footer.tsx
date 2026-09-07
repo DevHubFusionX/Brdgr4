@@ -57,13 +57,10 @@ export default function Footer() {
               Ecosystems
             </span>
             <ul className="space-y-2 text-xs sm:text-[13px] text-neutral-500 font-normal">
-              <li className="flex items-center gap-1.5">
+              <li>
                 <Link href="/sign-up" className="hover:text-[#0364FF] transition-colors">
                   Proprietary Trading
                 </Link>
-                <span className="text-[8px] font-bold px-1.5 py-0.2 rounded bg-slate-100 border border-slate-200 text-neutral-700">
-                  LIVE
-                </span>
               </li>
               <li>
                 <span className="text-neutral-400">Forex & CFD Brokers</span>

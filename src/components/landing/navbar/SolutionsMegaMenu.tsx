@@ -78,19 +78,6 @@ export default function SolutionsMegaMenu({ onClose }: SolutionsMegaMenuProps) {
                       <span className="text-[14px] font-semibold text-slate-900 group-hover:text-[#0364FF] transition-colors leading-snug">
                         {item.title}
                       </span>
-                      {item.badge && (
-                        <span
-                          className={`text-[10px] font-medium px-2 py-0.2 rounded-full border ${
-                            item.badge === "Active"
-                              ? "text-[#0364FF] bg-blue-50 border-blue-200/80"
-                              : item.badge === "Next"
-                              ? "text-purple-700 bg-purple-50 border-purple-200/80"
-                              : "text-slate-600 bg-slate-100 border-slate-200/80"
-                          }`}
-                        >
-                          {item.badge}
-                        </span>
-                      )}
                     </div>
                     <ChevronRight className="w-3.5 h-3.5 text-[#0364FF] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0 ml-1" />
                   </div>

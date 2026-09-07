@@ -10,7 +10,6 @@ import UiverseHeroButton from "@/components/ui/UiverseHeroButton";
 interface EcosystemTab {
   id: string;
   label: string;
-  statusBadge: string;
   statusType: "live" | "roadmap";
   title: string;
   description: string;
@@ -34,7 +33,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
   {
     id: "trading",
     label: "Prop Trading & Brokers",
-    statusBadge: "Live Focus · Phase 1",
     statusType: "live",
     title: "Trading Ecosystem Infrastructure",
     description:
@@ -70,7 +68,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
   {
     id: "saas",
     label: "SaaS & Subscriptions",
-    statusBadge: "Phase 2 Roadmap",
     statusType: "roadmap",
     title: "Recurring Software & Subscription Rails",
     description:
@@ -106,7 +103,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
   {
     id: "fintech",
     label: "Fintech & Banking",
-    statusBadge: "Phase 2 Roadmap",
     statusType: "roadmap",
     title: "Regulated Fintech & Institutional Gateway",
     description:
@@ -142,7 +138,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
   {
     id: "creator",
     label: "Creator & Performance",
-    statusBadge: "Phase 3 Roadmap",
     statusType: "roadmap",
     title: "Performance Creator & Media Networks",
     description:
@@ -187,11 +182,6 @@ export default function EcosystemSection() {
       <div className="max-w-6xl mx-auto">
         {/* ─── Section Header ─────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200/90 text-xs sm:text-sm font-medium text-slate-700 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
-            <span>Configurable Across Industries</span>
-          </div>
-
           <WordReveal
             as="h2"
             delay={0.15}
@@ -256,10 +246,7 @@ export default function EcosystemSection() {
             {/* ─── Left Column: Descriptive Narrative & CTAs ───────────────── */}
             <div className="lg:col-span-6 flex flex-col justify-center">
               {/* Category Status Eyebrow */}
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] sm:text-xs font-bold tracking-widest text-neutral-800 uppercase px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200">
-                  {activeTab.statusBadge}
-                </span>
+              <div className="mb-3">
                 <span className="text-xs font-medium text-slate-400">PRD §02 Architecture</span>
               </div>
 

@@ -2,7 +2,6 @@ export interface NavItem {
   title: string;
   description: string;
   href: string;
-  badge?: string;
   isLinkOnly?: boolean;
   iconName?: string;
 }
@@ -73,14 +72,12 @@ export const PRODUCTS_SECTIONS: NavSection[] = [
         title: "Growth Partner Academy",
         description: "Compliance training, audience playbook templates, and certifications",
         href: "/#academy",
-        badge: "Coming soon",
         iconName: "GraduationCap",
       },
       {
         title: "Global Treasury Rails",
         description: "Multi-currency conversions and global bank settlement lines",
         href: "/#treasury",
-        badge: "Phase 3",
         iconName: "Globe",
       },
     ],
@@ -92,14 +89,12 @@ export const PRODUCTS_SECTIONS: NavSection[] = [
         title: "Client Portal",
         description: "Dashboard for firms to review deals & payouts",
         href: "/client",
-        badge: "Live",
         iconName: "Building2",
       },
       {
         title: "Partner Portal",
         description: "Workspace for vetted affiliates to track earnings",
         href: "/partner",
-        badge: "Live",
         iconName: "Users",
       },
       {
@@ -155,21 +150,18 @@ export const SOLUTIONS_SECTIONS: NavSection[] = [
         title: "Trading & Capital Markets",
         description: "Live ecosystem for prop challenges, broker accounts, and trading communities",
         href: "/#ecosystems",
-        badge: "Active",
         iconName: "BarChart3",
       },
       {
         title: "SaaS & Cloud Infrastructure",
         description: "Recurring ARR partnerships, free-trial conversions, and seat upgrades",
         href: "/#ecosystems",
-        badge: "Next",
         iconName: "Cloud",
       },
       {
         title: "Fintech & Banking",
         description: "Regulated customer acquisition rails with strict auditability",
         href: "/#ecosystems",
-        badge: "Roadmap",
         iconName: "Landmark",
       },
     ],

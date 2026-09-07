@@ -51,11 +51,6 @@ export default function MobileNav({ onClose }: MobileNavProps) {
                       <span className="text-[13px] font-semibold text-slate-900 leading-tight">
                         {item.title}
                       </span>
-                      {item.badge && (
-                        <span className="text-[9px] font-medium text-[#0364FF] bg-blue-50 border border-blue-200/70 px-1.5 py-0.2 rounded-full">
-                          {item.badge}
-                        </span>
-                      )}
                     </div>
                     {item.description && (
                       <p className="text-[11.5px] text-slate-500 line-clamp-1 mt-0.5">
@@ -104,11 +99,6 @@ export default function MobileNav({ onClose }: MobileNavProps) {
                       <span className="text-[13px] font-semibold text-slate-900 leading-tight">
                         {item.title}
                       </span>
-                      {item.badge && (
-                        <span className="text-[9px] font-medium text-[#0364FF] bg-blue-50 border border-blue-200/70 px-1.5 py-0.2 rounded-full">
-                          {item.badge}
-                        </span>
-                      )}
                     </div>
                     {item.description && (
                       <p className="text-[11.5px] text-slate-500 line-clamp-1 mt-0.5">

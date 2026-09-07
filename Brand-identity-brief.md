@@ -17,14 +17,15 @@ more reliable to manage and pay.
 ## Brand Foundation
 | Dimension | Specification |
 | :--- | :--- |
-| **Brand Essence** | Partnership infrastructure for measurable growth |
-| **Purpose** | Making high-performing partnerships easier to build and sustain |
-| **Vision** | To build a world where every high value partnership can be built, managed, & scaled through trusted infrastructure |
-| **Mission** | To be the infrastructure that makes growth partnerships trustworthy and reliable, for every performance driven industry. |
+| **Brand Essence** | One place to find partners, work together, and get paid |
+| **Purpose** | Making high-performing partnerships effortless to build and scale |
+| **Vision** | To build a world where every growth partnership can be built, managed, and paid through trusted infrastructure |
+| **Mission** | To make performance partnerships simple, safe, and reliably paid for everyone. |
 | **Positioning** | BRDGR is not a marketplace. BRDGR is an infrastructure. |
-| **Brand Promise** | The right partnership. Properly managed. Reliably paid. |
-| **Personality** | Confident, intelligent, precise, modern, ambitious |
-| **Voice** | Clear, direct, outcome-focused, trustworthy |
+| **Brand Promise** | Safe agreements and fast payouts built right in. |
+| **Growth Arc / Hook** | From first handshake to every payday. |
+| **Personality** | Confident, intelligent, precise, modern, accessible |
+| **Voice** | Clear, direct, human, outcome-focused, trustworthy |
 | **Primary Tagline** | The bridge to better partnerships |
 | **Core Product Story** | RECRUIT → VET → MATCH → CONTRACT → TRACK → PAY |
 

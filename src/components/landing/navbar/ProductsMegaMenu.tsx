@@ -78,11 +78,6 @@ export default function ProductsMegaMenu({ onClose }: ProductsMegaMenuProps) {
                       <span className="text-[13.5px] font-semibold text-slate-900 group-hover:text-[#0364FF] transition-colors leading-snug">
                         {item.title}
                       </span>
-                      {item.badge && (
-                        <span className="text-[10px] font-medium text-[#0364FF] bg-blue-50 border border-blue-200/80 px-1.5 py-0.2 rounded-full">
-                          {item.badge}
-                        </span>
-                      )}
                     </div>
                     <ChevronRight className="w-3.5 h-3.5 text-[#0364FF] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0 ml-1" />
                   </div>
@@ -122,11 +117,6 @@ export default function ProductsMegaMenu({ onClose }: ProductsMegaMenuProps) {
                         <span className="text-[13.5px] font-semibold text-slate-900 group-hover:text-[#0364FF] transition-colors leading-snug">
                           {item.title}
                         </span>
-                        {item.badge && (
-                          <span className="text-[10px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded-full">
-                            {item.badge}
-                          </span>
-                        )}
                       </div>
                       <ChevronRight className="w-3.5 h-3.5 text-[#0364FF] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0 ml-1" />
                     </div>

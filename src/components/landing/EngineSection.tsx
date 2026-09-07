@@ -6,13 +6,17 @@ import WordReveal from "@/components/ui/WordReveal";
 export default function EngineSection() {
   return (
     <section className="relative w-full bg-[#f8fafc] py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8 font-sans border-t border-b border-slate-200/80 overflow-hidden">
-      {/* ─── Soft White & Brand Blue Ambient Gradient Light (Top-Right & Bottom-Right) ── */}
+      {/* ─── Faint Ambient Blurry Blue Atmospheric Gradients ───────────────── */}
       <div
-        className="absolute -top-20 -right-20 w-[650px] sm:w-[850px] lg:w-[1000px] h-[550px] rounded-full bg-gradient-to-bl from-blue-200/40 via-sky-100/30 to-transparent blur-[130px] pointer-events-none -z-0"
+        className="absolute -top-32 -right-32 w-[700px] lg:w-[1000px] h-[600px] rounded-full bg-gradient-to-bl from-[#6FA6FF]/20 via-[#0364FF]/10 to-transparent blur-[140px] pointer-events-none -z-0"
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-24 right-1/4 w-[500px] h-[450px] rounded-full bg-gradient-to-tl from-blue-100/30 via-white to-transparent blur-[120px] pointer-events-none -z-0"
+        className="absolute -bottom-32 -left-20 w-[600px] h-[550px] rounded-full bg-gradient-to-tr from-[#005CFF]/15 via-[#6FA6FF]/10 to-transparent blur-[130px] pointer-events-none -z-0"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#6FA6FF]/10 blur-[150px] pointer-events-none -z-0"
         aria-hidden="true"
       />
 
@@ -21,8 +25,8 @@ export default function EngineSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 sm:mb-20 items-start">
           {/* Top Left: Eyebrow Tag with Square Accent */}
           <div className="lg:col-span-4">
-            <div className="inline-flex items-center gap-2.5 text-xs font-bold text-[#0364ff] uppercase tracking-wider">
-              <span className="w-2.5 h-2.5 bg-[#0364ff] rounded-[2px]" />
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold text-[#0364FF] uppercase tracking-wider">
+              <span className="w-2.5 h-2.5 bg-[#0364FF] rounded-[2px]" />
               <span>THE OPERATING ENGINE</span>
             </div>
           </div>
@@ -39,7 +43,7 @@ export default function EngineSection() {
           </div>
         </div>
 
-        {/* ─── Main 3-Column Card Grid (Matching Reference Layout) ─────────── */}
+        {/* ─── Main 3-Column Card Grid (With Faint & Blurry Blue Gradients) ─── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 items-stretch">
           {/* ─── Position (Row 1, Col 1): Editorial Left Narrative Block ────── */}
           <motion.div
@@ -47,9 +51,15 @@ export default function EngineSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col justify-between py-2 sm:py-4 pr-4 lg:pr-6"
+            className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-[24px] bg-white/60 backdrop-blur-xl border border-slate-200/80 hover:border-[#6FA6FF]/50 shadow-sm transition-all duration-300 overflow-hidden"
           >
-            <div>
+            {/* Faint blurry background glow */}
+            <div
+              className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-gradient-to-br from-[#6FA6FF]/20 via-[#0364FF]/10 to-transparent blur-[70px] pointer-events-none group-hover:scale-115 transition-transform duration-500"
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10">
               <WordReveal
                 as="h3"
                 delay={0.2}
@@ -66,7 +76,7 @@ export default function EngineSection() {
               />
             </div>
 
-            <div className="pt-6 border-t border-slate-200/80">
+            <div className="relative z-10 pt-6 border-t border-slate-200/80">
               <WordReveal
                 as="p"
                 delay={0.4}
@@ -84,54 +94,67 @@ export default function EngineSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group rounded-[24px] bg-white border border-slate-200/90 hover:border-blue-300/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_rgba(3,100,255,0.06)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px]"
+            className="group relative rounded-[24px] bg-white/75 backdrop-blur-xl border border-slate-200/90 hover:border-[#6FA6FF]/70 shadow-[0_4px_20px_rgba(3,100,255,0.03)] hover:shadow-[0_16px_36px_rgba(3,100,255,0.08)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px] overflow-hidden"
           >
-            {/* Top Line Diagram Illustration (Overlapping Diamonds + Arrow) */}
-            <div className="h-28 flex items-center justify-center">
-              <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
-                {/* Background dashed diamond */}
-                <rect
-                  x="80"
-                  y="15"
-                  width="44"
-                  height="44"
-                  rx="6"
-                  transform="rotate(45 80 15)"
-                  stroke="#cbd5e1"
-                  strokeWidth="1.5"
-                  strokeDasharray="4 3"
-                  className="group-hover:stroke-blue-200 transition-colors"
-                />
-                {/* Foreground solid diamond in brand blue/grey */}
-                <rect
-                  x="50"
-                  y="15"
-                  width="44"
-                  height="44"
-                  rx="6"
-                  transform="rotate(45 50 15)"
-                  fill="#ffffff"
-                  stroke="#94a3b8"
-                  strokeWidth="1.75"
-                  className="group-hover:stroke-[#0364ff] transition-colors"
-                />
-                {/* Arrow pointing right */}
-                <path
-                  d="M 44 45 L 62 45 M 56 39 L 62 45 L 56 51"
-                  stroke="#0364ff"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            {/* Faint & Blurry Blue Gradient Orb (Top-Right Angle) */}
+            <div
+              className="absolute -top-16 -right-16 w-60 h-60 rounded-full bg-gradient-to-br from-[#6FA6FF]/25 via-[#0364FF]/12 to-transparent blur-[75px] pointer-events-none group-hover:scale-120 group-hover:opacity-90 transition-all duration-500"
+              aria-hidden="true"
+            />
+            {/* Subtle bottom-left ambient fill */}
+            <div
+              className="absolute -bottom-20 -left-20 w-44 h-44 rounded-full bg-[#F2F4F9] blur-[60px] pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Top Line Diagram Illustration */}
+            <div className="relative z-10 h-28 flex items-center justify-center">
+              <div className="p-3.5 rounded-2xl bg-white/80 border border-slate-100/90 shadow-2xs group-hover:border-[#6FA6FF]/40 transition-colors">
+                <svg width="150" height="76" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg" className="overflow-visible">
+                  {/* Background dashed diamond */}
+                  <rect
+                    x="80"
+                    y="15"
+                    width="44"
+                    height="44"
+                    rx="6"
+                    transform="rotate(45 80 15)"
+                    stroke="#cbd5e1"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 3"
+                    className="group-hover:stroke-[#6FA6FF] transition-colors"
+                  />
+                  {/* Foreground solid diamond in brand blue/grey */}
+                  <rect
+                    x="50"
+                    y="15"
+                    width="44"
+                    height="44"
+                    rx="6"
+                    transform="rotate(45 50 15)"
+                    fill="#ffffff"
+                    stroke="#94a3b8"
+                    strokeWidth="1.75"
+                    className="group-hover:stroke-[#0364FF] transition-colors"
+                  />
+                  {/* Arrow pointing right */}
+                  <path
+                    d="M 44 45 L 62 45 M 56 39 L 62 45 L 56 51"
+                    stroke="#0364FF"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
             </div>
 
             {/* Content: Title, Eyebrow & Description */}
-            <div className="mt-4">
+            <div className="relative z-10 mt-4">
               <h4 className="text-2xl font-normal text-neutral-900 tracking-tight">
                 Vet & Match
               </h4>
-              <p className="text-xs font-bold tracking-wider text-[#0364ff] uppercase mt-4 mb-2.5">
+              <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
                 Audience authenticity & track record.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
@@ -147,30 +170,42 @@ export default function EngineSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group rounded-[24px] bg-white border border-slate-200/90 hover:border-blue-300/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_rgba(3,100,255,0.06)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px]"
+            className="group relative rounded-[24px] bg-white/75 backdrop-blur-xl border border-slate-200/90 hover:border-[#6FA6FF]/70 shadow-[0_4px_20px_rgba(3,100,255,0.03)] hover:shadow-[0_16px_36px_rgba(3,100,255,0.08)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px] overflow-hidden"
           >
-            {/* Top Line Diagram Illustration (Horizontal Timeline with Tick Marks) */}
-            <div className="h-28 flex items-center justify-center">
-              <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Horizontal main rail arrow */}
-                <line x1="20" y1="45" x2="152" y2="45" stroke="#94a3b8" strokeWidth="1.75" className="group-hover:stroke-[#0364ff] transition-colors" />
-                <path d="M 144 37 L 154 45 L 144 53" stroke="#0364ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            {/* Faint & Blurry Blue Gradient Orb (Bottom-Left Angle) */}
+            <div
+              className="absolute -bottom-16 -left-16 w-60 h-60 rounded-full bg-gradient-to-tr from-[#005CFF]/22 via-[#6FA6FF]/14 to-transparent blur-[80px] pointer-events-none group-hover:scale-120 group-hover:opacity-90 transition-all duration-500"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -top-20 -right-20 w-44 h-44 rounded-full bg-[#6FA6FF]/10 blur-[65px] pointer-events-none"
+              aria-hidden="true"
+            />
 
-                {/* Vertical tick marks across line */}
-                <line x1="36" y1="28" x2="36" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="56" y1="28" x2="56" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="76" y1="28" x2="76" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="108" y1="28" x2="108" y2="62" stroke="#94a3b8" strokeWidth="1.75" strokeLinecap="round" className="group-hover:stroke-[#0364ff] transition-colors" />
-                <line x1="130" y1="28" x2="130" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
+            {/* Top Line Diagram Illustration (Horizontal Timeline with Tick Marks) */}
+            <div className="relative z-10 h-28 flex items-center justify-center">
+              <div className="p-3.5 rounded-2xl bg-white/80 border border-slate-100/90 shadow-2xs group-hover:border-[#6FA6FF]/40 transition-colors">
+                <svg width="170" height="76" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Horizontal main rail arrow */}
+                  <line x1="20" y1="45" x2="152" y2="45" stroke="#94a3b8" strokeWidth="1.75" className="group-hover:stroke-[#0364FF] transition-colors" />
+                  <path d="M 144 37 L 154 45 L 144 53" stroke="#0364FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+
+                  {/* Vertical tick marks across line */}
+                  <line x1="36" y1="28" x2="36" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="56" y1="28" x2="56" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="76" y1="28" x2="76" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="108" y1="28" x2="108" y2="62" stroke="#94a3b8" strokeWidth="1.75" strokeLinecap="round" className="group-hover:stroke-[#0364FF] transition-colors" />
+                  <line x1="130" y1="28" x2="130" y2="62" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </div>
             </div>
 
             {/* Content: Title, Eyebrow & Description */}
-            <div className="mt-4">
+            <div className="relative z-10 mt-4">
               <h4 className="text-2xl font-normal text-neutral-900 tracking-tight">
                 Bilateral Contract
               </h4>
-              <p className="text-xs font-bold tracking-wider text-[#0364ff] uppercase mt-4 mb-2.5">
+              <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
                 Audited gating & commercial locks.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
@@ -186,35 +221,47 @@ export default function EngineSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group rounded-[24px] bg-white border border-slate-200/90 hover:border-blue-300/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_rgba(3,100,255,0.06)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px]"
+            className="group relative rounded-[24px] bg-white/75 backdrop-blur-xl border border-slate-200/90 hover:border-[#6FA6FF]/70 shadow-[0_4px_20px_rgba(3,100,255,0.03)] hover:shadow-[0_16px_36px_rgba(3,100,255,0.08)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px] overflow-hidden"
           >
+            {/* Faint & Blurry Blue Gradient Orb (Center-Right Flow) */}
+            <div
+              className="absolute top-8 -right-16 w-60 h-60 rounded-full bg-gradient-to-l from-[#0364FF]/20 via-[#6FA6FF]/14 to-transparent blur-[75px] pointer-events-none group-hover:scale-120 group-hover:opacity-90 transition-all duration-500"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -bottom-16 -left-12 w-40 h-40 rounded-full bg-[#005CFF]/10 blur-[65px] pointer-events-none"
+              aria-hidden="true"
+            />
+
             {/* Top Line Diagram Illustration (Input Line to Connected Circle Nodes to Arrow) */}
-            <div className="h-28 flex items-center justify-center">
-              <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Input line on left */}
-                <line x1="20" y1="45" x2="65" y2="45" stroke="#94a3b8" strokeWidth="1.75" />
+            <div className="relative z-10 h-28 flex items-center justify-center">
+              <div className="p-3.5 rounded-2xl bg-white/80 border border-slate-100/90 shadow-2xs group-hover:border-[#6FA6FF]/40 transition-colors">
+                <svg width="170" height="76" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Input line on left */}
+                  <line x1="20" y1="45" x2="65" y2="45" stroke="#94a3b8" strokeWidth="1.75" />
 
-                {/* Central Cluster of 4 connected circles */}
-                <g transform="translate(90, 45)">
-                  <circle cx="-10" cy="-10" r="8" fill="#ffffff" stroke="#94a3b8" strokeWidth="1.5" className="group-hover:stroke-[#0364ff] transition-colors" />
-                  <circle cx="10" cy="-10" r="8" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
-                  <circle cx="-10" cy="10" r="8" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
-                  <circle cx="10" cy="10" r="8" fill="#ffffff" stroke="#94a3b8" strokeWidth="1.5" className="group-hover:stroke-[#0364ff] transition-colors" />
-                  <circle cx="0" cy="0" r="3" fill="#0364ff" />
-                </g>
+                  {/* Central Cluster of 4 connected circles */}
+                  <g transform="translate(90, 45)">
+                    <circle cx="-10" cy="-10" r="8" fill="#ffffff" stroke="#94a3b8" strokeWidth="1.5" className="group-hover:stroke-[#0364FF] transition-colors" />
+                    <circle cx="10" cy="-10" r="8" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+                    <circle cx="-10" cy="10" r="8" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1.5" />
+                    <circle cx="10" cy="10" r="8" fill="#ffffff" stroke="#94a3b8" strokeWidth="1.5" className="group-hover:stroke-[#0364FF] transition-colors" />
+                    <circle cx="0" cy="0" r="3" fill="#0364FF" />
+                  </g>
 
-                {/* Output arrow on right */}
-                <line x1="115" y1="45" x2="152" y2="45" stroke="#94a3b8" strokeWidth="1.75" className="group-hover:stroke-[#0364ff] transition-colors" />
-                <path d="M 144 37 L 154 45 L 144 53" stroke="#0364ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+                  {/* Output arrow on right */}
+                  <line x1="115" y1="45" x2="152" y2="45" stroke="#94a3b8" strokeWidth="1.75" className="group-hover:stroke-[#0364FF] transition-colors" />
+                  <path d="M 144 37 L 154 45 L 144 53" stroke="#0364FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
 
             {/* Content: Title, Eyebrow & Description */}
-            <div className="mt-4">
+            <div className="relative z-10 mt-4">
               <h4 className="text-2xl font-normal text-neutral-900 tracking-tight">
                 S2S Tracking
               </h4>
-              <p className="text-xs font-bold tracking-wider text-[#0364ff] uppercase mt-4 mb-2.5">
+              <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
                 Server-side postbacks & fraud gates.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
@@ -230,53 +277,65 @@ export default function EngineSection() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group rounded-[24px] bg-white border border-slate-200/90 hover:border-blue-300/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_32px_rgba(3,100,255,0.06)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px]"
+            className="group relative rounded-[24px] bg-white/75 backdrop-blur-xl border border-slate-200/90 hover:border-[#6FA6FF]/70 shadow-[0_4px_20px_rgba(3,100,255,0.03)] hover:shadow-[0_16px_36px_rgba(3,100,255,0.08)] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 min-h-[420px] overflow-hidden"
           >
-            {/* Top Line Diagram Illustration (Parallel Split & Merge Circuit Arrows) */}
-            <div className="h-28 flex items-center justify-center">
-              <svg width="180" height="90" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Split line entering from left into upper and lower tracks */}
-                <path
-                  d="M 20 45 L 45 45 C 55 45, 62 26, 75 26 L 125 26"
-                  stroke="#94a3b8"
-                  strokeWidth="1.75"
-                  fill="none"
-                  className="group-hover:stroke-[#0364ff] transition-colors"
-                />
-                <path
-                  d="M 20 45 L 45 45 C 55 45, 62 64, 75 64 L 125 64"
-                  stroke="#cbd5e1"
-                  strokeWidth="1.75"
-                  fill="none"
-                />
-                {/* Mid-track arrows */}
-                <path d="M 88 21 L 96 26 L 88 31" stroke="#0364ff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M 104 59 L 112 64 L 104 69" stroke="#94a3b8" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+            {/* Faint & Blurry Blue Gradient Orbs (Opposing Dual Flow) */}
+            <div
+              className="absolute -top-14 -left-14 w-52 h-52 rounded-full bg-gradient-to-br from-[#005CFF]/18 via-[#6FA6FF]/12 to-transparent blur-[75px] pointer-events-none group-hover:scale-120 group-hover:opacity-90 transition-all duration-500"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -bottom-16 -right-16 w-52 h-52 rounded-full bg-gradient-to-tl from-[#0364FF]/20 via-[#6FA6FF]/14 to-transparent blur-[80px] pointer-events-none group-hover:scale-120 group-hover:opacity-90 transition-all duration-500"
+              aria-hidden="true"
+            />
 
-                {/* Converging back to single exit arrow */}
-                <path
-                  d="M 125 26 C 138 26, 145 45, 154 45"
-                  stroke="#94a3b8"
-                  strokeWidth="1.75"
-                  fill="none"
-                  className="group-hover:stroke-[#0364ff] transition-colors"
-                />
-                <path
-                  d="M 125 64 C 138 64, 145 45, 154 45"
-                  stroke="#cbd5e1"
-                  strokeWidth="1.75"
-                  fill="none"
-                />
-                <path d="M 148 38 L 158 45 L 148 52" stroke="#0364ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            {/* Top Line Diagram Illustration (Parallel Split & Merge Circuit Arrows) */}
+            <div className="relative z-10 h-28 flex items-center justify-center">
+              <div className="p-3.5 rounded-2xl bg-white/80 border border-slate-100/90 shadow-2xs group-hover:border-[#6FA6FF]/40 transition-colors">
+                <svg width="170" height="76" viewBox="0 0 180 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Split line entering from left into upper and lower tracks */}
+                  <path
+                    d="M 20 45 L 45 45 C 55 45, 62 26, 75 26 L 125 26"
+                    stroke="#94a3b8"
+                    strokeWidth="1.75"
+                    fill="none"
+                    className="group-hover:stroke-[#0364FF] transition-colors"
+                  />
+                  <path
+                    d="M 20 45 L 45 45 C 55 45, 62 64, 75 64 L 125 64"
+                    stroke="#cbd5e1"
+                    strokeWidth="1.75"
+                    fill="none"
+                  />
+                  {/* Mid-track arrows */}
+                  <path d="M 88 21 L 96 26 L 88 31" stroke="#0364FF" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M 104 59 L 112 64 L 104 69" stroke="#94a3b8" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+
+                  {/* Converging back to single exit arrow */}
+                  <path
+                    d="M 125 26 C 138 26, 145 45, 154 45"
+                    stroke="#94a3b8"
+                    strokeWidth="1.75"
+                    fill="none"
+                    className="group-hover:stroke-[#0364FF] transition-colors"
+                  />
+                  <path
+                    d="M 125 64 C 138 64, 145 45, 154 45"
+                    stroke="#cbd5e1"
+                    strokeWidth="1.75"
+                    fill="none"
+                  />
+                  <path d="M 148 38 L 158 45 L 148 52" stroke="#0364FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
 
             {/* Content: Title, Eyebrow & Description */}
-            <div className="mt-4">
+            <div className="relative z-10 mt-4">
               <h4 className="text-2xl font-normal text-neutral-900 tracking-tight">
                 USD Settlement
               </h4>
-              <p className="text-xs font-bold tracking-wider text-[#0364ff] uppercase mt-4 mb-2.5">
+              <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
                 Double-entry ledger & monthly payouts.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
@@ -291,16 +350,21 @@ export default function EngineSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.55, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:flex flex-col justify-center items-center p-8 rounded-[24px] border border-dashed border-slate-200/90 bg-white/40 backdrop-blur-sm"
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="group relative hidden lg:flex flex-col justify-center items-center p-8 rounded-[24px] border border-dashed border-[#6FA6FF]/45 bg-white/70 backdrop-blur-xl shadow-[0_4px_20px_rgba(3,100,255,0.03)] hover:shadow-[0_16px_36px_rgba(3,100,255,0.08)] transition-all duration-300 overflow-hidden"
           >
-            {/* Internal ambient soft blue glow */}
+            {/* Center Faint & Blurry Blue Halo */}
             <div
-              className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-blue-50/60 via-transparent to-sky-100/40 pointer-events-none"
+              className="absolute inset-0 rounded-[24px] bg-[radial-gradient(circle_at_center,#6FA6FF_0%,#0364FF_30%,transparent_75%)] opacity-25 blur-[65px] pointer-events-none group-hover:opacity-40 group-hover:scale-110 transition-all duration-500"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-[#005CFF]/15 blur-[50px] pointer-events-none"
               aria-hidden="true"
             />
 
             <div className="relative z-10 text-center max-w-[240px]">
-              <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-[#0364ff] mx-auto mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-white/90 border border-slate-200/80 shadow-xs flex items-center justify-center text-[#0364FF] mx-auto mb-4 group-hover:border-[#6FA6FF] group-hover:scale-105 transition-all">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                 </svg>
@@ -308,7 +372,7 @@ export default function EngineSection() {
               <span className="text-3xl font-semibold text-neutral-900 tracking-tight block mb-1">
                 100%
               </span>
-              <span className="text-xs font-bold tracking-wider text-[#0364ff] uppercase block mb-2">
+              <span className="text-xs font-bold tracking-wider text-[#0364FF] uppercase block mb-2">
                 Automated Ledger
               </span>
               <p className="text-xs text-neutral-500 leading-relaxed">
@@ -321,3 +385,4 @@ export default function EngineSection() {
     </section>
   );
 }
+
