@@ -23,9 +23,9 @@ const VALUE_METRICS: MetricCard[] = [
   {
     id: "attribution",
     stat: "99.9%",
-    title: "Attribution accuracy",
+    title: "Tracking accuracy",
     description:
-      "Prop firms and brokers capture every qualified challenge purchase with verified, fraud-screened tracking rails.",
+      "Capture every qualified sale without ad-blocker leakage or bot fraud.",
     icon: Eye,
     // Direction: 160deg (top-left to bottom-right), Brand Dark (#0F172A) to Brand Blue (#0364FF) to Soft Blue (#6FA6FF)
     gradientClass:
@@ -86,9 +86,9 @@ const VALUE_METRICS: MetricCard[] = [
   {
     id: "volume",
     stat: "+$14.8M",
-    title: "Escrow volume routed",
+    title: "Escrow volume paid",
     description:
-      "Client commission deposits are held in dedicated escrow and disbursed on an auditable double-entry ledger.",
+      "Commissions are safely held in escrow and paid out on an exact ledger.",
     icon: TrendingUp,
     // Direction: 45deg (bottom-left to top-right), Electric Blue (#005CFF) to Brand Blue (#0364FF) to Soft Blue (#6FA6FF)
     gradientClass:
@@ -142,9 +142,9 @@ const VALUE_METRICS: MetricCard[] = [
   {
     id: "compliance",
     stat: "100%",
-    title: "Contractual compliance",
+    title: "Protected contracts",
     description:
-      "Every partnership operates under standardized, bilateral digital agreements with automated non-circumvention rules.",
+      "Digital agreements lock clear terms and protect direct partner relationships.",
     icon: ShieldCheck,
     // Direction: 215deg (top-right to bottom-left), Brand Dark (#0F172A) to Electric Blue (#005CFF) to Brand Blue (#0364FF)
     gradientClass:
@@ -198,9 +198,9 @@ const VALUE_METRICS: MetricCard[] = [
   {
     id: "time-saved",
     stat: "+480 hrs",
-    title: "Operational time saved",
+    title: "Admin time saved",
     description:
-      "Partnership leads eliminate manual partner vetting, custom contract negotiation, and month-end spreadsheet disputes.",
+      "Eliminate manual partner checks, custom contracts, and spreadsheet disputes.",
     icon: Clock,
     // Direction: 180deg (top to bottom), Brand Blue (#0364FF) to Electric Blue (#005CFF) to Brand Dark (#0F172A)
     gradientClass:
@@ -254,9 +254,9 @@ const VALUE_METRICS: MetricCard[] = [
   {
     id: "default-rate",
     stat: "0%",
-    title: "Payout default rate",
+    title: "Missed payouts",
     description:
-      "Guaranteed on-schedule USD payouts by the fifth business day of each month with fully itemized deductions.",
+      "Guaranteed on-time USD payouts by the 5th of every month.",
     icon: CheckCircle2,
     // Direction: 105deg (subtle diagonal horizontal), Brand Dark (#0F172A) to Electric Blue (#005CFF) to Brand Blue (#0364FF)
     gradientClass:
@@ -391,10 +391,10 @@ export default function ValueMetricsSection() {
                 delay={0.1}
                 stagger={0.04}
                 className="text-2xl sm:text-3xl font-normal text-white tracking-[-0.025em] leading-[1.2]"
-                text="Delivering real value to clients and partners"
+                text="Proven results for brokers and partners"
               />
               <p className="mt-4 sm:mt-5 text-sm sm:text-base text-[#F2F4F9]/90 font-normal leading-relaxed">
-                Scale your partnership operations with the trusted infrastructure engineered for performance finance.
+                Run, track, and pay your partnerships on verified, secure rails.
               </p>
             </div>
 

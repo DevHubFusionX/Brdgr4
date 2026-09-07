@@ -38,7 +38,7 @@ export default function EngineSection() {
               delay={0.1}
               stagger={0.035}
               className="text-3xl sm:text-4xl lg:text-[44px] font-normal text-neutral-900 tracking-[-0.03em] leading-[1.18]"
-              text="Automated, auditable, guaranteed: we build partnership infrastructure for everyone!"
+              text="Automated, reliable, guaranteed: partnership infrastructure built for scale."
             />
           </div>
         </div>
@@ -65,14 +65,14 @@ export default function EngineSection() {
                 delay={0.2}
                 stagger={0.03}
                 className="text-lg sm:text-xl font-normal text-neutral-900 tracking-tight leading-snug mb-4"
-                text="Ready for verified enterprise partnership infrastructure?"
+                text="Why manage partnerships on BRDGR?"
               />
               <WordReveal
                 as="p"
                 delay={0.3}
                 stagger={0.015}
                 className="text-sm sm:text-[14.5px] text-neutral-600 font-normal leading-relaxed mb-4"
-                text="With our verified infrastructure, you model and execute your entire partnership operation on deterministic rails. Increase partner volume, eliminate attribution disputes, and automate monthly settlements with zero manual overhead."
+                text="Run your entire partnership program on autopilot. Scale your partner network, eliminate tracking disputes, and pay everyone on time without touching a spreadsheet."
               />
             </div>
 
@@ -82,7 +82,7 @@ export default function EngineSection() {
                 delay={0.4}
                 stagger={0.025}
                 className="text-sm sm:text-[15px] font-medium text-neutral-900 leading-snug"
-                text="It's not informal deals, it's institutional software engineering."
+                text="No informal deals. Just clear, reliable software."
               />
             </div>
           </motion.div>
@@ -155,10 +155,10 @@ export default function EngineSection() {
                 Vet & Match
               </h4>
               <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
-                Audience authenticity & track record.
+                Audited partners only.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
-                Unvetted contacts never enter the pool. Partners undergo rigorous review across audience authenticity, compliance history, and verified track record — matched by algorithmic fit.
+                Every partner is checked for real audience engagement, clean compliance history, and proven conversion results before matching with your brand.
               </p>
             </div>
           </motion.div>
@@ -206,10 +206,10 @@ export default function EngineSection() {
                 Bilateral Contract
               </h4>
               <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
-                Audited gating & commercial locks.
+                Clear legal protection.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
-                Replace informal chats and legal friction. In-platform digital contracts lock commercial terms, commission schedules, and covenants — while counterpart identities stay sealed until mutual signature.
+                Replace informal DMs and slow legal reviews. Simple digital contracts lock commission terms and protect direct partner relationships before work begins.
               </p>
             </div>
           </motion.div>
@@ -262,10 +262,10 @@ export default function EngineSection() {
                 S2S Tracking
               </h4>
               <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
-                Server-side postbacks & fraud gates.
+                Accurate server tracking.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
-                Cryptographic server-to-server postbacks eliminate browser ad-blocker leakage. Automated fraud gates screen velocity, geography, and duplicate signals before confirmation.
+                Direct server tracking records every referral without ad-blocker loss, while automated fraud filters block fake clicks and duplicate accounts.
               </p>
             </div>
           </motion.div>
@@ -336,10 +336,10 @@ export default function EngineSection() {
                 USD Settlement
               </h4>
               <p className="text-xs font-bold tracking-wider text-[#0364FF] uppercase mt-4 mb-2.5">
-                Double-entry ledger & monthly payouts.
+                Guaranteed monthly payouts.
               </p>
               <p className="text-xs sm:text-[13px] text-neutral-500 font-normal leading-relaxed">
-                Balanced ledger entries post to an immutable USD book. Payout manifests are approved and executed by the 5th business day, guaranteeing partners fixed, predictable settlement.
+                Client commissions are held safely in escrow and paid out automatically by the 5th business day of each month with full itemized reports.
               </p>
             </div>
           </motion.div>
@@ -373,10 +373,10 @@ export default function EngineSection() {
                 100%
               </span>
               <span className="text-xs font-bold tracking-wider text-[#0364FF] uppercase block mb-2">
-                Automated Ledger
+                Automated Tracking
               </span>
               <p className="text-xs text-neutral-500 leading-relaxed">
-                Deterministic lifecycle states guarantee audited execution without missing steps.
+                Every deal, referral, and payout is recorded on an exact, step-by-step ledger.
               </p>
             </div>
           </motion.div>
