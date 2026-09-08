@@ -341,21 +341,16 @@ const METRICS = [
   { label: "Regulatory Compliance", value: "Tier-1", icon: ShieldCheck },
 ];
 
+// ─── Trust & Social Proof Section ───────────────────────────────────────────
 export default function TrustSection() {
-  const [activeCategory, setActiveCategory] = useState<"all" | "prop" | "broker">("all");
   const [activeBrand, setActiveBrand] = useState<BrandItem | null>(null);
 
   // Duplicating arrays for infinite continuous marquee loop
   const row1Repeated = [...ROW_1_BRANDS, ...ROW_1_BRANDS, ...ROW_1_BRANDS];
   const row2Repeated = [...ROW_2_BRANDS, ...ROW_2_BRANDS, ...ROW_2_BRANDS];
 
-  const isBrandHighlighted = (brand: BrandItem) => {
-    if (activeCategory === "all") return true;
-    return brand.category === activeCategory;
-  };
-
   return (
-    <section className="relative w-full bg-[#f6f8fb] pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <section className="relative w-full bg-[#f6f8fb] pt-14 sm:pt-20 md:pt-24 pb-12 sm:pb-20 md:pb-24 px-3 sm:px-6 lg:px-8 font-sans overflow-hidden">
       {/* ─── Ambient Sky Blue Radial Glow (Matched with reference image) ─── */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[480px] bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(191,219,254,0.55)_0%,rgba(224,238,255,0.3)_45%,transparent_80%)] pointer-events-none"
@@ -415,74 +410,33 @@ export default function TrustSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-[44px] font-normal text-neutral-900 tracking-[-0.03em] leading-[1.18]">
+            <h2 className="text-[26px] sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-neutral-900 tracking-[-0.025em] sm:tracking-[-0.03em] leading-[1.2]">
               We are trusted by leading brands
             </h2>
 
-            <p className="mt-3.5 sm:mt-4 text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto px-2 sm:px-0">
               Proprietary trading firms, Tier-1 brokers, and high-volume performance partners scale on BRDGR’s verified infrastructure.
             </p>
-          </motion.div>
-
-          {/* ─── Segment Filter Tabs ─────────────────────────────────────────── */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 sm:mt-8 inline-flex items-center p-1 rounded-full bg-slate-200/60 border border-slate-300/50 backdrop-blur-sm shadow-xs"
-          >
-            <button
-              type="button"
-              onClick={() => setActiveCategory("all")}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeCategory === "all"
-                  ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold"
-                  : "text-neutral-600 hover:text-[#0364FF]"
-              }`}
-            >
-              All Segments
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory("prop")}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeCategory === "prop"
-                  ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold"
-                  : "text-neutral-600 hover:text-[#0364FF]"
-              }`}
-            >
-              Prop Trading Firms
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveCategory("broker")}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                activeCategory === "broker"
-                  ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold"
-                  : "text-neutral-600 hover:text-[#0364FF]"
-              }`}
-            >
-              Forex & CFD Brokers
-            </button>
           </motion.div>
         </div>
 
         {/* ─── Marquee Showcase Container ──────────────────────────────────── */}
-        <div className="relative mt-12 sm:mt-16 marquee-container">
+        <div className="relative mt-8 sm:mt-14 marquee-container">
           {/* ─── Edge Fade Gradients (Fade-away effect matching screenshot) ─── */}
           <div
-            className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 md:w-60 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
+            className="absolute left-0 top-0 bottom-0 w-12 sm:w-32 md:w-56 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
             aria-hidden="true"
           />
           <div
-            className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 md:w-60 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
+            className="absolute right-0 top-0 bottom-0 w-12 sm:w-32 md:w-56 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
             aria-hidden="true"
           />
 
-          {/* ─── Marquee Rows Track ────────────────────────────────────────── */}
+          {/* ─── Dual Track Marquee Stream ─────────────────────────────────── */}
           <div
-            className="space-y-6 sm:space-y-8 overflow-hidden py-2"
+            tabIndex={0}
+            aria-label="Partner brand logos marquee. Hover or focus to pause."
+            className="space-y-3 sm:space-y-5 md:space-y-6 focus:outline-hidden"
             style={{
               maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
@@ -490,95 +444,83 @@ export default function TrustSection() {
           >
             {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
             <div className="flex items-center w-max animate-marquee-left">
-              {row1Repeated.map((brand, idx) => {
-                const highlighted = isBrandHighlighted(brand);
-                return (
-                  <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
-                    <div
-                      onMouseEnter={() => setActiveBrand(brand)}
-                      onMouseLeave={() => setActiveBrand(null)}
-                      className={`group relative flex items-center px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 cursor-pointer ${
-                        highlighted
-                          ? "opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs"
-                          : "opacity-30 grayscale hover:grayscale-0 hover:opacity-75"
-                      }`}
-                    >
-                      <div className="transition-transform duration-200 group-hover:scale-105">
-                        {brand.logoSvg}
-                      </div>
-
-                      {/* Interactive Hover Tooltip Card */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-                          <span className="text-slate-300">{brand.categoryLabel}</span>
-                          <span className="text-slate-500">•</span>
-                          <span className="text-white font-semibold">{brand.metric}</span>
-                        </div>
-                      </div>
+              {row1Repeated.map((brand, idx) => (
+                <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                  <div
+                    onMouseEnter={() => setActiveBrand(brand)}
+                    onMouseLeave={() => setActiveBrand(null)}
+                    onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
+                    className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
+                  >
+                    <div className="transition-transform duration-200 group-hover:scale-105">
+                      {brand.logoSvg}
                     </div>
 
-                    {/* Subtle Vertical Divider Line (From Reference Image) */}
-                    <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                    {/* Interactive Hover Tooltip Card */}
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                        <span className="text-slate-300">{brand.categoryLabel}</span>
+                        <span className="text-slate-500">•</span>
+                        <span className="text-white font-semibold">{brand.metric}</span>
+                      </div>
+                    </div>
                   </div>
-                );
-              })}
+
+                  {/* Subtle Vertical Divider Line (From Reference Image) */}
+                  <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                </div>
+              ))}
             </div>
 
             {/* ─── Track 2: Scrolling Right ────────────────────────────────── */}
             <div className="flex items-center w-max animate-marquee-right">
-              {row2Repeated.map((brand, idx) => {
-                const highlighted = isBrandHighlighted(brand);
-                return (
-                  <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
-                    <div
-                      onMouseEnter={() => setActiveBrand(brand)}
-                      onMouseLeave={() => setActiveBrand(null)}
-                      className={`group relative flex items-center px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 cursor-pointer ${
-                        highlighted
-                          ? "opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs"
-                          : "opacity-30 grayscale hover:grayscale-0 hover:opacity-75"
-                      }`}
-                    >
-                      <div className="transition-transform duration-200 group-hover:scale-105">
-                        {brand.logoSvg}
-                      </div>
-
-                      {/* Interactive Hover Tooltip Card */}
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-                          <span className="text-slate-300">{brand.categoryLabel}</span>
-                          <span className="text-slate-500">•</span>
-                          <span className="text-white font-semibold">{brand.metric}</span>
-                        </div>
-                      </div>
+              {row2Repeated.map((brand, idx) => (
+                <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                  <div
+                    onMouseEnter={() => setActiveBrand(brand)}
+                    onMouseLeave={() => setActiveBrand(null)}
+                    onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
+                    className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
+                  >
+                    <div className="transition-transform duration-200 group-hover:scale-105">
+                      {brand.logoSvg}
                     </div>
 
-                    {/* Subtle Vertical Divider Line */}
-                    <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                    {/* Interactive Hover Tooltip Card */}
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                        <span className="text-slate-300">{brand.categoryLabel}</span>
+                        <span className="text-slate-500">•</span>
+                        <span className="text-white font-semibold">{brand.metric}</span>
+                      </div>
+                    </div>
                   </div>
-                );
-              })}
+
+                  {/* Subtle Vertical Divider Line */}
+                  <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* ─── Active Brand Spotlight Strip (When hovered or filtered) ─────── */}
-        <div className="mt-8 flex items-center justify-center min-h-[28px]">
+        {/* ─── Active Brand Spotlight Strip (When tapped or hovered) ─────── */}
+        <div className="mt-6 sm:mt-8 flex items-center justify-center min-h-[28px] px-2">
           {activeBrand ? (
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-blue-200/80 shadow-xs text-xs font-medium text-neutral-700 animate-in fade-in zoom-in-95 duration-200">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: activeBrand.color }} />
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1 rounded-full bg-white border border-blue-200/80 shadow-[0_4px_16px_rgba(3,100,255,0.12)] text-[11px] sm:text-xs font-medium text-neutral-700 animate-in fade-in zoom-in-95 duration-200 max-w-[92vw] overflow-x-auto whitespace-nowrap">
+              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: activeBrand.color }} />
               <span className="font-semibold text-neutral-900">{activeBrand.name}</span>
               <span className="text-neutral-400">|</span>
               <span className="text-neutral-500">{activeBrand.categoryLabel}</span>
               <span className="text-neutral-400">|</span>
               <span className="text-[#0364FF] font-semibold">{activeBrand.metric}</span>
-              <ShieldCheck className="w-3.5 h-3.5 text-[#0364FF] ml-0.5" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0364FF] ml-0.5 shrink-0" />
             </div>
           ) : (
-            <p className="text-xs text-neutral-400 font-medium tracking-wide">
-              Hover any brand to inspect verified routing metrics and regulatory status
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-medium tracking-wide text-center">
+              Tap or hover any brand to inspect verified routing metrics and regulatory status
             </p>
           )}
         </div>
@@ -589,20 +531,23 @@ export default function TrustSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="mt-12 sm:mt-16 pt-8 border-t border-slate-200/80 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"
+          className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-200/80 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
         >
           {METRICS.map((metric) => {
             const Icon = metric.icon;
             return (
-              <div key={metric.label} className="text-center sm:text-left flex flex-col sm:flex-row items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/80 shadow-2xs flex items-center justify-center text-neutral-800 shrink-0">
-                  <Icon className="w-5 h-5 text-[#0364FF]" />
+              <div 
+                key={metric.label} 
+                className="p-3.5 sm:p-0 rounded-2xl sm:rounded-none bg-white/75 sm:bg-transparent border border-blue-100/70 sm:border-none shadow-xs sm:shadow-none text-center sm:text-left flex flex-col sm:flex-row items-center gap-2 sm:gap-3"
+              >
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-blue-100/80 shadow-[0_4px_14px_rgba(3,100,255,0.12),inset_0_1px_0_#ffffff] flex items-center justify-center text-neutral-800 shrink-0">
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0364FF]" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-normal tracking-tight text-neutral-900">
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold sm:font-normal tracking-tight text-neutral-900">
                     <AnimatedCounter value={metric.value} />
                   </div>
-                  <div className="text-xs text-neutral-500 font-medium mt-0.5">
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium mt-0.5 leading-tight">
                     {metric.label}
                   </div>
                 </div>

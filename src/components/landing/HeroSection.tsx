@@ -10,29 +10,29 @@ export default function HeroSection() {
   const { isHeroReady } = useLoading();
 
   return (
-    <section className="relative w-full min-h-[90vh] lg:min-h-[94vh] bg-[linear-gradient(180deg,#c8defc_0%,#d8e8fc_25%,#e5f0fe_55%,#edf5fe_80%,#f6f8fb_100%)] pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 px-4 sm:px-8 lg:px-12 font-sans flex flex-col justify-center items-center overflow-hidden">
+    <section className="relative w-full min-h-[85vh] sm:min-h-[90vh] lg:min-h-[94vh] bg-[linear-gradient(180deg,#c8defc_0%,#d8e8fc_25%,#e5f0fe_55%,#edf5fe_80%,#f6f8fb_100%)] pt-20 sm:pt-28 md:pt-32 pb-8 sm:pb-16 px-3 sm:px-8 lg:px-12 font-sans flex flex-col justify-center items-center overflow-hidden">
       {/* ─── Ambient Sky Lighting ──────────────────────────── */}
       <div 
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-[radial-gradient(ellipse_at_top,rgba(147,197,253,0.5),transparent_70%)] pointer-events-none" 
         aria-hidden="true" 
       />
 
-      {/* ─── Hero Frame / Large Rounded Island Card (Big & Spacious with Space Around) ── */}
+      {/* ─── Hero Frame / Large Rounded Island Card ── */}
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.985 }}
         animate={isHeroReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.985 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-5xl lg:max-w-6xl mx-auto rounded-[36px] sm:rounded-[48px] md:rounded-[56px] bg-white/95 backdrop-blur-2xl border border-white/90 shadow-[0_20px_70px_-15px_rgba(0,80,220,0.08)] overflow-hidden my-auto"
+        className="relative w-full max-w-5xl lg:max-w-6xl mx-auto rounded-[28px] sm:rounded-[44px] md:rounded-[56px] bg-white/95 backdrop-blur-2xl border border-white/95 shadow-blue-pop-hero card-specular-rim overflow-hidden my-auto"
       >
         {/* ─── Top-Left: Soft Blue Gradient Wash ─────────────── */}
         <div
-          className="absolute top-0 left-0 w-80 sm:w-[420px] h-80 sm:h-[420px] bg-[radial-gradient(ellipse_at_top_left,rgba(147,197,253,0.55)_0%,rgba(191,219,254,0.35)_40%,transparent_70%)] pointer-events-none"
+          className="absolute top-0 left-0 w-48 sm:w-[420px] h-48 sm:h-[420px] bg-[radial-gradient(ellipse_at_top_left,rgba(147,197,253,0.55)_0%,rgba(191,219,254,0.35)_40%,transparent_70%)] pointer-events-none"
           aria-hidden="true"
         />
 
         {/* ─── Top-Left: Crisp White Arc Cutting Through the Blue Gradient ─ */}
         <svg
-          className="absolute top-0 left-0 w-[360px] sm:w-[500px] h-[260px] sm:h-[370px] pointer-events-none overflow-visible"
+          className="absolute top-0 left-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
           viewBox="0 0 500 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -79,13 +79,13 @@ export default function HeroSection() {
 
         {/* ─── Bottom-Right: Soft Blue Gradient Wash ──────────── */}
         <div
-          className="absolute bottom-0 right-0 w-80 sm:w-[420px] h-80 sm:h-[420px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,197,253,0.55)_0%,rgba(191,219,254,0.35)_40%,transparent_70%)] pointer-events-none"
+          className="absolute bottom-0 right-0 w-48 sm:w-[420px] h-48 sm:h-[420px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(147,197,253,0.55)_0%,rgba(191,219,254,0.35)_40%,transparent_70%)] pointer-events-none"
           aria-hidden="true"
         />
 
         {/* ─── Bottom-Right: Crisp White Arc Cutting Through the Blue Gradient ─ */}
         <svg
-          className="absolute bottom-0 right-0 w-[360px] sm:w-[500px] h-[260px] sm:h-[370px] pointer-events-none overflow-visible"
+          className="absolute bottom-0 right-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
           viewBox="0 0 500 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -131,9 +131,9 @@ export default function HeroSection() {
         </svg>
 
         {/* ─── Hero Content (Spacious & Balanced) ─────────────── */}
-        <div className="relative z-10 px-6 sm:px-12 md:px-16 py-14 sm:py-18 md:py-20 lg:py-24 text-center flex flex-col items-center">
-          {/* ─── Headline (Strictly 2 Lines with Reduced Font Size) ─── */}
-          <h1 className="text-2xl sm:text-4xl md:text-[44px] lg:text-[50px] xl:text-[52px] font-normal text-neutral-900 tracking-[-0.03em] leading-[1.18] max-w-4xl text-center">
+        <div className="relative z-10 px-4 sm:px-12 md:px-16 py-10 sm:py-18 md:py-20 lg:py-24 text-center flex flex-col items-center">
+          {/* ─── Headline (Responsive on all screen sizes) ─── */}
+          <h1 className="text-[28px] sm:text-4xl md:text-[44px] lg:text-[50px] xl:text-[52px] font-normal text-neutral-900 tracking-[-0.025em] sm:tracking-[-0.03em] leading-[1.15] sm:leading-[1.18] max-w-4xl text-center">
             <span className="block">
               <WordReveal
                 as="span"
@@ -163,7 +163,7 @@ export default function HeroSection() {
             delay={0.65}
             stagger={0.025}
             initialOpacity={0.15}
-            className="mt-5 sm:mt-6 max-w-xl sm:max-w-2xl text-sm sm:text-base md:text-[17px] text-neutral-500 font-normal leading-relaxed text-center"
+            className="mt-4 sm:mt-6 max-w-md sm:max-w-xl md:max-w-2xl text-[14px] sm:text-base md:text-[17px] text-neutral-500 font-normal leading-relaxed text-center px-2 sm:px-0"
             text="Agreements. Tracking. Payments. Payouts. We handle the partnership operations for you."
           />
 
@@ -172,18 +172,18 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={isHeroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             transition={{ duration: 0.55, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-4"
+            className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
             <UiverseHeroButton
               href="/sign-up"
               text="Request a demo"
               iconBorderClass="border-0 shadow-none"
-              className="!bg-[#0062FF] hover:!bg-[#0055e0] !shadow-lg !shadow-[#0062FF]/25 font-medium !h-[52px] !pl-7 !pr-2 !rounded-full"
+              className="w-full sm:w-auto justify-between !bg-[#0062FF] hover:!bg-[#0055e0] !shadow-lg !shadow-[#0062FF]/25 font-medium !h-[48px] sm:!h-[52px] !pl-6 sm:!pl-7 !pr-2 !rounded-full"
             />
 
             <Link
               href="/sign-up"
-              className="h-[52px] px-8 rounded-full text-sm sm:text-base font-medium text-neutral-800 hover:text-neutral-900 bg-white hover:bg-slate-50/90 border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all duration-150 active:scale-[0.98] cursor-pointer inline-flex items-center justify-center"
+              className="w-full sm:w-auto h-[48px] sm:h-[52px] px-6 sm:px-8 rounded-full text-sm sm:text-base font-medium text-neutral-800 hover:text-neutral-900 bg-white hover:bg-slate-50/90 border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all duration-150 active:scale-[0.98] cursor-pointer inline-flex items-center justify-center"
             >
               Explore Solutions
             </Link>

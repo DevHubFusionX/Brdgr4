@@ -32,6 +32,9 @@
   --font-sans: var(--font-mulish);
   --font-mulish: var(--font-mulish);
   --font-serif: var(--font-serif);
+  --shadow-blue-pop: 0 1px 2px 0 rgba(15, 23, 42, 0.03), 0 8px 24px -4px rgba(3, 100, 255, 0.12), 0 20px 48px -10px rgba(3, 100, 255, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  --shadow-blue-pop-hover: 0 2px 4px 0 rgba(15, 23, 42, 0.04), 0 14px 32px -4px rgba(3, 100, 255, 0.2), 0 28px 64px -10px rgba(3, 100, 255, 0.26), inset 0 1px 0 0 #ffffff;
+  --shadow-blue-pop-hero: 0 2px 4px 0 rgba(15, 23, 42, 0.02), 0 12px 36px -6px rgba(3, 100, 255, 0.14), 0 32px 80px -15px rgba(3, 100, 255, 0.22), 0 60px 120px -30px rgba(3, 100, 255, 0.16), inset 0 1.5px 0 0 rgba(255, 255, 255, 1);
 }
 
 /* ─── Base Typography & Defaults ───────────────────────────────────────────── */
@@ -163,4 +166,98 @@ textarea {
 .marquee-container:hover .animate-marquee-left,
 .marquee-container:hover .animate-marquee-right {
   animation-play-state: paused;
+}
+
+/* ─── Blue Pop Card Highlights & Shadows ───────────────────────────────────── */
+.card-blue-pop {
+  background-color: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow:
+    0 1px 3px 0 rgba(15, 23, 42, 0.04),
+    0 6px 18px -4px rgba(3, 100, 255, 0.07),
+    0 14px 32px -8px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.card-blue-pop:hover {
+  border-color: rgba(191, 219, 254, 0.9);
+  box-shadow:
+    0 2px 4px 0 rgba(15, 23, 42, 0.04),
+    0 10px 24px -4px rgba(3, 100, 255, 0.12),
+    0 20px 40px -8px rgba(15, 23, 42, 0.07),
+    inset 0 1px 0 0 #ffffff;
+}
+
+/* Large Island & Hero Card Frame */
+.card-blue-pop-hero {
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 2px 4px 0 rgba(15, 23, 42, 0.02),
+    0 8px 24px -4px rgba(3, 100, 255, 0.07),
+    0 20px 48px -10px rgba(15, 23, 42, 0.05),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 1);
+}
+
+/* Specular Crystal Rim Highlight */
+.card-specular-rim {
+  position: relative;
+}
+.card-specular-rim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95) 50%, transparent);
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* ─── Pricing High-Impact Blue Pop Shadows ─────────────────────────────────── */
+.card-pricing-pop {
+  background-color: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow:
+    0 1px 3px 0 rgba(15, 23, 42, 0.04),
+    0 8px 20px -4px rgba(15, 23, 42, 0.06),
+    0 16px 36px -8px rgba(3, 100, 255, 0.09),
+    inset 0 1px 0 0 #ffffff;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.card-pricing-pop:hover {
+  border-color: rgba(191, 219, 254, 0.9);
+  box-shadow:
+    0 2px 6px 0 rgba(15, 23, 42, 0.05),
+    0 12px 28px -4px rgba(15, 23, 42, 0.08),
+    0 24px 48px -8px rgba(3, 100, 255, 0.14),
+    inset 0 1px 0 0 #ffffff;
+}
+
+.card-pricing-featured {
+  background-color: #0f172a;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow:
+    0 4px 20px 0 rgba(0, 0, 0, 0.25),
+    0 16px 40px -8px rgba(3, 100, 255, 0.18),
+    0 24px 50px -12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+.card-pricing-featured:hover {
+  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow:
+    0 6px 24px 0 rgba(0, 0, 0, 0.3),
+    0 20px 48px -6px rgba(3, 100, 255, 0.25),
+    0 32px 60px -10px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
 }

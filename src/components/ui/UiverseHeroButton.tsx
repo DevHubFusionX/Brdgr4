@@ -170,12 +170,18 @@ export default function UiverseHeroButton({
     </div>
   );
 
+  const wrapperWidthClass = className.includes("w-full")
+    ? className.includes("sm:w-auto")
+      ? "w-full sm:w-auto"
+      : "block w-full"
+    : "inline-block";
+
   if (href) {
     return (
       <Link
         href={href}
         onClick={onClick}
-        className={`${isFullWidth ? "block w-full" : "inline-block"} ${containerClassName}`}
+        className={`${wrapperWidthClass} ${containerClassName}`}
       >
         {content}
       </Link>
@@ -186,9 +192,7 @@ export default function UiverseHeroButton({
     <button
       type={type}
       onClick={onClick}
-      className={`border-none bg-transparent p-0 cursor-pointer ${
-        isFullWidth ? "block w-full" : "inline-block"
-      } ${containerClassName}`}
+      className={`border-none bg-transparent p-0 cursor-pointer ${wrapperWidthClass} ${containerClassName}`}
     >
       {content}
     </button>

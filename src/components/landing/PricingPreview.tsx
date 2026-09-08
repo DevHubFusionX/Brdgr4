@@ -67,7 +67,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-white border border-slate-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.02)] p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
@@ -123,7 +123,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-neutral-900 text-white border border-neutral-800 shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-6 sm:p-8 flex flex-col justify-between relative"
+                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
@@ -182,7 +182,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-white border border-slate-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.02)] p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
@@ -238,7 +238,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-white border border-slate-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.02)] p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
@@ -290,7 +290,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-neutral-900 text-white border border-neutral-800 shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-6 sm:p-8 flex flex-col justify-between relative"
+                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
@@ -343,7 +343,7 @@ export default function PricingPreview() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] bg-white border border-slate-200/90 shadow-[0_2px_12px_rgba(0,0,0,0.02)] p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
                 >
                   <div>
                     <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">

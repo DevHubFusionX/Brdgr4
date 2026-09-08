@@ -44,7 +44,7 @@ export default function PartnerSearchCard() {
       initial={{ opacity: 0, y: 32, scale: 0.98 }}
       animate={isHeroReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.98 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.9 }}
-      className="w-full max-w-4xl mx-auto mt-10 sm:mt-14 bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 sm:pb-9 shadow-2xl shadow-slate-200/70 border border-slate-100 transition-all font-sans"
+      className="w-full max-w-4xl mx-auto mt-10 sm:mt-14 card-blue-pop card-specular-rim backdrop-blur-xl rounded-3xl p-6 sm:p-8 sm:pb-9 transition-all font-sans"
     >
       {/* Card Header */}
       <div className="flex items-start gap-3.5 mb-6">

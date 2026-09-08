@@ -18,8 +18,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  const navRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   // Smart scroll detection: auto-hide on scroll down, reveal on scroll up
   useEffect(() => {
@@ -58,7 +57,7 @@ export default function Navbar() {
   // Close menus on click outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setActiveMenu(null);
       }
     }
@@ -78,32 +77,8 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
   const handleMenuToggle = (menu: MenuType) => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu((prev) => (prev === menu ? null : menu));
-  };
-
-  const handleMouseEnter = (menu: MenuType) => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setActiveMenu(menu);
-  };
-
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 250);
-  };
-
-  const handleHeaderEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   const isMenuOpen = Boolean(activeMenu || mobileMenuOpen);
@@ -111,6 +86,7 @@ export default function Navbar() {
   return (
     <>
       <header
+        ref={headerRef}
         className={`fixed top-3 sm:top-4 md:top-5 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-in-out font-sans ${
           isVisible
             ? "translate-y-0 opacity-100"
@@ -119,10 +95,7 @@ export default function Navbar() {
       >
         {/* Floating Capsule Island */}
         <div
-          ref={navRef}
-          onMouseEnter={handleHeaderEnter}
-          onMouseLeave={handleMouseLeave}
-          className={`relative max-w-5xl lg:max-w-6xl mx-auto h-16 sm:h-[68px] px-3.5 sm:px-5 pl-4 sm:pl-5 rounded-full flex items-center justify-between pointer-events-auto transition-all duration-300 ${
+          className={`relative max-w-5xl lg:max-w-6xl mx-auto h-14 sm:h-[68px] px-3 sm:px-5 pl-3.5 sm:pl-5 rounded-full flex items-center justify-between pointer-events-auto transition-all duration-300 ${
             activeMenu || isScrolled
               ? "bg-white/92 backdrop-blur-2xl border border-slate-200/90 shadow-xl shadow-slate-900/10"
               : "bg-white/80 backdrop-blur-xl border border-slate-200/80 shadow-lg shadow-slate-900/5"
@@ -139,7 +112,6 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => handleMenuToggle("products")}
-              onMouseEnter={() => handleMouseEnter("products")}
               aria-expanded={activeMenu === "products"}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                 activeMenu === "products"
@@ -161,7 +133,6 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => handleMenuToggle("solutions")}
-              onMouseEnter={() => handleMouseEnter("solutions")}
               aria-expanded={activeMenu === "solutions"}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                 activeMenu === "solutions"
@@ -202,6 +173,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2 sm:gap-2.5 z-10 shrink-0">
             <Link
               href="/sign-in"
+              onClick={() => setActiveMenu(null)}
               className="px-4 py-1.5 sm:px-4.5 sm:py-2 text-[13.5px] sm:text-[14px] font-medium text-slate-800 hover:text-slate-950 bg-white/75 hover:bg-white border border-slate-200/90 rounded-[12px] sm:rounded-[14px] shadow-xs hover:border-slate-300/80 transition-all duration-150 inline-flex items-center justify-center cursor-pointer"
             >
               Login
@@ -209,6 +181,7 @@ export default function Navbar() {
 
             <Link
               href="/sign-up"
+              onClick={() => setActiveMenu(null)}
               className="px-4 py-1.5 sm:px-4.5 sm:py-2 text-[13.5px] sm:text-[14px] font-semibold text-white bg-gradient-to-b from-[#529eff] via-[#2076fe] to-[#045de9] border border-blue-400/50 rounded-[12px] sm:rounded-[14px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_2px_0_#0044b8,0_3px_8px_rgba(3,100,255,0.25)] hover:from-[#62a7ff] hover:to-[#0052d4] hover:shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.6),0_2.5px_0_#0044b8,0_5px_12px_rgba(3,100,255,0.35)] active:translate-y-0.5 active:shadow-[inset_0_1px_1px_rgba(0,0,0,0.15),0_1px_0_#0044b8] transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer"
             >
               <span>Get started</span>
@@ -220,11 +193,11 @@ export default function Navbar() {
           <div className="flex md:hidden items-center z-10">
             <button
               type="button"
-              onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 rounded-full text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
-              aria-label="Toggle navigation menu"
+              onClick={() => setMobileMenuOpen(true)}
+              className="p-2 -mr-1 rounded-full text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
+              aria-label="Open navigation sidebar"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -238,9 +211,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              onMouseEnter={handleHeaderEnter}
-              onMouseLeave={handleMouseLeave}
-              className="absolute left-3 right-3 sm:left-6 sm:right-6 lg:left-8 lg:right-8 top-[calc(100%+10px)] max-w-5xl mx-auto rounded-[28px] bg-white/95 backdrop-blur-3xl border border-slate-200/90 shadow-2xl shadow-slate-900/15 z-50 overflow-hidden text-slate-900 pointer-events-auto"
+              className="absolute left-3 right-3 sm:left-6 sm:right-6 lg:left-8 lg:right-8 top-[calc(100%+10px)] max-w-5xl mx-auto rounded-[28px] bg-white/95 backdrop-blur-3xl border border-slate-200/80 shadow-[0_24px_60px_-12px_rgba(15,23,42,0.24),0_12px_28px_-6px_rgba(15,23,42,0.14),0_0_0_1px_rgba(15,23,42,0.06),0_30px_70px_-20px_rgba(3,100,255,0.18)] z-50 overflow-hidden text-slate-900 pointer-events-auto"
             >
               <motion.div
                 initial={{ opacity: 0, y: 6 }}
@@ -257,23 +228,9 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Mobile Navigation Drawer */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="md:hidden mt-2 max-w-md mx-auto rounded-3xl bg-white/95 backdrop-blur-3xl border border-slate-200/80 shadow-2xl overflow-hidden pointer-events-auto"
-            >
-              <MobileNav onClose={() => setMobileMenuOpen(false)} />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
 
-      {/* ─── FULL-PAGE BLUR & DIM OVERLAY (SUBTLE LIGHT VEIL) ─────────────── */}
+      {/* ─── FULL-PAGE BLUR & DIM OVERLAY (SUBTLE LIGHT VEIL FOR MEGA MENU) ─ */}
       <AnimatePresence>
         {activeMenu && (
           <motion.div
@@ -285,6 +242,13 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-slate-900/10 backdrop-blur-xs cursor-pointer"
             aria-hidden="true"
           />
+        )}
+      </AnimatePresence>
+
+      {/* ─── MOBILE NAVIGATION SIDEBAR (FULL-HEIGHT SLIDE-OVER) ──────────── */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <MobileNav onClose={() => setMobileMenuOpen(false)} />
         )}
       </AnimatePresence>
     </>
