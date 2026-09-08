@@ -87,18 +87,18 @@ export default function Navbar() {
     <>
       <header
         ref={headerRef}
-        className={`fixed top-3 sm:top-4 md:top-5 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-in-out font-sans ${
+        className={`fixed top-0 md:top-5 left-0 right-0 z-50 px-0 md:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-in-out font-sans ${
           isVisible
             ? "translate-y-0 opacity-100"
-            : "-translate-y-8 opacity-0"
+            : "-translate-y-full md:-translate-y-8 opacity-0"
         }`}
       >
-        {/* Floating Capsule Island */}
+        {/* Full-width Bar on Mobile, Floating Capsule Island on Desktop */}
         <div
-          className={`relative max-w-5xl lg:max-w-6xl mx-auto h-14 sm:h-[68px] px-3 sm:px-5 pl-3.5 sm:pl-5 rounded-full flex items-center justify-between pointer-events-auto transition-all duration-300 ${
+          className={`relative w-full md:max-w-5xl lg:max-w-6xl mx-auto h-14 sm:h-16 md:h-[68px] px-4 sm:px-6 md:px-5 md:pl-5 rounded-none md:rounded-full border-b md:border flex items-center justify-between pointer-events-auto transition-all duration-300 ${
             activeMenu || isScrolled
-              ? "bg-white/92 backdrop-blur-2xl border border-slate-200/90 shadow-xl shadow-slate-900/10"
-              : "bg-white/80 backdrop-blur-xl border border-slate-200/80 shadow-lg shadow-slate-900/5"
+              ? "bg-white/95 md:bg-white/92 backdrop-blur-2xl border-slate-200/90 shadow-xs md:shadow-xl md:shadow-slate-900/10"
+              : "bg-white/90 md:bg-white/80 backdrop-blur-xl border-slate-200/80 md:shadow-lg md:shadow-slate-900/5"
           }`}
         >
           {/* Left: Brand Logo with 3D Blue Badge & Crisp Wordmark */}

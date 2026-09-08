@@ -8,7 +8,7 @@ const LOGO_PATHS = [
     id: "top-left",
     d: "M90.6684 90.1818L90.4292 91.378L90.5249 92.1914L90.7641 92.8134L91.0991 93.3397L91.6254 93.866L92.2952 94.2488L93.0608 94.4402H93.7785L94.2569 94.3445L94.7354 94.1531L95.2617 93.8182L95.9316 93.0526L96.2187 92.4785L96.3144 91.9522L96.4101 91.8565H107.128L107.271 92V96.9282L107.558 97.2153H107.893L108.085 97.0718L108.18 96.8804V92.0479L107.989 91.4258L107.702 91.1388L107.415 90.9952L96.4101 90.9474L96.3144 90.8517V90.6125L95.9794 89.7991L95.5488 89.2249L94.9268 88.7464L94.544 88.555L93.8742 88.3636H93.0129L92.1038 88.6507L91.5775 88.9857L91.0991 89.4641L90.6684 90.1818ZM93.3957 89.177L94.1613 89.3206L94.7833 89.7034L95.2617 90.2775L95.5488 91.1388L95.501 91.9522L95.0703 92.7656L94.4005 93.3397L93.6828 93.579H93.2043L92.7737 93.4833L92.1517 93.1483L91.6254 92.5742L91.3861 92.0957L91.2904 91.7129V91.0909L91.3861 90.7081L91.7211 90.0861L92.4866 89.4163L93.3957 89.177Z",
     delay: 0.15,
-    duration: 0.45,
+    duration: 0.4,
   },
   // 1: Path 2 - Mid-Left Horizontal Connector
   {
@@ -22,7 +22,7 @@ const LOGO_PATHS = [
     id: "center-grid",
     d: "M112.2 99.5598L112.008 99.0813L111.578 98.6029L111.338 98.4593L110.764 98.3158H104.544L104.066 98.4593L103.539 98.8421L103.204 99.512L103.156 103.77L103.061 103.866H100.812L100.716 103.77L100.668 100.038L100.429 99.4641L100.19 99.1292L99.5201 98.6986L99.1852 98.6029L86.9364 98.6507L86.4101 98.89L86.0273 99.2249L85.7402 99.6555L85.5488 100.325L85.5967 106.785L85.8359 107.359L86.3144 107.885L86.8407 108.172L87.3192 108.268H96.6972L99.855 111.426L100.286 111.474L100.621 111.234L100.716 110.947V104.823L100.812 104.727H103.061L103.156 104.823L103.204 107.885L103.444 108.459L103.922 108.89L104.448 109.081L111.099 109.034L111.578 108.794L111.96 108.411L112.2 107.837V99.5598ZM86.6015 99.8947L86.8407 99.6555L87.2235 99.4641H99.0895L99.3766 99.6077L99.6637 99.8947L99.855 100.325V109.99L99.7594 110.086L97.2235 107.502L97.0321 107.407H87.3192L86.9364 107.263L86.6015 106.928L86.4101 106.545V100.278L86.6015 99.8947ZM104.305 99.3206L104.64 99.177H110.334L110.908 99.2249L111.29 99.5598L111.386 99.7991V107.598L111.29 107.837L111.003 108.124L110.812 108.22H104.592L104.353 108.124L104.113 107.885L104.018 107.694V99.7034L104.305 99.3206Z",
     delay: 0.55,
-    duration: 0.55,
+    duration: 0.5,
   },
   // 3: Path 1 - Bottom Bridge & Nodes
   {
@@ -49,88 +49,128 @@ const LOGO_PATHS = [
 
 export default function ConnectingLogoAnimation() {
   return (
-    <div className="inline-flex items-center gap-3 sm:gap-4 select-none">
-      {/* ─── Geometric Circuit Icon Animation ─── */}
+    <div className="inline-flex items-center gap-3.5 sm:gap-4.5 md:gap-5 select-none">
+      {/* ─── 3D Tactile Blue Icon Badge ─── */}
       <div className="relative shrink-0 flex items-center justify-center">
         <svg
-          viewBox="84.35 87.16 46.7 30.1"
+          viewBox="0 0 64 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-10 sm:h-12 md:h-14 w-auto drop-shadow-xs"
+          className="w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 drop-shadow-xl"
           aria-hidden="true"
         >
-          {/* 1. Base Blueprint Layer: Subtle Muted Gray Tracks (Initial State) */}
-          <g
-            fill="#CBD5E1"
-            stroke="#CBD5E1"
-            strokeWidth="0.35"
-            strokeLinejoin="round"
-            shapeRendering="geometricPrecision"
-            className="opacity-60"
-          >
-            {LOGO_PATHS.map((path) => (
-              <path
-                key={`base-${path.id}`}
-                d={path.d}
-                fillRule="evenodd"
-                clipRule="evenodd"
-              />
-            ))}
-          </g>
+          <defs>
+            {/* 3D Blue Surface Gradient */}
+            <linearGradient id="loading-bg-3d" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#2D7EFF" />
+              <stop offset="45%" stopColor="#0364FF" />
+              <stop offset="100%" stopColor="#0043CC" />
+            </linearGradient>
 
-          {/* 2. Connecting Lines Layer: Sequentially links and locks into solid black */}
-          <g
-            strokeLinejoin="round"
-            shapeRendering="geometricPrecision"
-          >
-            {LOGO_PATHS.map((path) => (
-              <motion.path
-                key={`anim-${path.id}`}
-                d={path.d}
-                fillRule="evenodd"
-                clipRule="evenodd"
-                initial={{
-                  pathLength: 0,
-                  stroke: "#000000",
-                  strokeWidth: 0.6,
-                  strokeOpacity: 0,
-                  fill: "#000000",
-                  fillOpacity: 0,
-                }}
-                animate={{
-                  pathLength: [0, 0.6, 1],
-                  strokeOpacity: [0, 1, 1],
-                  fillOpacity: [0, 0.3, 1],
-                }}
-                transition={{
-                  duration: path.duration,
-                  delay: path.delay,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              />
-            ))}
-          </g>
+            {/* Tactile Highlight Rim */}
+            <linearGradient id="loading-rim-3d" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+              <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.20" />
+              <stop offset="70%" stopColor="#002D8F" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#002070" stopOpacity="0.65" />
+            </linearGradient>
 
-          {/* 3. Subtle Connection Spark Pulse (Ripples when complete at 1.4s) */}
-          <motion.rect
-            x="84"
-            y="87"
-            width="47"
-            height="31"
+            {/* Emboss Depth on White Circuit Lines */}
+            <filter id="loading-emboss" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="0.75" stdDeviation="0.4" floodColor="#00247A" floodOpacity="0.75" />
+            </filter>
+          </defs>
+
+          {/* 3D Blue Squircle Base */}
+          <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#loading-bg-3d)" />
+
+          {/* Tactile Bevel Rim */}
+          <rect
+            x="2.6"
+            y="2.6"
+            width="58.8"
+            height="58.8"
+            rx="13.4"
             fill="none"
+            stroke="url(#loading-rim-3d)"
+            strokeWidth="1.2"
+          />
+
+          {/* Centered White Circuit Lines (Animated sequentially) */}
+          <g transform="translate(-70.0959, -64.8948) scale(0.9479)" filter="url(#loading-emboss)">
+            {/* Base subtle circuit blueprint */}
+            <g
+              fill="#FFFFFF"
+              stroke="#FFFFFF"
+              strokeWidth="0.35"
+              strokeLinejoin="round"
+              shapeRendering="geometricPrecision"
+              className="opacity-25"
+            >
+              {LOGO_PATHS.map((path) => (
+                <path
+                  key={`base-${path.id}`}
+                  d={path.d}
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                />
+              ))}
+            </g>
+
+            {/* Animated white electric pulses filling the circuits */}
+            <g
+              strokeLinejoin="round"
+              shapeRendering="geometricPrecision"
+            >
+              {LOGO_PATHS.map((path) => (
+                <motion.path
+                  key={`anim-${path.id}`}
+                  d={path.d}
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  initial={{
+                    fill: "#FFFFFF",
+                    fillOpacity: 0.15,
+                    stroke: "#FFFFFF",
+                    strokeWidth: 0.35,
+                    strokeOpacity: 0.15,
+                  }}
+                  animate={{
+                    fill: ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)", "rgba(255,255,255,1)"],
+                    fillOpacity: [0.2, 1, 1],
+                    strokeOpacity: [0.2, 1, 1],
+                  }}
+                  transition={{
+                    duration: path.duration,
+                    delay: path.delay,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                />
+              ))}
+            </g>
+          </g>
+
+          {/* Connection Complete Light Burst Reflection across the badge */}
+          <motion.rect
+            x="2"
+            y="2"
+            width="60"
+            height="60"
+            rx="14"
+            fill="white"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.15, 0] }}
+            animate={{ opacity: [0, 0.35, 0] }}
             transition={{ delay: 1.45, duration: 0.35, ease: "easeOut" }}
           />
         </svg>
       </div>
 
-      {/* ─── Wordmark Animation: Transitions from subtle gray to deep solid black ─── */}
+      {/* ─── Wordmark: Crisp Slate Typography ─── */}
       <motion.span
-        initial={{ color: "#CBD5E1" }}
-        animate={{ color: "#000000" }}
-        transition={{ delay: 1.35, duration: 0.45, ease: "easeOut" }}
-        className="text-2xl sm:text-3xl md:text-[34px] font-bold tracking-tight leading-none"
+        initial={{ opacity: 0.6, y: 2 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.25, duration: 0.45, ease: "easeOut" }}
+        className="text-slate-900 text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight leading-none"
       >
         BRDGR
       </motion.span>
