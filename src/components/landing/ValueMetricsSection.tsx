@@ -285,15 +285,15 @@ export default function ValueMetricsSection() {
   return (
     <section className="relative w-full bg-[linear-gradient(180deg,#f6f8fb_0%,#eaf3ff_18%,#dbeafe_50%,#e8f2fe_82%,#f8fafc_100%)] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
       {/* Light blue ambient fade & atmospheric glows */}
-      <div 
-        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(111,166,255,0.28),rgba(3,100,255,0.08)_50%,transparent_80%)] pointer-events-none" 
-        aria-hidden="true" 
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(111,166,255,0.28),rgba(3,100,255,0.08)_50%,transparent_80%)] pointer-events-none"
+        aria-hidden="true"
       />
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[650px] bg-gradient-to-r from-[#6FA6FF]/25 via-[#93C5FD]/20 to-[#0364FF]/20 blur-3xl pointer-events-none" 
-        aria-hidden="true" 
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[650px] bg-gradient-to-r from-[#6FA6FF]/25 via-[#93C5FD]/20 to-[#0364FF]/20 blur-3xl pointer-events-none"
+        aria-hidden="true"
       />
-      <div 
+      <div
         className="absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-5xl h-48 bg-gradient-to-b from-[#6FA6FF]/15 to-transparent blur-2xl pointer-events-none"
         aria-hidden="true"
       />

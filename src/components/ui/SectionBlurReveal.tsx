@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion, type HTMLMotionProps } from "framer-motion";
 
 interface SectionBlurRevealProps extends Omit<HTMLMotionProps<"div">, "children"> {
@@ -19,6 +19,7 @@ interface SectionBlurRevealProps extends Omit<HTMLMotionProps<"div">, "children"
  * SectionBlurReveal
  * Wraps page sections to produce a smooth, cinematic blur-to-focus
  * animation as the user scrolls from section to section.
+ * Clears transform upon completion to preserve native CSS position: sticky.
  */
 export default function SectionBlurReveal({
   children,
@@ -32,6 +33,8 @@ export default function SectionBlurReveal({
   amount = 0.1,
   ...props
 }: SectionBlurRevealProps) {
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
+
   return (
     <motion.div
       initial={{
@@ -56,8 +59,12 @@ export default function SectionBlurReveal({
         delay,
         ease: [0.21, 1, 0.36, 1], // Custom smooth cubic-bezier curve
       }}
+      onAnimationComplete={() => {
+        setIsAnimationDone(true);
+      }}
       style={{
-        willChange: "transform, filter, opacity",
+        transform: isAnimationDone ? "none" : undefined,
+        willChange: isAnimationDone ? "auto" : "transform, filter, opacity",
       }}
       className={`w-full ${className}`}
       {...props}
