@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { ShieldCheck, CheckCircle2, TrendingUp, Lock } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
-interface BrandItem {
+export interface BrandItem {
+  id: string;
   name: string;
   category: "prop" | "broker" | "tech";
   categoryLabel: string;
@@ -14,117 +15,321 @@ interface BrandItem {
   logoSvg: React.ReactNode;
 }
 
-const BRANDS: BrandItem[] = [
+// ─── Row 1 Brands ─────────────────────────────────────────────────────────────
+const ROW_1_BRANDS: BrandItem[] = [
   {
+    id: "ftmo",
     name: "FTMO",
     category: "prop",
     categoryLabel: "Prop Trading Firm",
     metric: "$4.2M+ Payouts Routed",
     color: "#0066FF",
     logoSvg: (
-      <svg viewBox="0 0 140 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" letterSpacing="0.08em">
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="currentColor" fillOpacity="0.15" />
+          <path d="M12 2L3 7L12 12L21 7L12 2Z" fill="currentColor" fillOpacity="0.8" />
+          <path d="M3 17L12 22V12L3 7V17Z" fill="currentColor" fillOpacity="0.5" />
+          <path d="M21 17L12 22V12L21 7V17Z" fill="#0066FF" />
+        </svg>
+        <span className="font-extrabold text-[19px] tracking-wider text-slate-800 group-hover:text-slate-900 transition-colors">
           FTMO
-        </text>
-      </svg>
+        </span>
+      </div>
     ),
   },
   {
+    id: "fundednext",
     name: "FundedNext",
     category: "prop",
     categoryLabel: "Prop Trading Firm",
     metric: "99.8% Match Rate",
     color: "#6366F1",
     logoSvg: (
-      <svg viewBox="0 0 170 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="700" fontSize="20" letterSpacing="-0.02em">
-          Funded<tspan fill="#6366F1">Next</tspan>
-        </text>
-      </svg>
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path d="M4 18L14 4L11 12H20L10 20L12 13H4Z" fill="currentColor" fillOpacity="0.2" />
+          <path d="M13 3L6 14H13L11 21L18 10H11L13 3Z" fill="#6366F1" />
+        </svg>
+        <span className="font-bold text-[18px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+          Funded<span className="text-[#6366F1] font-extrabold">Next</span>
+        </span>
+      </div>
     ),
   },
   {
+    id: "pepperstone",
     name: "Pepperstone",
     category: "broker",
     categoryLabel: "Tier-1 Broker",
     metric: "FCA & ASIC Regulated",
-    color: "#E11D48",
+    color: "#D11835",
     logoSvg: (
-      <svg viewBox="0 0 170 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="19" letterSpacing="0.02em">
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12"
+            stroke="#D11835"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M10 7H14C15.6569 7 17 8.34315 17 10C17 11.6569 15.6569 13 14 13H10V17"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span className="font-extrabold text-[17px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors lowercase">
           pepperstone
-        </text>
-      </svg>
+        </span>
+      </div>
     ),
   },
   {
+    id: "icmarkets",
     name: "IC Markets",
     category: "broker",
     categoryLabel: "Multi-Asset Broker",
     metric: "Global Volume Leader",
-    color: "#10B981",
+    color: "#00BA71",
     logoSvg: (
-      <svg viewBox="0 0 160 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="20" letterSpacing="0.04em">
-          IC<tspan fill="#10B981">MARKETS</tspan>
-        </text>
-      </svg>
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <rect x="3" y="11" width="4" height="10" rx="1.5" fill="currentColor" fillOpacity="0.4" />
+          <rect x="10" y="6" width="4" height="15" rx="1.5" fill="currentColor" fillOpacity="0.7" />
+          <rect x="17" y="2" width="4" height="19" rx="1.5" fill="#00BA71" />
+        </svg>
+        <span className="font-extrabold text-[18px] tracking-wider text-slate-800 group-hover:text-slate-900 transition-colors">
+          IC<span className="text-[#00BA71]">MARKETS</span>
+        </span>
+      </div>
     ),
   },
   {
+    id: "axi",
+    name: "Axi",
+    category: "broker",
+    categoryLabel: "Regulated Broker",
+    metric: "100k+ Traders",
+    color: "#E03A3E",
+    logoSvg: (
+      <div className="flex items-center gap-1.5">
+        <span className="font-black text-[22px] tracking-[0.14em] text-slate-800 group-hover:text-slate-900 transition-colors">
+          AXI
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "tickmill",
+    name: "Tickmill",
+    category: "broker",
+    categoryLabel: "Global FX Broker",
+    metric: "Zero Friction Escrow",
+    color: "#C01427",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="#C01427" strokeWidth="2.5" />
+          <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+        <span className="font-bold text-[18px] tracking-normal text-slate-800 group-hover:text-slate-900 transition-colors">
+          TICKMILL
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "tradingview",
+    name: "TradingView",
+    category: "tech",
+    categoryLabel: "Market Infrastructure",
+    metric: "Verified Integrations",
+    color: "#2962FF",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <rect x="2" y="7" width="7" height="13" rx="1.5" fill="#2962FF" />
+          <rect x="11" y="4" width="11" height="16" rx="1.5" fill="currentColor" fillOpacity="0.8" />
+          <circle cx="16.5" cy="12" r="2.5" fill="#FFFFFF" />
+        </svg>
+        <span className="font-bold text-[18px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+          Trading<span className="text-[#2962FF]">View</span>
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "alphacapital",
     name: "Alpha Capital",
     category: "prop",
     categoryLabel: "Institutional Prop",
     metric: "Tier-1 Audited",
     color: "#D97706",
     logoSvg: (
-      <svg viewBox="0 0 170 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="700" fontSize="19" letterSpacing="0.05em">
-          ALPHA<tspan fontWeight="400" fontSize="16">CAPITAL</tspan>
-        </text>
-      </svg>
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path d="M12 3L2 21H22L12 3Z" stroke="#D97706" strokeWidth="2.5" strokeLinejoin="round" />
+          <line x1="6" y1="16" x2="18" y2="16" stroke="currentColor" strokeWidth="2" />
+        </svg>
+        <span className="font-extrabold text-[17px] tracking-wider text-slate-800 group-hover:text-slate-900 transition-colors">
+          ALPHA<span className="font-medium text-slate-600">CAPITAL</span>
+        </span>
+      </div>
+    ),
+  },
+];
+
+// ─── Row 2 Brands ─────────────────────────────────────────────────────────────
+const ROW_2_BRANDS: BrandItem[] = [
+  {
+    id: "hfm",
+    name: "HFM",
+    category: "broker",
+    categoryLabel: "Multi-Asset Broker",
+    metric: "Tier-1 Regulated",
+    color: "#D8232A",
+    logoSvg: (
+      <div className="flex flex-col items-start leading-none">
+        <span className="font-black text-[20px] tracking-wider text-slate-800 group-hover:text-slate-900 transition-colors">
+          HFM
+        </span>
+        <span className="text-[8px] font-bold tracking-widest text-slate-400 mt-0.5">
+          HF MARKETS
+        </span>
+      </div>
     ),
   },
   {
-    name: "Axi",
+    id: "exness",
+    name: "Exness",
+    category: "broker",
+    categoryLabel: "Tier-1 Broker",
+    metric: "$3.8T Monthly Vol",
+    color: "#FFD000",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="2.5" />
+          <circle cx="15" cy="15" r="6" stroke="#FFD000" strokeWidth="2.5" />
+        </svg>
+        <span className="font-extrabold text-[19px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+          exness
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "xm",
+    name: "XM",
     category: "broker",
     categoryLabel: "Regulated Broker",
-    metric: "100k+ Traders",
-    color: "#F97316",
+    metric: "10M+ Clients",
+    color: "#D92D20",
     logoSvg: (
-      <svg viewBox="0 0 100 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" letterSpacing="0.1em">
-          AXI
-        </text>
-      </svg>
+      <div className="flex items-center gap-1.5">
+        <span className="font-black text-[23px] tracking-wider text-slate-900 group-hover:text-red-600 transition-colors">
+          XM
+        </span>
+      </div>
     ),
   },
   {
-    name: "Tickmill",
+    id: "oanda",
+    name: "OANDA",
     category: "broker",
     categoryLabel: "Global FX Broker",
-    metric: "Zero Friction Escrow",
-    color: "#DC2626",
+    metric: "Established 1996",
+    color: "#1976D2",
     logoSvg: (
-      <svg viewBox="0 0 140 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="700" fontSize="20" letterSpacing="-0.01em">
-          TICKMILL
-        </text>
-      </svg>
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="#1976D2" strokeWidth="2" />
+          <path d="M12 3C16.97 3 21 7.03 21 12C21 16.97 16.97 21 12 21" fill="#1976D2" fillOpacity="0.25" />
+          <path d="M12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17" fill="#1976D2" />
+        </svg>
+        <span className="font-black text-[18px] tracking-widest text-slate-800 group-hover:text-slate-900 transition-colors">
+          OANDA
+        </span>
+      </div>
     ),
   },
   {
-    name: "TradingView",
+    id: "bybit",
+    name: "Bybit",
     category: "tech",
-    categoryLabel: "Market Infrastructure",
-    metric: "Verified Integrations",
-    color: "#2563EB",
+    categoryLabel: "Crypto & Derivatives",
+    metric: "Direct Settlement",
+    color: "#F7A600",
     logoSvg: (
-      <svg viewBox="0 0 180 32" className="h-6 w-auto" fill="currentColor">
-        <text x="0" y="24" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="19" letterSpacing="-0.03em">
-          Trading<tspan fill="#2563EB">View</tspan>
-        </text>
-      </svg>
+      <div className="flex items-center gap-1">
+        <span className="font-black text-[19px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+          BYB<span className="text-[#F7A600]">I</span>T
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "deriv",
+    name: "Deriv",
+    category: "broker",
+    categoryLabel: "Multi-Asset Broker",
+    metric: "25+ Years Proven",
+    color: "#FF444F",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path d="M4 4L16 12L4 20V4Z" fill="#FF444F" />
+          <path d="M12 4L20 12L12 20V4Z" fill="currentColor" fillOpacity="0.25" />
+        </svg>
+        <span className="font-black text-[19px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+          Deriv
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "octa",
+    name: "Octa",
+    category: "broker",
+    categoryLabel: "Forex Broker",
+    metric: "Verified Routing",
+    color: "#0039B3",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <circle cx="8" cy="8" r="4.5" stroke="#0039B3" strokeWidth="2" />
+          <circle cx="16" cy="8" r="4.5" stroke="currentColor" strokeWidth="2" />
+          <circle cx="8" cy="16" r="4.5" stroke="currentColor" strokeWidth="2" />
+          <circle cx="16" cy="16" r="4.5" stroke="#0039B3" strokeWidth="2" />
+        </svg>
+        <span className="font-bold text-[19px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors lowercase">
+          octa
+        </span>
+      </div>
+    ),
+  },
+  {
+    id: "fpmarkets",
+    name: "FP Markets",
+    category: "broker",
+    categoryLabel: "Direct Market Access",
+    metric: "0.0 Pip Spreads",
+    color: "#005BA6",
+    logoSvg: (
+      <div className="flex items-center gap-2">
+        <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
+          <path
+            d="M3 14C6 6 12 4 21 6C15 11 11 17 8 20C6 19 4 17 3 14Z"
+            fill="#005BA6"
+          />
+        </svg>
+        <span className="font-extrabold text-[17px] tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors italic">
+          fp<span className="not-italic font-bold">markets</span>
+        </span>
+      </div>
     ),
   },
 ];
@@ -138,27 +343,95 @@ const METRICS = [
 
 export default function TrustSection() {
   const [activeCategory, setActiveCategory] = useState<"all" | "prop" | "broker">("all");
+  const [activeBrand, setActiveBrand] = useState<BrandItem | null>(null);
 
-  const filteredBrands =
-    activeCategory === "all"
-      ? BRANDS
-      : BRANDS.filter((brand) => brand.category === activeCategory);
+  // Duplicating arrays for infinite continuous marquee loop
+  const row1Repeated = [...ROW_1_BRANDS, ...ROW_1_BRANDS, ...ROW_1_BRANDS];
+  const row2Repeated = [...ROW_2_BRANDS, ...ROW_2_BRANDS, ...ROW_2_BRANDS];
+
+  const isBrandHighlighted = (brand: BrandItem) => {
+    if (activeCategory === "all") return true;
+    return brand.category === activeCategory;
+  };
 
   return (
-    <section className="relative w-full bg-[#f6f8fb] pb-20 sm:pb-28 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        {/* ─── Header: Clear & Elevated ────────────────────────────────────── */}
+    <section className="relative w-full bg-[#f6f8fb] pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+      {/* ─── Ambient Sky Blue Radial Glow (Matched with reference image) ─── */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[480px] bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(191,219,254,0.55)_0%,rgba(224,238,255,0.3)_45%,transparent_80%)] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* ─── Crisp Ambient Glass Reflection Arc (Like Hero & Reference Image) ─── */}
+      <svg
+        className="absolute top-0 left-0 w-full h-[360px] pointer-events-none overflow-visible select-none"
+        viewBox="0 0 1440 360"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M -60,190 C 400,100 950,280 1520,30"
+          stroke="#FFFFFF"
+          strokeWidth="14"
+          strokeOpacity="0.55"
+          className="blur-[8px]"
+        />
+        <path
+          d="M -60,190 C 400,100 950,280 1520,30"
+          stroke="url(#trust-white-arc)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M -40,240 C 420,150 970,320 1500,80"
+          stroke="url(#trust-soft-arc)"
+          strokeWidth="1.5"
+          strokeOpacity="0.4"
+          strokeLinecap="round"
+        />
+        <defs>
+          <linearGradient id="trust-white-arc" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.1" />
+            <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.95" />
+            <stop offset="70%" stopColor="#93C5FD" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.1" />
+          </linearGradient>
+          <linearGradient id="trust-soft-arc" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#93C5FD" stopOpacity="0" />
+            <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#93C5FD" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div className="relative max-w-7xl mx-auto z-10">
+        {/* ─── Header: Exact user copy & elevated typography ───────────────── */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-[42px] font-normal text-neutral-900 tracking-[-0.025em] leading-[1.2]">
-            We are trusted by leading brands
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-[44px] font-normal text-neutral-900 tracking-[-0.03em] leading-[1.18]">
+              We are trusted by leading brands
+            </h2>
 
-          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-neutral-500 font-normal leading-relaxed">
-            Proprietary trading firms, Tier-1 brokers, and high-volume performance partners scale on BRDGR’s verified infrastructure.
-          </p>
+            <p className="mt-3.5 sm:mt-4 text-base sm:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
+              Proprietary trading firms, Tier-1 brokers, and high-volume performance partners scale on BRDGR’s verified infrastructure.
+            </p>
+          </motion.div>
 
-          {/* ─── Segment Filter Tabs for Clarity ───────────────────────────── */}
-          <div className="mt-7 sm:mt-8 inline-flex items-center p-1 rounded-full bg-slate-200/60 border border-slate-300/40 backdrop-blur-sm">
+          {/* ─── Segment Filter Tabs ─────────────────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 sm:mt-8 inline-flex items-center p-1 rounded-full bg-slate-200/60 border border-slate-300/50 backdrop-blur-sm shadow-xs"
+          >
             <button
               type="button"
               onClick={() => setActiveCategory("all")}
@@ -192,68 +465,131 @@ export default function TrustSection() {
             >
               Forex & CFD Brokers
             </button>
+          </motion.div>
+        </div>
+
+        {/* ─── Marquee Showcase Container ──────────────────────────────────── */}
+        <div className="relative mt-12 sm:mt-16 marquee-container">
+          {/* ─── Edge Fade Gradients (Fade-away effect matching screenshot) ─── */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-24 sm:w-44 md:w-60 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute right-0 top-0 bottom-0 w-24 sm:w-44 md:w-60 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
+            aria-hidden="true"
+          />
+
+          {/* ─── Marquee Rows Track ────────────────────────────────────────── */}
+          <div
+            className="space-y-6 sm:space-y-8 overflow-hidden py-2"
+            style={{
+              maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            }}
+          >
+            {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
+            <div className="flex items-center w-max animate-marquee-left">
+              {row1Repeated.map((brand, idx) => {
+                const highlighted = isBrandHighlighted(brand);
+                return (
+                  <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                    <div
+                      onMouseEnter={() => setActiveBrand(brand)}
+                      onMouseLeave={() => setActiveBrand(null)}
+                      className={`group relative flex items-center px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 cursor-pointer ${
+                        highlighted
+                          ? "opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs"
+                          : "opacity-30 grayscale hover:grayscale-0 hover:opacity-75"
+                      }`}
+                    >
+                      <div className="transition-transform duration-200 group-hover:scale-105">
+                        {brand.logoSvg}
+                      </div>
+
+                      {/* Interactive Hover Tooltip Card */}
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                          <span className="text-slate-300">{brand.categoryLabel}</span>
+                          <span className="text-slate-500">•</span>
+                          <span className="text-white font-semibold">{brand.metric}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Subtle Vertical Divider Line (From Reference Image) */}
+                    <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* ─── Track 2: Scrolling Right ────────────────────────────────── */}
+            <div className="flex items-center w-max animate-marquee-right">
+              {row2Repeated.map((brand, idx) => {
+                const highlighted = isBrandHighlighted(brand);
+                return (
+                  <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                    <div
+                      onMouseEnter={() => setActiveBrand(brand)}
+                      onMouseLeave={() => setActiveBrand(null)}
+                      className={`group relative flex items-center px-4 sm:px-6 py-2 rounded-xl transition-all duration-300 cursor-pointer ${
+                        highlighted
+                          ? "opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs"
+                          : "opacity-30 grayscale hover:grayscale-0 hover:opacity-75"
+                      }`}
+                    >
+                      <div className="transition-transform duration-200 group-hover:scale-105">
+                        {brand.logoSvg}
+                      </div>
+
+                      {/* Interactive Hover Tooltip Card */}
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                          <span className="text-slate-300">{brand.categoryLabel}</span>
+                          <span className="text-slate-500">•</span>
+                          <span className="text-white font-semibold">{brand.metric}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Subtle Vertical Divider Line */}
+                    <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
-        {/* ─── Logo Showcase with Ambient Spotlight Beams ──────────────────── */}
-        <div className="relative mt-12 sm:mt-16 pt-6 pb-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ staggerChildren: 0.05 }}
-            className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6"
-          >
-            {filteredBrands.map((brand) => (
-              <motion.div
-                key={brand.name}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="group relative flex flex-col items-center justify-center p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-200 transition-colors duration-200 hover:shadow-lg hover:shadow-blue-500/5"
-              >
-                {/* ─── Spotlight Beam effect (recreating image spotlight cones) ─ */}
-                <div
-                  className="absolute -bottom-6 inset-x-4 h-14 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-md"
-                  style={{
-                    background: `radial-gradient(ellipse at top, ${brand.color}25 0%, transparent 70%)`,
-                  }}
-                  aria-hidden="true"
-                />
-
-                {/* Brand Logo */}
-                <div className="text-neutral-700 group-hover:text-[#0364FF] transition-colors duration-200 h-8 flex items-center justify-center">
-                  {brand.logoSvg}
-                </div>
-
-                {/* Sub-label for context & clarity */}
-                <div className="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-neutral-400 group-hover:text-neutral-600 transition-colors">
-                  <span>{brand.categoryLabel}</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300" />
-                  <span className="text-neutral-500 font-semibold">
-                    <AnimatedCounter value={brand.metric} />
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Background Ambient Floor Glow */}
-          <div 
-            className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[800px] h-[100px] bg-gradient-to-r from-transparent via-blue-500/5 to-transparent blur-2xl pointer-events-none" 
-            aria-hidden="true" 
-          />
+        {/* ─── Active Brand Spotlight Strip (When hovered or filtered) ─────── */}
+        <div className="mt-8 flex items-center justify-center min-h-[28px]">
+          {activeBrand ? (
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-blue-200/80 shadow-xs text-xs font-medium text-neutral-700 animate-in fade-in zoom-in-95 duration-200">
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: activeBrand.color }} />
+              <span className="font-semibold text-neutral-900">{activeBrand.name}</span>
+              <span className="text-neutral-400">|</span>
+              <span className="text-neutral-500">{activeBrand.categoryLabel}</span>
+              <span className="text-neutral-400">|</span>
+              <span className="text-[#0364FF] font-semibold">{activeBrand.metric}</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-[#0364FF] ml-0.5" />
+            </div>
+          ) : (
+            <p className="text-xs text-neutral-400 font-medium tracking-wide">
+              Hover any brand to inspect verified routing metrics and regulatory status
+            </p>
+          )}
         </div>
 
-        {/* ─── Proof Metric Ribbon for Extra Clarity & Credibility ─────────── */}
+        {/* ─── Proof Metric Ribbon for Extra Credibility ───────────────────── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="mt-10 sm:mt-14 pt-8 border-t border-slate-200/80 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"
+          className="mt-12 sm:mt-16 pt-8 border-t border-slate-200/80 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8"
         >
           {METRICS.map((metric) => {
             const Icon = metric.icon;
