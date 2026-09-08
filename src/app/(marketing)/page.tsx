@@ -6,18 +6,40 @@ import DualPathSection from "@/components/landing/DualPathSection";
 import EcosystemSection from "@/components/landing/EcosystemSection";
 import PricingPreview from "@/components/landing/PricingPreview";
 import CtaSection from "@/components/landing/CtaSection";
+import SectionBlurReveal from "@/components/ui/SectionBlurReveal";
 
 export default function LandingPage() {
   return (
     <>
       <HeroSection />
-      <EngineSection />
-      <TrustSection />
-      <ValueMetricsSection />
-      <DualPathSection />
-      <EcosystemSection />
-      <PricingPreview />
-      <CtaSection />
+
+      <SectionBlurReveal>
+        <EngineSection />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <TrustSection />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <ValueMetricsSection />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <DualPathSection />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <EcosystemSection />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <PricingPreview />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <CtaSection />
+      </SectionBlurReveal>
     </>
   );
 }
