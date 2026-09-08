@@ -1,150 +1,142 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { ArrowRight, Check } from "lucide-react";
+import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import WordReveal from "@/components/ui/WordReveal";
-import AuroraHero from "@/components/ui/aurora-hero";
 
 export default function CtaSection() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState<"client" | "partner">("client");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) {
-      router.push(`/sign-up?role=${role}`);
-      return;
-    }
-    router.push(`/sign-up?role=${role}&email=${encodeURIComponent(email.trim())}`);
-  };
-
   return (
-    <section className="relative w-full bg-[#f6f8fb] py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
-      <div className="max-w-6xl mx-auto">
-        {/* ─── Main Island Card with Aurora Hero Background ─── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
+    <section 
+      style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+      className="relative w-full bg-white pt-20 sm:pt-28 md:pt-36 pb-24 sm:pb-32 md:pb-44 overflow-hidden select-none"
+    >
+      {/* ─── Background Blue Shade (Matching How It Works) & Halftone Dot Grid ─── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Base white canvas */}
+        <div className="absolute inset-0 bg-white" />
+
+        {/* Soft Blue Elliptical Glow rising from bottom (exact How It Works palette: #c8defc / #d8e8fc / #eaf3ff) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[75%] sm:h-[70%] w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse 115% 80% at 50% 100%, #c8defc 0%, #d8e8fc 28%, #eaf3ff 58%, rgba(255, 255, 255, 0) 100%)",
+          }}
+        />
+
+        {/* Ambient Sky Horizon Wash (matching How It Works radial-gradient) */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[52%] sm:h-[48%] w-full"
+          style={{
+            background:
+              "linear-gradient(to top, #c8defc 0%, rgba(216, 232, 252, 0.8) 32%, rgba(234, 243, 255, 0.5) 65%, transparent 100%)",
+          }}
+        />
+
+        {/* Ambient Sky Glow Orb (rgba(147,197,253,0.5)) */}
+        <div 
+          className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full max-w-6xl h-64 bg-[radial-gradient(ellipse_at_bottom,rgba(147,197,253,0.55),transparent_70%)] pointer-events-none" 
+          aria-hidden="true" 
+        />
+
+        {/* Crisp Halftone Dot Grid Pattern with smooth vertical mask */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[60%] sm:h-[55%] w-full"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(3, 100, 255, 0.3) 1.25px, transparent 1.25px)",
+            backgroundSize: "9px 9px",
+            maskImage:
+              "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      {/* ─── Centered Foreground Content ─── */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        {/* Mulish Headline - Strictly 2 Lines */}
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+          className="text-[26px] min-[390px]:text-[30px] sm:text-[44px] md:text-[54px] lg:text-[62px] font-bold text-[#0f172a] tracking-[-0.03em] leading-[1.15] max-w-4xl mx-auto text-center"
         >
-          <AuroraHero
-            as="div"
-            className="relative rounded-[28px] sm:rounded-[36px] border border-slate-800/80 shadow-[0_20px_60px_rgba(0,0,0,0.25)] p-8 sm:p-12 md:p-14 lg:p-16 overflow-hidden"
+          <span className="block whitespace-normal sm:whitespace-nowrap">
+            Built for the partnerships that can’t
+          </span>
+          <span className="block">
+            afford to get it wrong.
+          </span>
+        </motion.h2>
+
+        {/* Subheadline grounded in brand identity brief */}
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+          className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 font-normal max-w-xl mx-auto leading-relaxed"
+        >
+          Safe agreements, verified attribution rails, and guaranteed USD escrow payouts.
+          From first handshake to every payday.
+        </motion.p>
+
+        {/* Dual Action Pill Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-7 sm:mt-9 flex items-center justify-center gap-3 sm:gap-3.5"
+        >
+          {/* Primary Dark Pill Button */}
+          <Link
+            href="/sign-up"
+            style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+            className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#0f172a] hover:bg-black text-white text-xs sm:text-sm font-semibold tracking-tight shadow-md hover:shadow-lg active:scale-[0.98] transition-all cursor-pointer"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-              {/* ─── Left Column: Direct, High-Conviction Copy ─────────────── */}
-              <div className="lg:col-span-7 flex flex-col justify-center">
-                <WordReveal
-                  as="h2"
-                  delay={0.1}
-                  stagger={0.035}
-                  initialOpacity={0.2}
-                  className="text-3xl sm:text-4xl md:text-[44px] font-normal text-white tracking-[-0.03em] leading-[1.18]"
-                  text="Ready to scale on verified infrastructure?"
-                />
+            Start for free
+          </Link>
 
-                <WordReveal
-                  as="p"
-                  delay={0.25}
-                  stagger={0.02}
-                  initialOpacity={0.2}
-                  className="mt-4 text-sm sm:text-base md:text-lg text-slate-300 font-normal leading-relaxed max-w-lg"
-                  text="Discover screened partners, lock bilateral terms, and settle commissions on guaranteed USD escrow rails."
-                />
+          {/* Secondary Light Grey Pill Button */}
+          <Link
+            href="/sign-up?demo=true"
+            style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+            className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 hover:bg-white text-slate-800 hover:text-slate-950 text-xs sm:text-sm font-semibold tracking-tight border border-slate-200/80 shadow-xs hover:shadow-sm active:scale-[0.98] transition-all cursor-pointer backdrop-blur-xs"
+          >
+            Book a demo
+          </Link>
+        </motion.div>
 
-                {/* Quiet Reassurance Indicators */}
-                <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-400">
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>14-day full trial</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Double-entry USD escrow</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Zero long-term lock-in</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* ─── Right Column: Clean, Frictionless Action Form ─────────── */}
-              <div className="lg:col-span-5 flex flex-col items-start lg:items-end justify-center w-full">
-                <div className="w-full max-w-md flex flex-col gap-4">
-                  {/* Minimal Role Switcher */}
-                  <div className="inline-flex p-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-md self-start sm:self-auto">
-                    <button
-                      type="button"
-                      onClick={() => setRole("client")}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                        role === "client"
-                          ? "bg-[#0364FF] text-white shadow-xs font-semibold"
-                          : "text-slate-300 hover:text-white"
-                      }`}
-                    >
-                      Prop Firm / Broker
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setRole("partner")}
-                      className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
-                        role === "partner"
-                          ? "bg-[#0364FF] text-white shadow-xs font-semibold"
-                          : "text-slate-300 hover:text-white"
-                      }`}
-                    >
-                      Growth Partner
-                    </button>
-                  </div>
-
-                  {/* Clean Email Input + Action Button */}
-                  <form
-                    onSubmit={handleSubmit}
-                    className="relative w-full rounded-full bg-white/10 backdrop-blur-xl border border-white/20 p-1.5 pl-5 flex items-center justify-between transition-all focus-within:border-[#38BDF8]/80 focus-within:bg-white/15 shadow-xl"
-                  >
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder={
-                        role === "client"
-                          ? "Enter your company email..."
-                          : "Enter your personal email..."
-                      }
-                      className="w-full bg-transparent text-sm text-white placeholder-slate-400 focus:outline-none pr-3"
-                    />
-
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full bg-[#0364FF] hover:bg-[#005CFF] text-white text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-md shadow-[#0364FF]/40 shrink-0 group active:scale-[0.98]"
-                    >
-                      <span>Get Started</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </button>
-                  </form>
-
-                  {/* Clean Sign-in Anchor */}
-                  <div className="flex items-center justify-between px-2 text-xs text-slate-400">
-                    <span>No credit card required</span>
-                    <button
-                      type="button"
-                      onClick={() => router.push("/sign-in")}
-                      className="text-slate-300 hover:text-[#38BDF8] transition-colors cursor-pointer"
-                    >
-                      Already have an account? Sign in
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AuroraHero>
+        {/* Institutional Trust Indicators */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.24 }}
+          style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] sm:text-xs text-slate-500 font-medium"
+        >
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+            <span>Double-entry USD escrow</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+            <span>Institutional broker rails</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+            <span>14-day full access trial</span>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+

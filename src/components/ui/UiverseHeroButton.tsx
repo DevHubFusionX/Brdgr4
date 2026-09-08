@@ -14,6 +14,7 @@ interface UiverseHeroButtonProps {
   type?: "button" | "submit" | "reset";
   iconBgColor?: string;
   dotColor?: string;
+  iconBorderClass?: string;
 }
 
 export default function UiverseHeroButton({
@@ -27,6 +28,7 @@ export default function UiverseHeroButton({
   type = "button",
   iconBgColor,
   dotColor,
+  iconBorderClass,
 }: UiverseHeroButtonProps) {
   // Brand color configuration
   const styles = {
@@ -83,7 +85,7 @@ export default function UiverseHeroButton({
       </span>
       <span
         style={iconBgColor ? { backgroundColor: iconBgColor } : undefined}
-        className={`shrink-0 rounded-full flex items-center justify-center border-[2.5px] sm:border-[3px] shadow-xs overflow-hidden transition-all duration-200 group-hover:scale-105 ${sizeStyles.iconWrapper} ${styles.iconWrapper}`}
+        className={`shrink-0 rounded-full flex items-center justify-center ${iconBorderClass !== undefined ? iconBorderClass : "border-[2.5px] sm:border-[3px]"} shadow-xs overflow-hidden transition-all duration-200 group-hover:scale-105 ${sizeStyles.iconWrapper} ${styles.iconWrapper}`}
       >
         <svg
           width={Math.round(16 * sizeStyles.svgScale)}

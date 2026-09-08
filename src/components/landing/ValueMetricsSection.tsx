@@ -13,9 +13,6 @@ interface MetricCard {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
-  gradientClass: string;
-  borderClass: string;
-  glowClass: string;
   renderSvgLines: () => React.ReactNode;
 }
 
@@ -27,15 +24,10 @@ const VALUE_METRICS: MetricCard[] = [
     description:
       "Capture every qualified sale without ad-blocker leakage or bot fraud.",
     icon: Eye,
-    // Direction: 160deg (top-left to bottom-right), Brand Dark (#0F172A) to Brand Blue (#0364FF) to Soft Blue (#6FA6FF)
-    gradientClass:
-      "bg-[linear-gradient(160deg,#0F172A_0%,#0364FF_60%,#6FA6FF_100%)]",
-    borderClass: "border-[#6FA6FF]/35 hover:border-[#6FA6FF]/80",
-    glowClass: "bg-[#6FA6FF]/25",
     // SVG Design 1: Precision radar / parabolic focus arcs
     renderSvgLines: () => (
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
         viewBox="0 0 400 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -75,9 +67,9 @@ const VALUE_METRICS: MetricCard[] = [
         />
         <defs>
           <linearGradient id="attr-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6FA6FF" stopOpacity="0.9" />
-            <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
           </linearGradient>
         </defs>
       </svg>
@@ -90,15 +82,10 @@ const VALUE_METRICS: MetricCard[] = [
     description:
       "Commissions are safely held in escrow and paid out on an exact ledger.",
     icon: TrendingUp,
-    // Direction: 45deg (bottom-left to top-right), Electric Blue (#005CFF) to Brand Blue (#0364FF) to Soft Blue (#6FA6FF)
-    gradientClass:
-      "bg-[linear-gradient(45deg,#005CFF_0%,#0364FF_55%,#6FA6FF_100%)]",
-    borderClass: "border-[#6FA6FF]/40 hover:border-white/80",
-    glowClass: "bg-[#0364FF]/30",
     // SVG Design 2: Financial momentum sine curves undulating upward
     renderSvgLines: () => (
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
         viewBox="0 0 400 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -131,9 +118,9 @@ const VALUE_METRICS: MetricCard[] = [
         />
         <defs>
           <linearGradient id="vol-grad-1" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.4" />
-            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
           </linearGradient>
         </defs>
       </svg>
@@ -146,15 +133,10 @@ const VALUE_METRICS: MetricCard[] = [
     description:
       "Digital agreements lock clear terms and protect direct partner relationships.",
     icon: ShieldCheck,
-    // Direction: 215deg (top-right to bottom-left), Brand Dark (#0F172A) to Electric Blue (#005CFF) to Brand Blue (#0364FF)
-    gradientClass:
-      "bg-[linear-gradient(215deg,#0F172A_0%,#005CFF_60%,#0364FF_100%)]",
-    borderClass: "border-[#6FA6FF]/35 hover:border-[#6FA6FF]/80",
-    glowClass: "bg-[#005CFF]/25",
     // SVG Design 3: Interlocking protective curved shield geometry
     renderSvgLines: () => (
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
         viewBox="0 0 400 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -187,9 +169,9 @@ const VALUE_METRICS: MetricCard[] = [
         />
         <defs>
           <linearGradient id="comp-grad-1" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#005CFF" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
           </linearGradient>
         </defs>
       </svg>
@@ -202,15 +184,10 @@ const VALUE_METRICS: MetricCard[] = [
     description:
       "Eliminate manual partner checks, custom contracts, and spreadsheet disputes.",
     icon: Clock,
-    // Direction: 180deg (top to bottom), Brand Blue (#0364FF) to Electric Blue (#005CFF) to Brand Dark (#0F172A)
-    gradientClass:
-      "bg-[linear-gradient(180deg,#0364FF_0%,#005CFF_50%,#0F172A_100%)]",
-    borderClass: "border-[#6FA6FF]/35 hover:border-[#6FA6FF]/80",
-    glowClass: "bg-[#6FA6FF]/25",
     // SVG Design 4: Sweeping orbital loops and speed curves
     renderSvgLines: () => (
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
         viewBox="0 0 400 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -243,9 +220,9 @@ const VALUE_METRICS: MetricCard[] = [
         />
         <defs>
           <linearGradient id="time-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6FA6FF" stopOpacity="0.85" />
-            <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
           </linearGradient>
         </defs>
       </svg>
@@ -258,15 +235,10 @@ const VALUE_METRICS: MetricCard[] = [
     description:
       "Guaranteed on-time USD payouts by the 5th of every month.",
     icon: CheckCircle2,
-    // Direction: 105deg (subtle diagonal horizontal), Brand Dark (#0F172A) to Electric Blue (#005CFF) to Brand Blue (#0364FF)
-    gradientClass:
-      "bg-[linear-gradient(105deg,#0F172A_0%,#005CFF_55%,#0364FF_100%)]",
-    borderClass: "border-[#6FA6FF]/35 hover:border-white/80",
-    glowClass: "bg-[#0364FF]/30",
     // SVG Design 5: Calm, parallel harmonic horizon waves representing stability & zero default
     renderSvgLines: () => (
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
         viewBox="0 0 400 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -299,9 +271,9 @@ const VALUE_METRICS: MetricCard[] = [
         />
         <defs>
           <linearGradient id="def-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.5" />
-            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
           </linearGradient>
         </defs>
       </svg>
@@ -311,14 +283,22 @@ const VALUE_METRICS: MetricCard[] = [
 
 export default function ValueMetricsSection() {
   return (
-    <section className="relative w-full bg-[#f6f8fb] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
-      {/* Background ambient lighting using brand tokens */}
+    <section className="relative w-full bg-[linear-gradient(180deg,#f6f8fb_0%,#eaf3ff_18%,#dbeafe_50%,#e8f2fe_82%,#f8fafc_100%)] py-16 sm:py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+      {/* Light blue ambient fade & atmospheric glows */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-[#6FA6FF]/20 via-[#F2F4F9]/40 to-[#0364FF]/20 blur-3xl pointer-events-none -z-10" 
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(111,166,255,0.28),rgba(3,100,255,0.08)_50%,transparent_80%)] pointer-events-none" 
         aria-hidden="true" 
       />
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[650px] bg-gradient-to-r from-[#6FA6FF]/25 via-[#93C5FD]/20 to-[#0364FF]/20 blur-3xl pointer-events-none" 
+        aria-hidden="true" 
+      />
+      <div 
+        className="absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-5xl h-48 bg-gradient-to-b from-[#6FA6FF]/15 to-transparent blur-2xl pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* ─── 3-Column x 2-Row Card Grid ─────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -327,24 +307,24 @@ export default function ValueMetricsSection() {
           transition={{ staggerChildren: 0.08 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
-          {/* Card 1: Lead Action Card (135deg Brand Dark #0F172A to Electric Blue #005CFF to Brand Blue #0364FF) ─── */}
+          {/* Card 1: Lead Action Card (White card with crisp brand accents) ─── */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group relative flex flex-col justify-between p-8 sm:p-10 rounded-[28px] sm:rounded-[32px] bg-[linear-gradient(135deg,#0F172A_0%,#005CFF_50%,#0364FF_100%)] border border-[#6FA6FF]/40 hover:border-[#6FA6FF]/80 shadow-lg shadow-[#0F172A]/20 hover:shadow-xl hover:shadow-[#0364FF]/30 transition-all duration-300 overflow-hidden"
+            className="group relative flex flex-col justify-between p-8 sm:p-10 rounded-[28px] sm:rounded-[32px] bg-white border border-slate-200/90 hover:border-[#0364FF]/40 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden"
           >
-            {/* Ambient Radial Spotlight */}
+            {/* Ambient Corner Flare */}
             <div
-              className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#6FA6FF]/25 blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500"
+              className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-blue-400/10 blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500"
               aria-hidden="true"
             />
 
-            {/* SVG Design 6: Distinct flowing ribbon curves for Lead Card */}
+            {/* SVG Design 6: Flowing ribbon curves for Lead Card */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-300"
               viewBox="0 0 400 320"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -377,9 +357,9 @@ export default function ValueMetricsSection() {
               />
               <defs>
                 <linearGradient id="lead-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
-                  <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#0364FF" stopOpacity="0.25" />
+                  <stop offset="0%" stopColor="#0364FF" stopOpacity="0.3" />
+                  <stop offset="50%" stopColor="#6FA6FF" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#0364FF" stopOpacity="0.05" />
                 </linearGradient>
               </defs>
             </svg>
@@ -390,27 +370,27 @@ export default function ValueMetricsSection() {
                 as="h3"
                 delay={0.1}
                 stagger={0.04}
-                className="text-2xl sm:text-3xl font-normal text-white tracking-[-0.025em] leading-[1.2]"
+                className="text-2xl sm:text-3xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.2]"
                 text="Proven results for brokers and partners"
               />
-              <p className="mt-4 sm:mt-5 text-sm sm:text-base text-[#F2F4F9]/90 font-normal leading-relaxed">
+              <p className="mt-4 sm:mt-5 text-sm sm:text-base text-neutral-500 font-normal leading-relaxed">
                 Run, track, and pay your partnerships on verified, secure rails.
               </p>
             </div>
 
-            {/* High-Contrast Action CTA using #F2F4F9 and #0364FF */}
+            {/* High-Contrast Action CTA */}
             <div className="relative z-10 mt-8 pt-2">
               <Link
                 href="/sign-up"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full text-sm font-medium text-[#0364FF] bg-[#F2F4F9] hover:bg-white shadow-md shadow-[#0F172A]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="btn-3d-primary inline-flex items-center justify-center gap-2.5 px-6 py-3 text-sm font-semibold transition-all duration-200"
               >
                 <span>Talk to our team</span>
-                <ArrowRight className="w-4 h-4 text-[#0364FF]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
             </div>
           </motion.div>
 
-          {/* Cards 2 to 6: Proof & Metric Cards with Distinct Mixed Blue Gradients & Curves ─── */}
+          {/* Cards 2 to 6: Proof & Metric Cards with White Backgrounds ─── */}
           {VALUE_METRICS.map((item) => {
             const Icon = item.icon;
             return (
@@ -421,31 +401,31 @@ export default function ValueMetricsSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className={`group relative flex flex-col justify-between p-8 sm:p-10 rounded-[28px] sm:rounded-[32px] ${item.gradientClass} border ${item.borderClass} shadow-lg shadow-[#0F172A]/15 hover:shadow-xl hover:shadow-[#0364FF]/25 transition-all duration-300 overflow-hidden`}
+                className="group relative flex flex-col justify-between p-8 sm:p-10 rounded-[28px] sm:rounded-[32px] bg-white border border-slate-200/90 hover:border-[#0364FF]/40 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden"
               >
                 {/* Dynamic Corner Ambient Glow */}
                 <div
-                  className={`absolute -top-14 -right-14 w-48 h-48 rounded-full ${item.glowClass} blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500`}
+                  className="absolute -top-14 -right-14 w-48 h-48 rounded-full bg-blue-500/5 blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-500"
                   aria-hidden="true"
                 />
 
                 {/* Individualized Background SVG Curved Lines */}
                 {item.renderSvgLines()}
 
-                {/* Frosted Glass Icon Badge */}
-                <div className="relative z-10 w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xs group-hover:bg-white group-hover:text-[#0364FF] group-hover:border-white transition-all duration-200">
+                {/* Icon Badge */}
+                <div className="relative z-10 w-11 h-11 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0364FF] shadow-2xs group-hover:bg-[#0364FF] group-hover:text-white group-hover:border-[#0364FF] transition-all duration-200">
                   <Icon className="w-5 h-5 transition-transform group-hover:scale-105" />
                 </div>
 
                 {/* Stat, Title & Description */}
                 <div className="relative z-10 mt-10 sm:mt-12">
-                  <div className="text-4xl sm:text-[42px] font-normal tracking-[-0.03em] text-white leading-none drop-shadow-xs">
+                  <div className="text-4xl sm:text-[42px] font-normal tracking-[-0.03em] text-neutral-900 leading-none">
                     <AnimatedCounter value={item.stat} />
                   </div>
-                  <div className="text-base font-semibold text-white mt-2.5">
+                  <div className="text-base font-semibold text-neutral-900 mt-2.5">
                     {item.title}
                   </div>
-                  <p className="text-sm text-[#F2F4F9]/85 font-normal leading-relaxed mt-2">
+                  <p className="text-sm text-neutral-500 font-normal leading-relaxed mt-2">
                     {item.description}
                   </p>
                 </div>

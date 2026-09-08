@@ -11,9 +11,9 @@ export default function LandingPage() {
   return (
     <>
       <HeroSection />
+      <EngineSection />
       <TrustSection />
       <ValueMetricsSection />
-      <EngineSection />
       <DualPathSection />
       <EcosystemSection />
       <PricingPreview />
