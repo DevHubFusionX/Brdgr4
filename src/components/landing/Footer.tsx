@@ -79,7 +79,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Technology partners", href: "/sign-up" },
       { label: "Tech partners directory" },
       { label: "Referral partner program", href: "/sign-up" },
-      { label: "Developer portal", href: "/admin" },
+      { label: "Developer API", href: "/admin" },
     ],
   },
   {
