@@ -31,25 +31,35 @@ function Engine3DCard({
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    setIsMobile(
+      window.innerWidth < 768 ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
 
   // Normalized motion values (-0.5 to 0.5)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Butter-smooth physics springs for mouse tilt
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), {
+  // Butter-smooth physics springs for mouse tilt (only active on desktop hover)
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), {
     damping: 24,
     stiffness: 220,
     mass: 0.25,
   });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-4, 4]), {
     damping: 24,
     stiffness: 220,
     mass: 0.25,
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (isMobile || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const xRatio = (e.clientX - rect.left) / rect.width;
     const yRatio = (e.clientY - rect.top) / rect.height;
@@ -78,8 +88,8 @@ function Engine3DCard({
         ref={ref}
         initial={{ 
           opacity: 0, 
-          y: 35, 
-          scale: 0.98, 
+          y: isMobile ? 16 : 28, 
+          scale: isMobile ? 1 : 0.985, 
         }}
         whileInView={{ 
           opacity: 1, 
@@ -88,21 +98,23 @@ function Engine3DCard({
         }}
         viewport={{ 
           once: true, 
-          amount: 0.12, 
-          margin: "-20px" 
+          amount: isMobile ? 0.02 : 0.08, 
+          margin: isMobile ? "60px 0px -10px 0px" : "0px" 
         }}
         transition={{ 
-          duration: 0.6, 
-          delay, 
+          duration: isMobile ? 0.4 : 0.55, 
+          delay: isMobile ? 0 : delay, 
           ease: [0.16, 1, 0.3, 1] 
         }}
-        onMouseEnter={() => setIsHovered(true)}
+        onAnimationComplete={() => setIsAnimationDone(true)}
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
+          rotateX: !isMobile && isHovered ? rotateX : 0,
+          rotateY: !isMobile && isHovered ? rotateY : 0,
+          transform: isAnimationDone && !isHovered ? "none" : undefined,
+          transformStyle: !isMobile && isHovered ? "preserve-3d" : undefined,
         }}
         className={`group relative rounded-[22px] sm:rounded-[28px] bg-white/98 backdrop-blur-xl border card-specular-rim p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[250px] sm:min-h-[320px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_28px_-6px_rgba(3,100,255,0.12),0_4px_16px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.95)] border-blue-100/90 hover:border-blue-300/90 hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.22),0_8px_24px_-4px_rgba(15,23,42,0.06),inset_0_1.5px_0_#ffffff] ${className}`}
       >

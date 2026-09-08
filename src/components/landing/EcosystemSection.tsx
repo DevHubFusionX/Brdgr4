@@ -294,6 +294,7 @@ export default function EcosystemSection() {
                     href={activeTab.ctaPrimary.href}
                     text={activeTab.ctaPrimary.label}
                     size="sm"
+                    className="w-full sm:w-auto"
                     wrapperWidthClass="w-full sm:w-auto"
                   />
 

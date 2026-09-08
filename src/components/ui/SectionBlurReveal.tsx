@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, type HTMLMotionProps } from "framer-motion";
 
 interface SectionBlurRevealProps extends Omit<HTMLMotionProps<"div">, "children"> {
@@ -17,54 +17,81 @@ interface SectionBlurRevealProps extends Omit<HTMLMotionProps<"div">, "children"
 
 /**
  * SectionBlurReveal
- * Wraps page sections to produce a smooth, cinematic blur-to-focus
- * animation as the user scrolls from section to section.
- * Clears transform upon completion to preserve native CSS position: sticky.
+ * Wraps page sections to produce a butter-smooth reveal as the user
+ * scrolls through the page.
+ * 
+ * Mobile Optimizations:
+ * - Disables CSS filter: blur() on mobile to completely prevent GPU spikes and lag.
+ * - Uses eager viewport margins to eliminate "hanging" or empty screen delay.
+ * - Clears transform, filter, and willChange upon completion to preserve native 60/120fps scroll and CSS position: sticky.
  */
 export default function SectionBlurReveal({
   children,
   className = "",
-  blur = 16,
-  y = 36,
-  scale = 0.985,
-  duration = 0.85,
+  blur = 6,
+  y = 24,
+  scale = 0.99,
+  duration = 0.45,
   delay = 0,
   once = true,
-  amount = 0.1,
+  amount = 0.05,
   ...props
 }: SectionBlurRevealProps) {
   const [isAnimationDone, setIsAnimationDone] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        window.innerWidth < 768 ||
+        window.matchMedia("(pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Zero blur and scale on mobile to protect phone GPU and eliminate hanging lag
+  const effectiveBlur = isMobile ? 0 : blur;
+  const effectiveScale = isMobile ? 1 : scale;
+  const effectiveY = isMobile ? 14 : y;
+  const effectiveDuration = isMobile ? 0.35 : duration;
+  // Eager margin ensures content reveals smoothly before the user has to scroll deep
+  const effectiveMargin = isMobile ? "80px 0px -10px 0px" : "40px 0px -20px 0px";
 
   return (
     <motion.div
       initial={{
         opacity: 0,
-        filter: `blur(${blur}px)`,
-        y,
-        scale,
+        filter: effectiveBlur > 0 ? `blur(${effectiveBlur}px)` : "none",
+        y: effectiveY,
+        scale: effectiveScale,
       }}
       whileInView={{
         opacity: 1,
-        filter: "blur(0px)",
+        filter: "none",
         y: 0,
         scale: 1,
       }}
       viewport={{
         once,
-        amount,
-        margin: "-40px 0px -40px 0px",
+        amount: isMobile ? 0.01 : amount,
+        margin: effectiveMargin,
       }}
       transition={{
-        duration,
+        duration: effectiveDuration,
         delay,
-        ease: [0.21, 1, 0.36, 1], // Custom smooth cubic-bezier curve
+        ease: [0.16, 1, 0.3, 1], // High-performance easeOutExpo curve
       }}
       onAnimationComplete={() => {
         setIsAnimationDone(true);
       }}
       style={{
         transform: isAnimationDone ? "none" : undefined,
-        willChange: isAnimationDone ? "auto" : "transform, filter, opacity",
+        filter: isAnimationDone ? "none" : undefined,
+        willChange: isAnimationDone ? "auto" : "transform, opacity",
       }}
       className={`w-full ${className}`}
       {...props}

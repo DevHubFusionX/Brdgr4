@@ -49,17 +49,27 @@ export default function WordReveal({
   initialOpacity = 0.15,
   once = true,
   mode = "in-view",
-  margin = "-10%",
+  margin = "-5%",
   trigger,
 }: WordRevealProps) {
   const content = text || (typeof children === "string" ? children : "");
   const words = content.trim().split(/\s+/);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  // In-View mode state
+  React.useEffect(() => {
+    setIsMobile(
+      window.innerWidth < 768 ||
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
+
+  // In-View mode state (eager on mobile to eliminate hanging delay)
+  const effectiveMargin = isMobile ? "40px 0px 0px 0px" : (margin as any);
   const isInView = useInView(containerRef, {
     once,
-    margin: margin as any,
+    margin: effectiveMargin,
   });
 
   const isTriggered = trigger !== undefined ? trigger : true;
@@ -94,13 +104,17 @@ export default function WordReveal({
     );
   }
 
+  // Snappy stagger on mobile to eliminate CPU thread thrashing
+  const effectiveStagger = isMobile ? Math.min(stagger, 0.02) : stagger;
+  const effectiveDuration = isMobile ? Math.min(duration, 0.3) : duration;
+
   // Default "in-view" mode with configurable stagger delay
   const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: stagger,
-        delayChildren: delay,
+        staggerChildren: effectiveStagger,
+        delayChildren: isMobile ? 0 : delay,
       },
     },
   };
@@ -108,14 +122,12 @@ export default function WordReveal({
   const wordVariants: Variants = {
     hidden: {
       opacity: initialOpacity,
-      y: 2,
     },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration,
-        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+        duration: effectiveDuration,
+        ease: "easeOut",
       },
     },
   };

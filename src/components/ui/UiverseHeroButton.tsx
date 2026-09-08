@@ -9,6 +9,7 @@ interface UiverseHeroButtonProps {
   onClick?: () => void;
   className?: string;
   containerClassName?: string;
+  wrapperWidthClass?: string;
   variant?: "primary" | "dark" | "surface";
   size?: "default" | "sm";
   type?: "button" | "submit" | "reset";
@@ -23,6 +24,7 @@ export default function UiverseHeroButton({
   onClick,
   className = "",
   containerClassName = "",
+  wrapperWidthClass: customWrapperWidthClass,
   variant = "primary",
   size = "default",
   type = "button",
@@ -170,11 +172,13 @@ export default function UiverseHeroButton({
     </div>
   );
 
-  const wrapperWidthClass = className.includes("w-full")
-    ? className.includes("sm:w-auto")
-      ? "w-full sm:w-auto"
-      : "block w-full"
-    : "inline-block";
+  const wrapperWidthClass = customWrapperWidthClass || (
+    className.includes("w-full")
+      ? className.includes("sm:w-auto")
+        ? "w-full sm:w-auto"
+        : "block w-full"
+      : "inline-block"
+  );
 
   if (href) {
     return (
