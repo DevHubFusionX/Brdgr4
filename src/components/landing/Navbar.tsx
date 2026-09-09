@@ -23,31 +23,40 @@ export default function Navbar() {
   // Smart scroll detection: auto-hide on scroll down, reveal on scroll up
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let ticking = false;
 
     function handleScroll() {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const nextIsScrolled = currentScrollY > 20;
+          setIsScrolled((prev) => (prev !== nextIsScrolled ? nextIsScrolled : prev));
 
-      // Keep navbar visible if any mega menu or mobile drawer is open
-      if (activeMenu || mobileMenuOpen) {
-        setIsVisible(true);
-        lastScrollY = currentScrollY;
-        return;
+          // Keep navbar visible if any mega menu or mobile drawer is open
+          if (activeMenu || mobileMenuOpen) {
+            setIsVisible(true);
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          // Always show navbar when near the very top of the page
+          if (currentScrollY <= 60) {
+            setIsVisible((prev) => (prev ? prev : true));
+          } else if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 8) {
+            // Scrolling DOWN -> hide smoothly
+            setIsVisible(false);
+            setActiveMenu(null);
+          } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 8) {
+            // Scrolling UP -> reveal smoothly
+            setIsVisible(true);
+          }
+
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      // Always show navbar when near the very top of the page
-      if (currentScrollY <= 60) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 8) {
-        // Scrolling DOWN -> hide smoothly
-        setIsVisible(false);
-        setActiveMenu(null);
-      } else if (currentScrollY < lastScrollY && lastScrollY - currentScrollY > 8) {
-        // Scrolling UP -> reveal smoothly
-        setIsVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true });

@@ -116,7 +116,7 @@ function Engine3DCard({
           transform: isAnimationDone && !isHovered ? "none" : undefined,
           transformStyle: !isMobile && isHovered ? "preserve-3d" : undefined,
         }}
-        className={`group relative rounded-[22px] sm:rounded-[28px] bg-white/98 backdrop-blur-xl border card-specular-rim p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[250px] sm:min-h-[320px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_28px_-6px_rgba(3,100,255,0.12),0_4px_16px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.95)] border-blue-100/90 hover:border-blue-300/90 hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.22),0_8px_24px_-4px_rgba(15,23,42,0.06),inset_0_1.5px_0_#ffffff] ${className}`}
+        className={`group relative rounded-[22px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[250px] sm:min-h-[320px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_28px_-6px_rgba(3,100,255,0.12),0_4px_16px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.95)] border-blue-100/90 hover:border-blue-300/90 hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.22),0_8px_24px_-4px_rgba(15,23,42,0.06),inset_0_1.5px_0_#ffffff] ${className}`}
       >
         {/* Specular Beveled Crystal Highlight along the top rim */}
         <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-90 pointer-events-none" />

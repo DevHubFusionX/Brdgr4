@@ -13,7 +13,7 @@ export default function LandingPage() {
     <>
       <HeroSection />
 
-      <SectionBlurReveal>
+      <SectionBlurReveal deferred={false}>
         <EngineSection />
       </SectionBlurReveal>
 

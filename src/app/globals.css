@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
 /* ─── Brand Design Tokens ──────────────────────────────────────────────────── */
@@ -43,9 +44,16 @@
   font-family: inherit;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 html {
-  scroll-behavior: smooth;
   font-family: var(--font-mulish);
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -54,6 +62,23 @@ body {
   font-family: var(--font-mulish);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0364ff;
 }
 
 button,
@@ -259,4 +284,17 @@ textarea {
     0 20px 48px -6px rgba(3, 100, 255, 0.25),
     0 32px 60px -10px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Scroll Performance & Touch Momentum Optimizations ────────────────────── */
+.section-deferred-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
+/* Prevent layout shifts and flickers on mobile during inertia scroll */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }

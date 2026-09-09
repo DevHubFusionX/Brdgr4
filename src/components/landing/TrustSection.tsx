@@ -437,10 +437,6 @@ export default function TrustSection() {
             tabIndex={0}
             aria-label="Partner brand logos marquee. Hover or focus to pause."
             className="space-y-3 sm:space-y-5 md:space-y-6 focus:outline-hidden"
-            style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-            }}
           >
             {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
             <div className="flex items-center w-max animate-marquee-left">

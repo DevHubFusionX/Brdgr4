@@ -75,32 +75,17 @@ export default function WordReveal({
   const isTriggered = trigger !== undefined ? trigger : true;
   const shouldAnimate = isTriggered && isInView;
 
-  // Scroll mode state
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 85%", "end 45%"],
-  });
-
   if (!content) return null;
 
   if (mode === "scroll") {
     return (
-      <Component ref={containerRef as any} className={`inline-block ${className}`}>
-        {words.map((word, i) => {
-          const start = i / words.length;
-          const end = start + 1 / words.length;
-          return (
-            <ScrollWord
-              key={`${word}-${i}`}
-              word={word}
-              progress={scrollYProgress}
-              range={[start, end]}
-              initialOpacity={initialOpacity}
-              className={wordClassName}
-            />
-          );
-        })}
-      </Component>
+      <ScrollModeWordReveal
+        as={Component}
+        words={words}
+        className={className}
+        wordClassName={wordClassName}
+        initialOpacity={initialOpacity}
+      />
     );
   }
 
@@ -150,6 +135,46 @@ export default function WordReveal({
           </motion.span>
         ))}
       </motion.span>
+    </Component>
+  );
+}
+
+/** Internal helper for scroll-driven mode (only mounts when mode="scroll") */
+function ScrollModeWordReveal({
+  as: Component = "p",
+  words,
+  className = "",
+  wordClassName = "",
+  initialOpacity,
+}: {
+  as: any;
+  words: string[];
+  className?: string;
+  wordClassName?: string;
+  initialOpacity: number;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 85%", "end 45%"],
+  });
+
+  return (
+    <Component ref={containerRef as any} className={`inline-block ${className}`}>
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return (
+          <ScrollWord
+            key={`${word}-${i}`}
+            word={word}
+            progress={scrollYProgress}
+            range={[start, end]}
+            initialOpacity={initialOpacity}
+            className={wordClassName}
+          />
+        );
+      })}
     </Component>
   );
 }

@@ -13,6 +13,7 @@ interface SectionBlurRevealProps extends Omit<HTMLMotionProps<"div">, "children"
   delay?: number;
   once?: boolean;
   amount?: number | "some" | "all";
+  deferred?: boolean;
 }
 
 /**
@@ -35,6 +36,7 @@ export default function SectionBlurReveal({
   delay = 0,
   once = true,
   amount = 0.05,
+  deferred = true,
   ...props
 }: SectionBlurRevealProps) {
   const [isAnimationDone, setIsAnimationDone] = useState(false);
@@ -59,14 +61,14 @@ export default function SectionBlurReveal({
   const effectiveY = isMobile ? 14 : y;
   const effectiveDuration = isMobile ? 0.35 : duration;
   // Eager margin ensures content reveals smoothly before the user has to scroll deep
-  const effectiveMargin = isMobile ? "80px 0px -10px 0px" : "40px 0px -20px 0px";
+  const effectiveMargin = isMobile ? "160px 0px 0px 0px" : "40px 0px -20px 0px";
 
   return (
     <motion.div
       initial={{
-        opacity: 0,
+        opacity: isMobile ? 0.4 : 0,
         filter: effectiveBlur > 0 ? `blur(${effectiveBlur}px)` : "none",
-        y: effectiveY,
+        y: isMobile ? 0 : effectiveY,
         scale: effectiveScale,
       }}
       whileInView={{
@@ -82,18 +84,18 @@ export default function SectionBlurReveal({
       }}
       transition={{
         duration: effectiveDuration,
-        delay,
+        delay: isMobile ? 0 : delay,
         ease: [0.16, 1, 0.3, 1], // High-performance easeOutExpo curve
       }}
       onAnimationComplete={() => {
         setIsAnimationDone(true);
       }}
       style={{
-        transform: isAnimationDone ? "none" : undefined,
-        filter: isAnimationDone ? "none" : undefined,
-        willChange: isAnimationDone ? "auto" : "transform, opacity",
+        transform: isAnimationDone || isMobile ? "none" : undefined,
+        filter: isAnimationDone || isMobile ? "none" : undefined,
+        willChange: isAnimationDone || isMobile ? "auto" : "opacity",
       }}
-      className={`w-full ${className}`}
+      className={`w-full ${deferred ? "section-deferred-render" : ""} ${className}`}
       {...props}
     >
       {children}
