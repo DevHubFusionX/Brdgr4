@@ -1,10 +1,11 @@
+import UnderConstruction from "@/components/ui/UnderConstruction";
+
 export default function ClientPortalPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Client Portal</h1>
-        <p className="text-slate-500">Dashboard coming soon.</p>
-      </div>
-    </div>
+    <UnderConstruction
+      portalName="Client Portal"
+      title="Under Construction"
+      description="The Client Portal is currently under construction. Soon you will be able to manage your partner roster, track performance campaigns, and review automated double-entry escrow settlements here."
+    />
   );
 }

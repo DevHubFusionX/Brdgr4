@@ -1,10 +1,11 @@
+import UnderConstruction from "@/components/ui/UnderConstruction";
+
 export default function AdminConsolePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Admin Console</h1>
-        <p className="text-slate-500">Dashboard coming soon.</p>
-      </div>
-    </div>
+    <UnderConstruction
+      portalName="Admin Console"
+      title="Under Construction"
+      description="The Admin Console is currently under construction. Infrastructure monitoring, ledger auditing, and ecosystem administration tools will be accessible here soon."
+    />
   );
 }
