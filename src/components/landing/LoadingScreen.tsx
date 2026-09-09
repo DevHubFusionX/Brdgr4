@@ -16,7 +16,8 @@ export default function LoadingScreen() {
   const logoRef = useRef<HTMLDivElement>(null);
 
   const measureTarget = useCallback(() => {
-    const navLogoEl = document.getElementById("main-navbar-logo");
+    const navLogoIconEl = document.getElementById("main-navbar-logo-icon");
+    const navLogoEl = navLogoIconEl || document.getElementById("main-navbar-logo");
     const centerLogoEl = logoRef.current;
 
     if (navLogoEl && centerLogoEl) {
@@ -29,17 +30,17 @@ export default function LoadingScreen() {
       const currentCenterX = centerRect.left + centerRect.width / 2;
       const currentCenterY = centerRect.top + centerRect.height / 2;
 
-      // Calculate translation offset from center to navbar logo
+      // Calculate translation offset from center to navbar logo icon
       const deltaX = navCenterX - currentCenterX;
       const deltaY = navCenterY - currentCenterY;
 
-      // Calculate scale ratio: navbar logo height vs centered logo initial height
+      // Calculate scale ratio: navbar logo icon height vs centered logo initial height
       const scaleRatio = navRect.height / centerRect.height;
 
       setTargetPos({
         x: deltaX,
         y: deltaY,
-        scale: scaleRatio || 0.72,
+        scale: scaleRatio || 0.38,
       });
       return true;
     }

@@ -17,12 +17,12 @@ export default function NavLogo({
       aria-label="BRDGR Home"
     >
       {/* ─── 3D Tactile Blue Icon Badge ─── */}
-      <div className="relative shrink-0 flex items-center justify-center">
+      <div id="main-navbar-logo-icon" className="relative shrink-0 flex items-center justify-center">
         <svg
           viewBox="0 0 64 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-8 h-8 sm:w-9 sm:h-9 md:w-[37px] md:h-[37px] transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
+          className="w-9 h-9 sm:w-9 sm:h-9 md:w-[37px] md:h-[37px] transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
           aria-hidden="true"
         >
           <defs>

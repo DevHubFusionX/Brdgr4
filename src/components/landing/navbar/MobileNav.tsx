@@ -63,12 +63,12 @@ export default function MobileNav({ onClose }: MobileNavProps) {
         aria-label="Mobile navigation sidebar"
       >
         {/* ─── Header: Brand Logo & Close Button ──────────────────────────── */}
-        <div className="flex items-center justify-between px-5 h-16 border-b border-slate-100 shrink-0 bg-white/90 backdrop-blur-md">
+        <div className="flex items-center justify-between px-5 h-[68px] border-b border-slate-100 shrink-0 bg-white/90 backdrop-blur-md">
           <NavLogo onClick={onClose} />
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-slate-100/80 hover:bg-slate-200/80 text-slate-600 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
+            className="w-10 h-10 rounded-xl bg-slate-100/80 hover:bg-slate-200/80 text-slate-600 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer active:scale-95"
             aria-label="Close navigation sidebar"
           >
             <X className="w-5 h-5" />

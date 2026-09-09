@@ -10,14 +10,8 @@ export default function HeroSection() {
   const { isHeroReady } = useLoading();
 
   return (
-    <motion.section
-      initial={{ y: "16vh", opacity: 0.85 }}
-      animate={isHeroReady ? { y: 0, opacity: 1 } : { y: "16vh", opacity: 0.85 }}
-      transition={{
-        duration: 0.85,
-        ease: [0.76, 0, 0.24, 1],
-      }}
-      className="relative w-full min-h-[100dvh] sm:min-h-[90vh] lg:min-h-[94vh] bg-[linear-gradient(180deg,#c8defc_0%,#d8e8fc_25%,#e5f0fe_55%,#edf5fe_80%,#f6f8fb_100%)] pt-20 sm:pt-28 md:pt-32 pb-12 sm:pb-16 px-4 sm:px-8 lg:px-12 font-sans flex flex-col justify-center items-center overflow-hidden"
+    <section
+      className="relative w-full min-h-[100dvh] sm:min-h-[90vh] lg:min-h-[94vh] bg-[linear-gradient(180deg,#c8defc_0%,#d8e8fc_25%,#e5f0fe_55%,#edf5fe_80%,#f6f8fb_100%)] pt-[88px] sm:pt-28 md:pt-32 pb-12 sm:pb-16 font-sans flex flex-col justify-center items-center overflow-visible"
     >
       {/* ─── Ambient Sky Lighting ──────────────────────────── */}
       <div
@@ -27,10 +21,10 @@ export default function HeroSection() {
 
       {/* ─── Hero Frame: Removed on Mobile (Direct on Background), Large Rounded Island Card on Desktop ── */}
       <motion.div
-        initial={{ opacity: 0, y: 32, scale: 0.985 }}
-        animate={isHeroReady ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 32, scale: 0.985 }}
-        transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
-        className="relative w-full max-w-5xl lg:max-w-6xl mx-auto rounded-none sm:rounded-[44px] md:rounded-[56px] bg-transparent sm:bg-white/95 sm:backdrop-blur-2xl border-0 sm:border sm:border-white/95 shadow-none sm:shadow-blue-pop-hero sm:card-specular-rim overflow-visible sm:overflow-hidden my-auto flex-1 sm:flex-initial flex flex-col justify-center"
+        initial={{ opacity: 0 }}
+        animate={isHeroReady ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 rounded-none sm:rounded-[44px] md:rounded-[56px] bg-transparent sm:bg-white/95 sm:backdrop-blur-2xl border-0 sm:border sm:border-white/95 shadow-none sm:shadow-blue-pop-hero sm:card-specular-rim overflow-visible sm:overflow-hidden my-auto flex-1 sm:flex-initial flex flex-col justify-center"
       >
         {/* ─── Top-Left: Soft Blue Gradient Wash (Desktop Card Only) ─────────────── */}
         <div
@@ -177,8 +171,8 @@ export default function HeroSection() {
 
           {/* ─── Pill Action Buttons ──────────────────────────── */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={isHeroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+            initial={{ opacity: 0 }}
+            animate={isHeroReady ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.55, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
             className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
@@ -198,6 +192,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }

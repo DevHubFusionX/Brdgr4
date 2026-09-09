@@ -49,14 +49,14 @@ const LOGO_PATHS = [
 
 export default function ConnectingLogoAnimation() {
   return (
-    <div className="inline-flex items-center gap-3.5 sm:gap-4.5 md:gap-5 select-none">
-      {/* ─── 3D Tactile Blue Icon Badge ─── */}
+    <div className="flex items-center justify-center select-none">
+      {/* ─── 3D Tactile Blue Icon Badge (Centered & Scaled Up) ─── */}
       <div className="relative shrink-0 flex items-center justify-center">
         <svg
           viewBox="0 0 64 64"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 drop-shadow-xl"
+          className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 drop-shadow-2xl"
           aria-hidden="true"
         >
           <defs>
@@ -164,16 +164,6 @@ export default function ConnectingLogoAnimation() {
           />
         </svg>
       </div>
-
-      {/* ─── Wordmark: Crisp Slate Typography ─── */}
-      <motion.span
-        initial={{ opacity: 0.6, y: 2 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.25, duration: 0.45, ease: "easeOut" }}
-        className="text-slate-900 text-3xl sm:text-4xl md:text-[44px] font-bold tracking-tight leading-none"
-      >
-        BRDGR
-      </motion.span>
     </div>
   );
 }

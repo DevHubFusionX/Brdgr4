@@ -1,4 +1,6 @@
 export const BRAND_FOUNDATION = {
+  brandName: "BRDGR",
+  legalName: "BRDGR Solutions Ltd",
   brandEssence: "One place to find partners, work together, and get paid",
   purpose: "Making high-performing partnerships effortless to build and scale",
   vision:

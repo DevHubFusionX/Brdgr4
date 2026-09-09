@@ -420,7 +420,7 @@ export default function Footer() {
             </div>
 
             <span className="text-neutral-500 text-[11px] sm:text-xs">
-              © {year} BRDGR Technologies Inc. All rights reserved.
+              © {year} BRDGR Solutions Ltd. All rights reserved.
             </span>
 
             {/* Desktop Back to top button */}

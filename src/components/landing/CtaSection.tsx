@@ -10,46 +10,60 @@ export default function CtaSection() {
       style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
       className="relative w-full bg-white pt-20 sm:pt-28 md:pt-36 pb-24 sm:pb-32 md:pb-44 overflow-hidden select-none"
     >
-      {/* ─── Background Blue Shade (Matching How It Works) & Halftone Dot Grid ─── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* ─── Brand Blue Gradient Background (Rich Horizon & Radiant Glows, Zero Dots) ─── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         {/* Base white canvas */}
         <div className="absolute inset-0 bg-white" />
 
-        {/* Soft Blue Elliptical Glow rising from bottom (exact How It Works palette: #c8defc / #d8e8fc / #eaf3ff) */}
+        {/* Soft Blue Horizon Wash rising from bottom */}
         <div
           className="absolute inset-x-0 bottom-0 h-[75%] sm:h-[70%] w-full"
           style={{
             background:
-              "radial-gradient(ellipse 115% 80% at 50% 100%, #c8defc 0%, #d8e8fc 28%, #eaf3ff 58%, rgba(255, 255, 255, 0) 100%)",
+              "linear-gradient(to top, #c8defc 0%, rgba(216, 232, 252, 0.85) 30%, rgba(234, 243, 255, 0.55) 60%, rgba(255, 255, 255, 0) 100%)",
           }}
         />
 
-        {/* Ambient Sky Horizon Wash (matching How It Works radial-gradient) */}
+        {/* Radiant Brand Blue Elliptical Glow rising from bottom-center */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[52%] sm:h-[48%] w-full"
+          className="absolute inset-x-0 bottom-0 h-[65%] sm:h-[60%] w-full"
           style={{
             background:
-              "linear-gradient(to top, #c8defc 0%, rgba(216, 232, 252, 0.8) 32%, rgba(234, 243, 255, 0.5) 65%, transparent 100%)",
+              "radial-gradient(ellipse 120% 85% at 50% 100%, rgba(3, 100, 255, 0.28) 0%, rgba(0, 92, 255, 0.18) 25%, rgba(111, 166, 255, 0.14) 50%, transparent 80%)",
           }}
         />
 
-        {/* Ambient Sky Glow Orb (rgba(147,197,253,0.5)) */}
-        <div 
-          className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full max-w-6xl h-64 bg-[radial-gradient(ellipse_at_bottom,rgba(147,197,253,0.55),transparent_70%)] pointer-events-none" 
-          aria-hidden="true" 
+        {/* Concentrated Electric Blue Horizon Glow at bottom edge for punchy pop */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-44 sm:h-56 w-full"
+          style={{
+            background:
+              "radial-gradient(ellipse 85% 60% at 50% 100%, rgba(3, 100, 255, 0.35) 0%, rgba(111, 166, 255, 0.2) 35%, transparent 75%)",
+          }}
         />
 
-        {/* Crisp Halftone Dot Grid Pattern with smooth vertical mask */}
+        {/* Atmospheric Flank Accents (Left & Right soft blue radiant washes) */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[60%] sm:h-[55%] w-full"
+          className="absolute bottom-0 left-0 w-[300px] sm:w-[500px] h-[250px] sm:h-[350px]"
           style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(3, 100, 255, 0.3) 1.25px, transparent 1.25px)",
-            backgroundSize: "9px 9px",
-            maskImage:
-              "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 0.2) 75%, transparent 100%)",
+            background:
+              "radial-gradient(circle at 10% 100%, rgba(111, 166, 255, 0.22) 0%, transparent 65%)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 right-0 w-[300px] sm:w-[500px] h-[250px] sm:h-[350px]"
+          style={{
+            background:
+              "radial-gradient(circle at 90% 100%, rgba(3, 100, 255, 0.2) 0%, transparent 65%)",
+          }}
+        />
+
+        {/* Ambient Horizon Shimmer Line along the bottom */}
+        <div
+          className="absolute bottom-0 inset-x-0 h-[1px]"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(111, 166, 255, 0.4) 25%, rgba(3, 100, 255, 0.6) 50%, rgba(111, 166, 255, 0.4) 75%, transparent 100%)",
           }}
         />
       </div>
@@ -113,27 +127,18 @@ export default function CtaSection() {
           </Link>
         </motion.div>
 
-        {/* Institutional Trust Indicators */}
+        {/* Institutional Trust Indicators (Without Dots) */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.24 }}
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] sm:text-xs text-slate-500 font-medium"
+          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-[11px] sm:text-xs text-slate-600 font-medium"
         >
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-            <span>Double-entry USD escrow</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-            <span>Institutional broker rails</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-            <span>14-day full access trial</span>
-          </div>
+          <span>Double-entry USD escrow</span>
+          <span>Institutional broker rails</span>
+          <span>14-day full access trial</span>
         </motion.div>
       </div>
     </section>

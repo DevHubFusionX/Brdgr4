@@ -95,7 +95,7 @@ export default function Navbar() {
       >
         {/* Full-width Bar on Mobile, Floating Capsule Island on Desktop */}
         <div
-          className={`relative w-full md:max-w-5xl lg:max-w-6xl mx-auto h-14 sm:h-16 md:h-[68px] px-4 sm:px-6 md:px-5 md:pl-5 rounded-none md:rounded-full border-b md:border flex items-center justify-between pointer-events-auto transition-all duration-300 ${
+          className={`relative w-full md:max-w-5xl lg:max-w-6xl mx-auto h-[68px] px-4.5 sm:px-6 md:px-5 md:pl-5 rounded-none md:rounded-full border-b md:border flex items-center justify-between pointer-events-auto transition-all duration-300 ${
             activeMenu || isScrolled
               ? "bg-white/95 md:bg-white/92 backdrop-blur-2xl border-slate-200/90 shadow-xs md:shadow-xl md:shadow-slate-900/10"
               : "bg-white/90 md:bg-white/80 backdrop-blur-xl border-slate-200/80 md:shadow-lg md:shadow-slate-900/5"
@@ -194,10 +194,10 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 -mr-1 rounded-full text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="w-10 h-10 -mr-1 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-100/90 active:bg-slate-200/80 flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Open navigation sidebar"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-5.5 h-5.5 stroke-[2.2]" />
             </button>
           </div>
         </div>
