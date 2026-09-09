@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ShieldCheck, CheckCircle2, TrendingUp, Lock } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export interface BrandItem {
   id: string;
@@ -334,12 +333,7 @@ const ROW_2_BRANDS: BrandItem[] = [
   },
 ];
 
-const METRICS = [
-  { label: "Escrow Payouts Guaranteed", value: "$14.8M+", icon: Lock },
-  { label: "Verified Partner Matches", value: "3,400+", icon: CheckCircle2 },
-  { label: "Attribution Accuracy", value: "99.9%", icon: TrendingUp },
-  { label: "Regulatory Compliance", value: "Tier-1", icon: ShieldCheck },
-];
+
 
 // ─── Trust & Social Proof Section ───────────────────────────────────────────
 export default function TrustSection() {
@@ -411,11 +405,11 @@ export default function TrustSection() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <h2 className="text-[26px] sm:text-3xl md:text-4xl lg:text-[44px] font-normal text-neutral-900 tracking-[-0.025em] sm:tracking-[-0.03em] leading-[1.2]">
-              We are trusted by leading brands
+              Built for
             </h2>
 
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto px-2 sm:px-0">
-              Proprietary trading firms, Tier-1 brokers, and high-volume performance partners scale on BRDGR’s verified infrastructure.
+              Proprietary trading firms, Brokers, and high-volume performance growth partners.
             </p>
           </motion.div>
         </div>
@@ -528,36 +522,7 @@ export default function TrustSection() {
           )}
         </div>
 
-        {/* ─── Proof Metric Ribbon for Extra Credibility ───────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-slate-200/80 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
-        >
-          {METRICS.map((metric) => {
-            const Icon = metric.icon;
-            return (
-              <div 
-                key={metric.label} 
-                className="p-3.5 sm:p-0 rounded-2xl sm:rounded-none bg-white/75 sm:bg-transparent border border-blue-100/70 sm:border-none shadow-xs sm:shadow-none text-center sm:text-left flex flex-col sm:flex-row items-center gap-2 sm:gap-3"
-              >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-blue-100/80 shadow-[0_4px_14px_rgba(3,100,255,0.12),inset_0_1px_0_#ffffff] flex items-center justify-center text-neutral-800 shrink-0">
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0364FF]" />
-                </div>
-                <div>
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold sm:font-normal tracking-tight text-neutral-900">
-                    <AnimatedCounter value={metric.value} />
-                  </div>
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium mt-0.5 leading-tight">
-                    {metric.label}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
+
       </div>
     </section>
   );

@@ -4,8 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import UiverseHeroButton from "@/components/ui/UiverseHeroButton";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 
 export default function PricingPreview() {
   const [role, setRole] = useState<"client" | "partner">("client");
@@ -16,11 +15,13 @@ export default function PricingPreview() {
         {/* ─── Header ──────────────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.18]">
-            Predictable plans. Zero hidden take rates.
+            Simple plans. Clear Pricing.
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-neutral-500 font-normal leading-relaxed">
-            Every account starts with a 14-day full product trial. Platform commission share decreases automatically on higher tiers, aligning our incentives directly with your volume.
+            {role === "client"
+              ? "Choose the plan that fits your business. As your partnership volume grows, your platform commission rate decreases – so you keep more as you grow."
+              : "Choose the plan that fits your growth. Scale your partnership earnings with direct tracking, verified badges, and guaranteed on-time payouts."}
           </p>
 
           {/* Role Switcher Pill */}
@@ -33,7 +34,7 @@ export default function PricingPreview() {
                   : "text-neutral-500 hover:text-[#0364FF]"
               }`}
             >
-              For Prop Firms & Brokers
+              Companies
             </button>
             <button
               onClick={() => setRole("partner")}
@@ -43,7 +44,7 @@ export default function PricingPreview() {
                   : "text-neutral-500 hover:text-[#0364FF]"
               }`}
             >
-              For Growth Partners
+              Partners
             </button>
           </div>
         </div>
@@ -60,47 +61,48 @@ export default function PricingPreview() {
           >
             {role === "client" ? (
               <>
-                {/* Starter Plan */}
+                {/* ─── Companies: Starter Plan ─────────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
+                    <div className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-black tracking-wider bg-blue-100/90 text-[#0364FF] border border-blue-200/90 uppercase mb-3">
                       STARTER
-                    </span>
-                    <h3 className="text-xl font-normal text-neutral-900 mt-1">Boutique Programs</h3>
-                    <p className="text-xs text-neutral-500 mt-2">
-                      For emerging prop firms launching their initial vetted partner roster.
+                    </div>
+                    <p className="text-xs sm:text-sm text-neutral-600 font-medium mt-1">
+                      For companies starting out with structured partnerships.
                     </p>
 
                     <div className="my-6 pt-5 border-t border-slate-100">
-                      <span className="text-2xl font-bold text-neutral-900">
-                        <AnimatedCounter value={14} /> Days Free
+                      <span className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
+                        7 Days FREE
                       </span>
-                      <span className="text-xs text-neutral-400 block mt-0.5">Then standard monthly subscription</span>
+                      <span className="text-xs text-neutral-400 block mt-1">Then standard monthly subscription</span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-neutral-700">
                       <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-neutral-800 shrink-0" />
-                        <span>Up to <AnimatedCounter value={10} /> active live partnerships</span>
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Manage up to 10 active partnerships</span>
                       </li>
                       <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-neutral-800 shrink-0" />
-                        <span>Server-to-server (S2S) signed postbacks</span>
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Track activities automatically</span>
                       </li>
                       <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-neutral-800 shrink-0" />
-                        <span>Double-entry USD escrow settlement</span>
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Standard partner matching</span>
                       </li>
                       <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-neutral-800 shrink-0" />
-                        <span>Standard candidate proposal queue</span>
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Onboard up to 10 of your own partners</span>
                       </li>
                     </ul>
                   </div>
@@ -108,112 +110,117 @@ export default function PricingPreview() {
                   <div className="mt-8 pt-5 border-t border-slate-100">
                     <Link
                       href="/sign-up"
-                      className="w-full py-3 rounded-full bg-slate-100 hover:bg-[#0364FF] text-neutral-900 hover:text-white text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 flex items-center justify-center gap-2 group shadow-xs"
+                      className="btn-3d-secondary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
                     >
-                      <span>Start Free Trial</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </motion.div>
 
-                {/* Growth Plan (Highlighted) */}
+                {/* ─── Companies: Growth Plan (Noticeable & Highlighted) ─────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative"
+                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-xl shadow-blue-500/20"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black tracking-wider bg-white text-[#0364FF] shadow-sm uppercase mb-3 ring-2 ring-blue-400/40">
                       GROWTH
-                    </span>
-                    <h3 className="text-xl font-normal text-white mt-1">Scaling Operations</h3>
-                    <p className="text-xs text-slate-300 mt-2">
-                      For active prop challenge operators expanding volume across regions.
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+                      For growing companies managing more partners and increasing partnership volume.
                     </p>
 
                     <div className="my-6 pt-5 border-t border-neutral-800">
-                      <span className="text-2xl font-bold text-white">
-                        <AnimatedCounter value={14} /> Days Free
+                      <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                        7 Days FREE
                       </span>
-                      <span className="text-xs text-slate-400 block mt-0.5">Reduced commission share applied</span>
+                      <span className="text-xs text-slate-400 block mt-1">Then standard monthly subscription</span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-slate-200">
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Up to <AnimatedCounter value={50} /> active live partnerships</span>
+                        <span>Manage up to 50 partnerships</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Priority candidate generation & matching</span>
+                        <span>Priority partner matching</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Fraud gate velocity & anomaly analytics</span>
+                        <span>Onboard up to 50 of your own partners</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Bulk BYO network invitation by CSV</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Reduced platform share rate</span>
+                        <span>Priority support</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="mt-8 pt-5 border-t border-neutral-800 flex justify-center">
-                    <UiverseHeroButton
+                  <div className="mt-8 pt-5 border-t border-neutral-800">
+                    <Link
                       href="/sign-up"
-                      text="Start Free Trial"
-                      className="w-full justify-between"
-                      size="sm"
-                    />
+                      className="btn-3d-primary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight text-white gap-2 cursor-pointer"
+                    >
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </motion.div>
 
-                {/* Enterprise Plan */}
+                {/* ─── Companies: Enterprise Plan ─────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
+                    <div className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-black tracking-wider bg-slate-200/90 text-slate-800 border border-slate-300/80 uppercase mb-3">
                       ENTERPRISE
-                    </span>
-                    <h3 className="text-xl font-normal text-neutral-900 mt-1">Multi-Brand Groups</h3>
-                    <p className="text-xs text-neutral-500 mt-2">
-                      For established brokerages and prop firms requiring tailored infrastructure.
+                    </div>
+                    <p className="text-xs sm:text-sm text-neutral-600 font-medium mt-1">
+                      For established companies running partnerships at scale
                     </p>
 
                     <div className="my-6 pt-5 border-t border-slate-100">
-                      <span className="text-2xl font-bold text-neutral-900">Custom Architecture</span>
-                      <span className="text-xs text-neutral-400 block mt-0.5">Lowest platform share tier</span>
+                      <span className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
+                        7 Days FREE
+                      </span>
+                      <span className="text-xs text-neutral-400 block mt-1">Then standard monthly subscription</span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-neutral-700">
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Unlimited active live partnerships</span>
+                        <span>Manage unlimited active partnerships</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Custom trading platform bridge adapters</span>
+                        <span>Onboard unlimited partners of your own</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Dedicated Operations Administrator</span>
+                        <span>Dedicated operations Manager</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Bespoke bilateral agreement templates</span>
+                        <span>Exclusive access to top Growth Partners</span>
+                      </li>
+                      <li className="flex items-center gap-2.5 text-neutral-500 font-medium">
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>And more.</span>
                       </li>
                     </ul>
                   </div>
@@ -221,53 +228,53 @@ export default function PricingPreview() {
                   <div className="mt-8 pt-5 border-t border-slate-100">
                     <Link
                       href="/sign-up"
-                      className="w-full py-3 rounded-full bg-slate-100 hover:bg-[#0364FF] text-neutral-900 hover:text-white text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 flex items-center justify-center gap-2 group shadow-xs"
+                      className="btn-3d-secondary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
                     >
-                      <span>Contact Operations</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </motion.div>
               </>
             ) : (
               <>
-                {/* Starter Partner */}
+                {/* ─── Partners: Starter Plan ─────────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
+                    <div className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-black tracking-wider bg-blue-100/90 text-[#0364FF] border border-blue-200/90 uppercase mb-3">
                       STARTER
-                    </span>
-                    <h3 className="text-xl font-normal text-neutral-900 mt-1">Verified Partner</h3>
-                    <p className="text-xs text-neutral-500 mt-2">
-                      For individual trading educators and creators entering the vetting queue.
+                    </div>
+                    <p className="text-xs sm:text-sm text-neutral-600 font-medium mt-1">
+                      For Growth Partners/Affiliates starting out and looking for new opportunities
                     </p>
 
                     <div className="my-6 pt-5 border-t border-slate-100">
-                      <span className="text-2xl font-bold text-neutral-900">
-                        <AnimatedCounter value={14} /> Days Free
+                      <span className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
+                        FREE
                       </span>
-                      <span className="text-xs text-neutral-400 block mt-0.5">Guaranteed 5th biz day payouts</span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-neutral-700">
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Full 3-dimension vetting audit</span>
+                        <span>Access to BRDGR network</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Direct campaign brief proposals</span>
+                        <span>Browse available opportunities</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Itemised monthly running statements</span>
+                        <span>Manage up to 3 active partnerships</span>
                       </li>
                     </ul>
                   </div>
@@ -275,102 +282,111 @@ export default function PricingPreview() {
                   <div className="mt-8 pt-5 border-t border-slate-100">
                     <Link
                       href="/partner"
-                      className="w-full py-3 rounded-full bg-slate-100 hover:bg-[#0364FF] text-neutral-900 hover:text-white text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 flex items-center justify-center gap-2 group shadow-xs"
+                      className="btn-3d-secondary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
                     >
-                      <span>Apply for Vetting</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </motion.div>
 
-                {/* Pro Partner */}
+                {/* ─── Partners: Pro Plan ─────────────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative"
+                  className="rounded-[28px] text-white card-pricing-featured card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-xl shadow-blue-500/20"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-slate-400 uppercase">
-                      PRO PARTNER
-                    </span>
-                    <h3 className="text-xl font-normal text-white mt-1">High-Volume Creators</h3>
-                    <p className="text-xs text-slate-300 mt-2">
-                      For active trading analysts and community operators with established audience.
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black tracking-wider bg-white text-[#0364FF] shadow-sm uppercase mb-3 ring-2 ring-blue-400/40">
+                      PRO
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1">
+                      For growth partners ready to take on more opportunities and grow their earnings
                     </p>
 
                     <div className="my-6 pt-5 border-t border-neutral-800">
-                      <span className="text-2xl font-bold text-white">Priority Matching</span>
-                      <span className="text-xs text-slate-400 block mt-0.5">Top-tier brand allocations</span>
+                      <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        (Payment Undisclosed)
+                      </span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-slate-200">
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Priority matching against top brand briefs</span>
+                        <span>Get a verified badge</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Promo-code offline attribution tracking</span>
+                        <span>Manage up to 10 active Partnerships</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Growth Partner Academy certifications</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Fast-track dispute resolution window</span>
+                        <span>Get priority access to new opportunities</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="mt-8 pt-5 border-t border-neutral-800 flex justify-center">
-                    <UiverseHeroButton
+                  <div className="mt-8 pt-5 border-t border-neutral-800">
+                    <Link
                       href="/partner"
-                      text="Apply for Vetting"
-                      className="w-full justify-between"
-                      size="sm"
-                    />
+                      className="btn-3d-primary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight text-white gap-2 cursor-pointer"
+                    >
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </motion.div>
 
-                {/* Elite Partner */}
+                {/* ─── Partners: Elite Plan ───────────────────────────────────── */}
                 <motion.div
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between"
+                  className="rounded-[28px] card-pricing-pop card-specular-rim p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
                 >
+                  {/* Specular Beveled Crystal Highlight along the top rim */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none z-10" />
                   <div>
-                    <span className="text-xs font-bold tracking-wider text-neutral-400 uppercase">
+                    <div className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-black tracking-wider bg-slate-200/90 text-slate-800 border border-slate-300/80 uppercase mb-3">
                       ELITE
-                    </span>
-                    <h3 className="text-xl font-normal text-neutral-900 mt-1">Institutional Networks</h3>
-                    <p className="text-xs text-neutral-500 mt-2">
-                      For multi-analyst media agencies and regional trading master syndicates.
+                    </div>
+                    <p className="text-xs sm:text-sm text-neutral-600 font-medium mt-1">
+                      For established growth partners ready to take on bigger opportunities and scale their partnerships.
                     </p>
 
                     <div className="my-6 pt-5 border-t border-slate-100">
-                      <span className="text-2xl font-bold text-neutral-900">Custom Retainers</span>
-                      <span className="text-xs text-neutral-400 block mt-0.5">Direct wire settlement options</span>
+                      <span className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+                        Payment Undisclosed
+                      </span>
                     </div>
 
                     <ul className="space-y-3 text-xs sm:text-sm text-neutral-700">
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Dedicated brand campaign exclusivity windows</span>
+                        <span>Get a verified badge</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Sub-partner account management seats</span>
+                        <span>Unlimited active partnerships</span>
                       </li>
                       <li className="flex items-center gap-2.5">
                         <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
-                        <span>Dedicated Operations liaison</span>
+                        <span>Access to exclusive opportunities</span>
+                      </li>
+                      <li className="flex items-center gap-2.5">
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Dedicated account manager</span>
+                      </li>
+                      <li className="flex items-center gap-2.5">
+                        <Check className="w-4 h-4 text-[#0364FF] shrink-0" />
+                        <span>Priority support</span>
                       </li>
                     </ul>
                   </div>
@@ -378,10 +394,10 @@ export default function PricingPreview() {
                   <div className="mt-8 pt-5 border-t border-slate-100">
                     <Link
                       href="/partner"
-                      className="w-full py-3 rounded-full bg-slate-100 hover:bg-[#0364FF] text-neutral-900 hover:text-white text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 flex items-center justify-center gap-2 group shadow-xs"
+                      className="btn-3d-secondary group w-full py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
                     >
-                      <span>Inquire with Operations</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      <span>Get Started</span>
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </motion.div>

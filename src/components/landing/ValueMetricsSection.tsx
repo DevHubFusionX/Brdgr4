@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { Target, TrendingUp, Shield, Clock, CheckCircle2, ArrowRight } from "lucide-react";
+import { Target, Shield, Clock, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 interface MetricCardData {
@@ -25,20 +26,12 @@ const METRICS: MetricCardData[] = [
     colClass: "lg:col-start-2 lg:row-start-1",
   },
   {
-    id: "volume",
-    stat: "+ $14.8M",
-    title: "Escrow volume paid",
-    description: "Commissions are safely held in escrow and paid out on an exact ledger.",
-    icon: TrendingUp,
-    colClass: "lg:col-start-3 lg:row-start-1",
-  },
-  {
     id: "contracts",
     stat: "100%",
-    title: "Protected contracts",
+    title: "Structured partnerships",
     description: "Digital agreements lock clear terms and protect direct partner relationships.",
     icon: Shield,
-    colClass: "lg:col-start-1 lg:row-start-2",
+    colClass: "lg:col-start-3 lg:row-start-1",
   },
   {
     id: "time",
@@ -52,7 +45,7 @@ const METRICS: MetricCardData[] = [
     id: "payouts",
     stat: "0%",
     title: "Missed payouts",
-    description: "Guaranteed on-time USD payouts by the 5th of every month.",
+    description: "Guaranteed on-time payout.",
     icon: CheckCircle2,
     colClass: "lg:col-start-3 lg:row-start-2",
   },
@@ -69,7 +62,16 @@ function MetricCardItem({ item, index }: { item: MetricCardData; index: number }
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className={`group relative flex flex-col justify-between p-5 sm:p-7 lg:p-8 rounded-[22px] sm:rounded-[32px] card-blue-pop card-specular-rim min-h-[220px] sm:min-h-[260px] overflow-hidden ${item.colClass ?? ""}`}
     >
-      {/* Subtle Top-Right Ambient Arc from Reference Image */}
+      {/* Specular Beveled Crystal Highlight along the top rim */}
+      <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none z-20" />
+
+      {/* Soft Blue Gradient Wash in Top-Right like Hero Card */}
+      <div
+        className="absolute top-0 right-0 w-44 h-44 sm:w-56 sm:h-56 bg-[radial-gradient(ellipse_at_top_right,rgba(147,197,253,0.35)_0%,rgba(191,219,254,0.18)_40%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Subtle Top-Right Ambient Arc */}
       <div className="absolute top-0 right-0 w-36 h-36 sm:w-52 sm:h-52 pointer-events-none overflow-hidden select-none">
         <svg
           className="w-full h-full"
@@ -79,7 +81,7 @@ function MetricCardItem({ item, index }: { item: MetricCardData; index: number }
           aria-hidden="true"
         >
           {/* Soft ambient glow in top right */}
-          <circle cx="185" cy="15" r="95" fill="url(#card-glow)" />
+          <circle cx="185" cy="15" r="95" fill={`url(#card-glow-${item.id})`} />
           {/* Concentric curved translucent arcs */}
           <path
             d="M 55,0 C 85,60 135,115 200,145"
@@ -103,7 +105,7 @@ function MetricCardItem({ item, index }: { item: MetricCardData; index: number }
             strokeLinecap="round"
           />
           <defs>
-            <radialGradient id="card-glow" cx="50%" cy="50%" r="50%">
+            <radialGradient id={`card-glow-${item.id}`} cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#93C5FD" stopOpacity="0.35" />
               <stop offset="60%" stopColor="#DBEAFE" stopOpacity="0.15" />
               <stop offset="100%" stopColor="#EFF6FF" stopOpacity="0" />
@@ -178,18 +180,18 @@ export default function ValueMetricsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* ─── 3-Column x 2-Row Asymmetric Layout (Responsive Grid) ─────────── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch">
-          {/* Column 1 Row 1: Header / Info Block */}
+          {/* Column 1: Header / Info Block (spans 2 rows on desktop) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1 flex flex-col justify-between py-1 sm:py-3 lg:pr-4"
+            className="md:col-span-2 lg:col-span-1 lg:row-span-2 lg:col-start-1 lg:row-start-1 flex flex-col justify-between py-1 sm:py-3 lg:pr-4"
           >
             <div>
               {/* Main Headline */}
               <h2 className="text-[26px] sm:text-3xl lg:text-[42px] font-bold text-slate-900 tracking-[-0.03em] leading-[1.16] sm:leading-[1.14] mb-3 sm:mb-4">
-                Real impact for<br className="hidden sm:inline" /> brokers and<br className="hidden sm:inline" /> partners.
+                Real impact for<br className="hidden sm:inline" /> companies and<br className="hidden sm:inline" /> growth partners.
               </h2>
 
               {/* Subtitle */}
@@ -200,10 +202,10 @@ export default function ValueMetricsSection() {
               {/* Primary CTA Button */}
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 rounded-full bg-[#0364FF] hover:bg-[#0055e0] text-white font-semibold text-sm sm:text-[14.5px] shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer w-full sm:w-fit mb-5 sm:mb-7"
+                className="btn-3d-primary group gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-[14.5px] font-semibold text-white w-full sm:w-fit mb-5 sm:mb-7"
               >
                 <span>Talk to our team</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.2]" />
+                <ArrowFlight sizeClass="w-4 h-4" />
               </Link>
             </div>
 

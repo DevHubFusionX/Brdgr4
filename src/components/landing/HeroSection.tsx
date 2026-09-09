@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 import WordReveal from "@/components/ui/WordReveal";
 import { useLoading } from "@/context/LoadingContext";
-import UiverseHeroButton from "@/components/ui/UiverseHeroButton";
 
 export default function HeroSection() {
   const { isHeroReady } = useLoading();
@@ -166,7 +166,7 @@ export default function HeroSection() {
             stagger={0.025}
             initialOpacity={0.15}
             className="mt-4 sm:mt-6 max-w-md sm:max-w-xl md:max-w-2xl text-[15px] sm:text-base md:text-[17px] text-neutral-600 sm:text-neutral-500 font-normal leading-relaxed text-center px-2 sm:px-0"
-            text="Agreements. Tracking. Payments. Payouts. We handle the partnership operations for you."
+            text="Recruiting. Vetting. Agreements. Tracking. Payments. We handle the partnership operations for you"
           />
 
           {/* ─── Pill Action Buttons ──────────────────────────── */}
@@ -176,18 +176,20 @@ export default function HeroSection() {
             transition={{ duration: 0.55, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
             className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
           >
-            <UiverseHeroButton
+            <Link
               href="/sign-up"
-              text="Request a demo"
-              iconBorderClass="border-0 shadow-none"
-              className="w-full sm:w-auto justify-between !bg-[#0062FF] hover:!bg-[#0055e0] !shadow-lg !shadow-[#0062FF]/25 font-medium !h-[48px] sm:!h-[52px] !pl-6 sm:!pl-7 !pr-2 !rounded-full"
-            />
+              className="btn-3d-primary group w-full sm:w-auto h-[48px] sm:h-[52px] px-7 sm:px-8 text-sm sm:text-base font-semibold text-white gap-2.5"
+            >
+              <span>Request a demo</span>
+              <ArrowFlight sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+            </Link>
 
             <Link
               href="/sign-up"
-              className="w-full sm:w-auto h-[48px] sm:h-[52px] px-6 sm:px-8 rounded-full text-sm sm:text-base font-medium text-neutral-800 hover:text-neutral-900 bg-white hover:bg-slate-50/90 border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all duration-150 active:scale-[0.98] cursor-pointer inline-flex items-center justify-center"
+              className="btn-3d-secondary group w-full sm:w-auto h-[48px] sm:h-[52px] px-6 sm:px-8 text-sm sm:text-base font-semibold gap-2.5"
             >
-              Explore Solutions
+              <span>Explore Solutions</span>
+              <ArrowFlight sizeClass="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </Link>
           </motion.div>
         </div>

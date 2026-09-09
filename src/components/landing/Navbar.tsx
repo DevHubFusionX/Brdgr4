@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 
 import NavLogo from "./navbar/NavLogo";
 import ProductsMegaMenu from "./navbar/ProductsMegaMenu";
@@ -191,10 +192,10 @@ export default function Navbar() {
             <Link
               href="/sign-up"
               onClick={() => setActiveMenu(null)}
-              className="px-4 py-1.5 sm:px-4.5 sm:py-2 text-[13.5px] sm:text-[14px] font-semibold text-white bg-gradient-to-b from-[#529eff] via-[#2076fe] to-[#045de9] border border-blue-400/50 rounded-[12px] sm:rounded-[14px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_2px_0_#0044b8,0_3px_8px_rgba(3,100,255,0.25)] hover:from-[#62a7ff] hover:to-[#0052d4] hover:shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.6),0_2.5px_0_#0044b8,0_5px_12px_rgba(3,100,255,0.35)] active:translate-y-0.5 active:shadow-[inset_0_1px_1px_rgba(0,0,0,0.15),0_1px_0_#0044b8] transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer"
+              className="group px-4 py-1.5 sm:px-4.5 sm:py-2 text-[13.5px] sm:text-[14px] font-semibold text-white bg-gradient-to-b from-[#529eff] via-[#2076fe] to-[#045de9] border border-blue-400/50 rounded-[12px] sm:rounded-[14px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.5),0_2px_0_#0044b8,0_3px_8px_rgba(3,100,255,0.25)] hover:from-[#62a7ff] hover:to-[#0052d4] hover:shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.6),0_2.5px_0_#0044b8,0_5px_12px_rgba(3,100,255,0.35)] active:translate-y-0.5 active:shadow-[inset_0_1px_1px_rgba(0,0,0,0.15),0_1px_0_#0044b8] transition-all duration-150 inline-flex items-center gap-1.5 cursor-pointer"
             >
               <span>Get started</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+              <ArrowFlight sizeClass="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </Link>
           </div>
 

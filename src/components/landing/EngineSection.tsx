@@ -10,8 +10,8 @@ import {
   Lock, 
   CheckCircle2, 
   Zap, 
-  ArrowRight,
-  Building2
+  Building2,
+  UserPlus
 } from "lucide-react";
 
 /* ─── Butter-Smooth 3D Tilt Card with Progressive Sticky Stacking ────────── */
@@ -116,7 +116,7 @@ function Engine3DCard({
           transform: isAnimationDone && !isHovered ? "none" : undefined,
           transformStyle: !isMobile && isHovered ? "preserve-3d" : undefined,
         }}
-        className={`group relative rounded-[22px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[250px] sm:min-h-[320px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_28px_-6px_rgba(3,100,255,0.12),0_4px_16px_rgba(15,23,42,0.05),inset_0_1px_0_rgba(255,255,255,0.95)] border-blue-100/90 hover:border-blue-300/90 hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.22),0_8px_24px_-4px_rgba(15,23,42,0.06),inset_0_1.5px_0_#ffffff] ${className}`}
+        className={`group relative rounded-[22px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-5 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[250px] sm:min-h-[320px] md:min-h-[360px] overflow-hidden select-none shadow-[0_14px_36px_-6px_rgba(3,100,255,0.18),0_4px_16px_rgba(15,23,42,0.06),inset_0_1.5px_0_rgba(255,255,255,1)] border-blue-200/90 hover:border-blue-400/80 hover:shadow-[0_24px_56px_-8px_rgba(3,100,255,0.28),0_8px_24px_-4px_rgba(15,23,42,0.08),inset_0_1.5px_0_#ffffff] ${className}`}
       >
         {/* Specular Beveled Crystal Highlight along the top rim */}
         <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-90 pointer-events-none" />
@@ -196,35 +196,35 @@ export default function EngineSection() {
                 <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0364FF]" />
                 </div>
-                <span>Audited partner vetting & bilateral contracts</span>
+                <span>Vetted partners & clear contracts</span>
               </div>
 
               <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-neutral-800">
                 <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0364FF]" />
                 </div>
-                <span>Sub-14ms direct server-to-server tracking</span>
+                <span>Real-time performance tracking</span>
               </div>
 
               <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-neutral-800">
                 <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0364FF]" />
                 </div>
-                <span>USD escrow rails with guaranteed monthly payouts</span>
+                <span>Secure payments & guaranteed payouts</span>
               </div>
 
               <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-neutral-800">
                 <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#0364FF]" />
                 </div>
-                <span>100% immutable automated audit ledgers</span>
+                <span>Automatic records & activity history</span>
               </div>
             </div>
 
             {/* Bottom Trust Micro-Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-blue-50/70 border border-blue-100 text-[11px] sm:text-xs font-medium text-blue-900">
               <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0364FF] shrink-0" />
-              <span>No informal deals. Just clear, reliable software.</span>
+              <span>No informal deals. Just clear, secure, and reliable partnerships.</span>
             </div>
           </div>
 
@@ -241,43 +241,68 @@ export default function EngineSection() {
               index={0}
             >
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-[#0364FF] text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4 border border-blue-100/80">
-                  <ArrowRight className="w-3.5 h-3.5" />
-                  CORE ADVANTAGE
-                </div>
-
                 <WordReveal
                   as="h3"
                   delay={0.15}
                   stagger={0.03}
                   className="text-xl sm:text-2xl md:text-[26px] font-bold text-neutral-900 tracking-tight leading-snug mb-2.5 sm:mb-4"
-                  text="Why manage partnerships on BRDGR?"
+                  text="HOW IT WORKS"
                 />
 
                 <WordReveal
                   as="p"
                   delay={0.25}
                   stagger={0.015}
-                  className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed mb-4 sm:mb-6"
-                  text="Run your entire partnership program on autopilot. Scale your partner network, eliminate tracking disputes, and pay everyone on time without touching a spreadsheet."
+                  className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed"
+                  text="A clear, structured process built to simplify."
                 />
-              </div>
-
-              <div className="pt-4 sm:pt-6 border-t border-slate-200/80 flex items-center justify-between gap-2">
-                <span className="text-xs sm:text-sm font-semibold text-neutral-900">
-                  Zero spreadsheets · 100% automated
-                </span>
-                <span className="text-[11px] sm:text-xs font-bold text-[#0364FF] bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-blue-100 shrink-0">
-                  Turnkey Infrastructure
-                </span>
               </div>
             </Engine3DCard>
 
-            {/* ─── Card 1: Vet & Match ────────────────────────────────────────── */}
+            {/* ─── Card 1: Recruit ────────────────────────────────────────────── */}
+            <Engine3DCard
+              glowColor="from-[#0364FF]/22 via-[#6FA6FF]/12"
+              delay={0.04}
+              index={1}
+            >
+              {/* Top Elevated Floating Stage */}
+              <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
+                <div className="relative p-3 sm:p-4 rounded-2xl bg-white/95 border border-slate-100/90 shadow-md shadow-slate-300/30 group-hover:border-[#0364FF]/40 transition-all duration-300 group-hover:scale-105 flex items-center gap-2.5 sm:gap-3 max-w-full">
+                  <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0364FF] shrink-0">
+                    <UserPlus className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white animate-pulse" />
+                  </div>
+
+                  <div className="flex flex-col text-left min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-bold text-neutral-900 truncate">Sourced Network</span>
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    </div>
+                    <span className="text-[10px] text-neutral-400 font-medium truncate">Curated Growth Talent</span>
+                  </div>
+
+                  <span className="text-[10px] font-bold text-[#0364FF] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100 ml-1 shrink-0">
+                    Active
+                  </span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="mt-2 sm:mt-4">
+                <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+                  Recruit
+                </h4>
+                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed mt-1.5 sm:mt-2.5">
+                  We source the right growth partners from our verified network so you don’t have to .
+                </p>
+              </div>
+            </Engine3DCard>
+
+            {/* ─── Card 2: Vet & Match ────────────────────────────────────────── */}
             <Engine3DCard
               glowColor="from-[#6FA6FF]/30 via-[#0364FF]/15"
               delay={0.04}
-              index={1}
+              index={2}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -303,9 +328,6 @@ export default function EngineSection() {
 
               {/* Content */}
               <div className="mt-2 sm:mt-4">
-                <div className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#0364FF] uppercase mb-1">
-                  STAGE 01 · AUDITED PARTNERS ONLY
-                </div>
                 <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
                   Vet & Match
                 </h4>
@@ -315,11 +337,11 @@ export default function EngineSection() {
               </div>
             </Engine3DCard>
 
-            {/* ─── Card 2: Bilateral Contract ─────────────────────────────────── */}
+            {/* ─── Card 3: Contract & Terms ───────────────────────────────────── */}
             <Engine3DCard
               glowColor="from-[#005CFF]/25 via-[#6FA6FF]/15"
               delay={0.04}
-              index={2}
+              index={3}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -344,11 +366,8 @@ export default function EngineSection() {
 
               {/* Content */}
               <div className="mt-2 sm:mt-4">
-                <div className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#0364FF] uppercase mb-1">
-                  STAGE 02 · CLEAR LEGAL PROTECTION
-                </div>
                 <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
-                  Bilateral Contract
+                  Contract & Terms
                 </h4>
                 <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed mt-1.5 sm:mt-2.5">
                   Replace informal DMs and slow legal reviews. Simple digital contracts lock commission terms and protect direct partner relationships before work begins.
@@ -356,11 +375,11 @@ export default function EngineSection() {
               </div>
             </Engine3DCard>
 
-            {/* ─── Card 3: S2S Tracking ───────────────────────────────────────── */}
+            {/* ─── Card 4: Real-Time Tracking ─────────────────────────────────── */}
             <Engine3DCard
               glowColor="from-[#0364FF]/25 via-[#6FA6FF]/18"
               delay={0.04}
-              index={3}
+              index={4}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -385,23 +404,20 @@ export default function EngineSection() {
 
               {/* Content */}
               <div className="mt-2 sm:mt-4">
-                <div className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#0364FF] uppercase mb-1">
-                  STAGE 03 · ACCURATE SERVER TRACKING
-                </div>
                 <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
-                  S2S Tracking
+                  Real-Time Tracking
                 </h4>
                 <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed mt-1.5 sm:mt-2.5">
-                  Direct server tracking records every referral without ad-blocker loss, while automated fraud filters block fake clicks and duplicate accounts.
+                  See where your referrals come from, track results accurately, and keep fake activity out.
                 </p>
               </div>
             </Engine3DCard>
 
-            {/* ─── Card 4: USD Settlement ─────────────────────────────────────── */}
+            {/* ─── Card 5: Payment Settlement ─────────────────────────────────── */}
             <Engine3DCard
               glowColor="from-[#005CFF]/22 via-[#6FA6FF]/15"
               delay={0.04}
-              index={4}
+              index={5}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -426,38 +442,11 @@ export default function EngineSection() {
 
               {/* Content */}
               <div className="mt-2 sm:mt-4">
-                <div className="text-[10px] sm:text-[11px] font-bold tracking-wider text-[#0364FF] uppercase mb-1">
-                  STAGE 04 · GUARANTEED MONTHLY PAYOUTS
-                </div>
                 <h4 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
-                  USD Settlement
+                  Payment Settlement
                 </h4>
                 <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed mt-1.5 sm:mt-2.5">
-                  Client commissions are held safely in escrow and paid out automatically by the 5th business day of each month with full itemized reports.
-                </p>
-              </div>
-            </Engine3DCard>
-
-            {/* ─── Card 5: 100% Automated Tracking / Ledgers ──────────────────── */}
-            <Engine3DCard
-              glowColor="from-[#6FA6FF]/35 via-[#0364FF]/20"
-              className="border-dashed border-[#6FA6FF]/60"
-              delay={0.04}
-              index={5}
-            >
-              <div className="flex flex-col justify-center items-center h-full text-center py-4 sm:py-6">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-[#0364FF] to-[#6FA6FF] shadow-lg shadow-blue-500/30 flex items-center justify-center text-white mb-3 sm:mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                </div>
-
-                <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight block mb-1">
-                  100%
-                </span>
-                <span className="text-[11px] sm:text-xs font-bold tracking-wider text-[#0364FF] uppercase block mb-2 sm:mb-3">
-                  Automated Tracking & Ledgers
-                </span>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-[340px]">
-                  Every deal, referral, and payout is recorded on an exact, step-by-step verifiable ledger.
+                  Automated, transparent and on time. Partners get paid according to agreed terms with full transaction history.
                 </p>
               </div>
             </Engine3DCard>

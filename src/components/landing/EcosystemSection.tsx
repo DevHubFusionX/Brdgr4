@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Cpu, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 import WordReveal from "@/components/ui/WordReveal";
 
 interface EcosystemTab {
@@ -33,35 +34,34 @@ const ECOSYSTEMS: EcosystemTab[] = [
     id: "trading",
     label: "Prop Trading & Brokers",
     statusType: "live",
-    title: "Trading Ecosystem Infrastructure",
+    title: "Prop Trading & Brokers",
     description:
-      "Purpose-built for proprietary trading firms, forex, and CFD brokerages. Manage high-volume challenge sales, funded accounts, and lot-based volumes without manual spreadsheets or attribution disputes.",
+      "Built for prop firms, brokers and growth partners. Handle high volumes of challenge sales, funded account, and lot-based volumes without manual spreadsheets or payment disputes.",
     specs: [
-      { label: "Participants", value: "Prop Firms, FX/CFD Brokers & Traders" },
-      { label: "Commission Rails", value: "Fixed CPA ($150–$300), % of Sale, Per-Lot" },
-      { label: "Integrations", value: "cTrader, MetaTrader 4/5, DXtrade, TradeLocker" },
-      { label: "Settlement", value: "Double-entry USD Ledger · 5th Biz Day Payout" },
+      { label: "WHO IT’S FOR", value: "Prop firms, CFD brokers and growth partners" },
+      { label: "COMMISSION MODELS", value: "Fixed CPA, % of Sales, Per-Lot" },
+      { label: "PAYMENTS", value: "Secure payment." },
     ],
     bullets: [
-      "Server-to-server (S2S) signed postbacks immune to ad blockers",
-      "Automated fraud gate screening challenge velocity and duplicate accounts",
-      "Itemised partner statements with running USD balances",
+      "Signed agreements stop ad fraud and fake signups",
+      "Automatic fraud checks to catch unusual activity and duplicate accounts",
+      "Clear partner reports with live ledger balances",
     ],
-    ctaPrimary: { label: "Explore Trading Rails", href: "/sign-up" },
+    ctaPrimary: { label: "Explore Trading Solutions", href: "/sign-up" },
     ctaSecondary: { label: "View Architecture Docs", href: "/client" },
     mockup: {
       url: "brdgr.io/ecosystems/trading/config",
-      programTitle: "Alpha Tier Challenge Programme",
-      niche: "Proprietary Trading (Evaluations & Funded)",
-      modelType: "Fixed CPA ($175) + 10% Trailing",
+      programTitle: "Alpha Tier Challenge Model",
+      niche: "Proprietary Trading [Evaluations & Funded]",
+      modelType: "Fixed CPA + % Trailing",
       trackingDomain: "trk.brdgr.io/eval/postback_v1",
       platforms: ["cTrader Engine", "MT5 Server Bridge", "DXtrade Gateway"],
       ledgerEntry: {
-        dr: "DR: Client Escrow Vault (-$175.00)",
-        crPartner: "CR: Partner #842 Payable (+$157.50)",
-        crPlatform: "CR: Brdgr Platform Share (+$17.50)",
+        dr: "Dr: Company Payment (-$175.00)",
+        crPartner: "Cr: Partner #842 Payout (+$157.50)",
+        crPlatform: "Cr: BRDGR Platform Fee (+$17.50)",
       },
-      postbackStatus: "200 OK · Idempotency Confirmed",
+      postbackStatus: "Working Properly",
     },
   },
   {
@@ -74,7 +74,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
     specs: [
       { label: "Participants", value: "B2B SaaS, Analytics Tools, FinTech Software" },
       { label: "Commission Rails", value: "Recurring RevShare (15–30%), First-Month Bounty" },
-      { label: "Integrations", value: "Stripe Webhooks, Chargebee, Paddle, Recurly" },
       { label: "Settlement", value: "USD Ledger · Automated Renewal Reconciliation" },
     ],
     bullets: [
@@ -109,7 +108,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
     specs: [
       { label: "Participants", value: "Neobanks, Multi-Currency Wallets, Remittance" },
       { label: "Commission Rails", value: "First-Time Deposit (FTD), Tiered Volume Bounties" },
-      { label: "Integrations", value: "Core Banking APIs, Card Gateways, KYB Modules" },
       { label: "Settlement", value: "Multi-Currency Schema (USD Launch) · Bank Wires" },
     ],
     bullets: [
@@ -144,7 +142,6 @@ const ECOSYSTEMS: EcosystemTab[] = [
     specs: [
       { label: "Participants", value: "YouTube Analysts, Streamers, Alpha Communities" },
       { label: "Commission Rails", value: "Exclusive CPA, Promo Code Attribution, Hybrid" },
-      { label: "Integrations", value: "Promo-Code Engine, Discord Bot, S2S Links" },
       { label: "Settlement", value: "Guaranteed Monthly USD Manifest · Direct Wire" },
     ],
     bullets: [
@@ -186,7 +183,7 @@ export default function EcosystemSection() {
             delay={0.15}
             stagger={0.05}
             className="text-2xl sm:text-4xl md:text-5xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.2]"
-            text="One platform. Multiple ecosystems."
+            text="One Infrastructure. Every Partnership."
           />
 
           <WordReveal
@@ -194,7 +191,7 @@ export default function EcosystemSection() {
             delay={0.35}
             stagger={0.03}
             className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-neutral-500 font-normal leading-relaxed"
-            text="Trading carries our live focus, with SaaS, Fintech, and Creator networks sequenced next. Because commission models and participant types are configuration records, the engine never forks."
+            text="Trading is where we are starting. BRDGR is built to support any performance-driven partnership model with the flexibility to adapt as new opportunities emerge ."
           />
         </div>
 
@@ -203,14 +200,18 @@ export default function EcosystemSection() {
           <div className="w-full min-w-max sm:w-auto sm:min-w-0 inline-flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-none sm:rounded-full bg-slate-200/60 border-y sm:border border-slate-300/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] shrink-0">
             {ECOSYSTEMS.map((tab) => {
               const isActive = tab.id === activeTabId;
+              const isBlurred = tab.id !== "trading";
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTabId(tab.id)}
-                  className={`relative flex-1 sm:flex-initial px-3.5 sm:px-6 py-2.5 rounded-none sm:rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer text-center ${
-                    isActive
-                      ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold"
-                      : "text-neutral-600 hover:text-[#0364FF] hover:bg-white/60"
+                  disabled={isBlurred}
+                  onClick={() => !isBlurred && setActiveTabId(tab.id)}
+                  className={`relative flex-1 sm:flex-initial px-3.5 sm:px-6 py-2.5 rounded-none sm:rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap text-center ${
+                    isBlurred
+                      ? "blur-[2.5px] opacity-40 cursor-not-allowed select-none text-neutral-400 pointer-events-none"
+                      : isActive
+                      ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold cursor-pointer"
+                      : "text-neutral-600 hover:text-[#0364FF] hover:bg-white/60 cursor-pointer"
                   }`}
                 >
                   <span className="flex items-center justify-center gap-1.5 sm:gap-2">
@@ -260,8 +261,8 @@ export default function EcosystemSection() {
               <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
                 {/* Category Status Eyebrow */}
                 <div className="mb-2 sm:mb-3">
-                  <span className="text-xs sm:text-[13px] font-semibold text-blue-200/90 tracking-wide">
-                    PRD §02 Architecture
+                  <span className="text-xs sm:text-[13px] font-semibold text-blue-200/90 tracking-wide uppercase">
+                    Trading Infrastructure
                   </span>
                 </div>
 
@@ -275,8 +276,8 @@ export default function EcosystemSection() {
                   {activeTab.description}
                 </p>
 
-                {/* Specification Grid (2x2 Glass Cards) */}
-                <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                {/* Specification Grid */}
+                <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                   {activeTab.specs.map((spec) => (
                     <div
                       key={spec.label}
@@ -311,28 +312,19 @@ export default function EcosystemSection() {
                   {/* Primary Button with Icon Badge */}
                   <Link
                     href={activeTab.ctaPrimary.href}
-                    className="inline-flex items-center justify-between sm:justify-center gap-3 px-5 sm:px-6 py-3 rounded-full bg-white hover:bg-blue-50 text-[#0f172a] text-xs sm:text-sm font-bold tracking-tight shadow-lg hover:shadow-xl active:scale-[0.98] transition-all cursor-pointer group"
+                    className="btn-3d-secondary group inline-flex items-center justify-between sm:justify-center gap-3 px-6 py-3 text-xs sm:text-sm font-bold tracking-tight text-[#0f172a]"
                   >
                     <span>{activeTab.ctaPrimary.label}</span>
-                    <span className="w-7 h-7 rounded-full bg-[#0364FF] text-white flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-[#0052FF] transition-all">
-                      <ArrowRight className="w-3.5 h-3.5" />
+                    <span className="w-7 h-7 rounded-full bg-[#0364FF] text-white flex items-center justify-center shrink-0">
+                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
                     </span>
-                  </Link>
-
-                  {/* Secondary Outline Pill Button */}
-                  <Link
-                    href={activeTab.ctaSecondary.href}
-                    className="inline-flex items-center justify-center gap-1.5 px-5 sm:px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 hover:border-white/40 text-xs sm:text-sm font-semibold tracking-tight backdrop-blur-md active:scale-[0.98] transition-all cursor-pointer"
-                  >
-                    <span>{activeTab.ctaSecondary.label}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-blue-200" />
                   </Link>
                 </div>
               </div>
 
               {/* ─── Right Column: High-Fidelity UI Showcase Window Card (Desktop only) ─── */}
               <div className="hidden lg:block lg:col-span-6">
-                <div className="rounded-2xl sm:rounded-[28px] bg-white shadow-[0_25px_50px_-12px_rgba(0,10,60,0.35)] border border-white/40 overflow-hidden">
+                <div className="rounded-2xl sm:rounded-[28px] bg-white shadow-[0_25px_50px_-12px_rgba(0,10,60,0.4),0_12px_28px_rgba(3,100,255,0.25),inset_0_1.5px_0_rgba(255,255,255,1)] border border-white/80 card-specular-rim overflow-hidden">
                   {/* Browser / Console Chrome Bar */}
                   <div className="px-4 py-3 bg-white border-b border-slate-200/80 flex items-center justify-between gap-2">
                     <div className="flex items-center gap-1.5 shrink-0">
@@ -345,15 +337,16 @@ export default function EcosystemSection() {
                       https://{activeTab.mockup.url}
                     </div>
 
-                    <div className="flex items-center text-[9px] font-bold text-slate-700 bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-md tracking-wider shrink-0">
-                      <span>SCHEMA ACTIVE</span>
+                    <div className="flex items-center gap-1.5 text-[9px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/90 px-2.5 py-1 rounded-md tracking-wider shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>LIVE NOW</span>
                     </div>
                   </div>
 
                   {/* Console Interior Workspace */}
                   <div className="p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-3.5 font-sans select-none bg-[#f8fafc]">
                     {/* Card 1: Active Programme Header */}
-                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_14px_-2px_rgba(3,100,255,0.08),0_2px_6px_rgba(15,23,42,0.04),inset_0_1px_0_rgba(255,255,255,0.95)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#0364FF] flex items-center justify-center shrink-0">
                           <Cpu className="w-5 h-5" />
@@ -373,9 +366,9 @@ export default function EcosystemSection() {
                     </div>
 
                     {/* Card 2: Connected Platform Adapters */}
-                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex flex-col gap-2.5">
+                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_14px_-2px_rgba(3,100,255,0.08),0_2px_6px_rgba(15,23,42,0.04),inset_0_1px_0_rgba(255,255,255,0.95)] flex flex-col gap-2.5">
                       <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
-                        <span>Live Platform Gateway Adapters</span>
+                        <span>CONNECTED TRADING PLATFORMS</span>
                         <span className="text-slate-900 font-bold tracking-wider">3 CONNECTED</span>
                       </div>
 
@@ -393,12 +386,12 @@ export default function EcosystemSection() {
                     </div>
 
                     {/* Card 3: Live S2S Postback Inspector */}
-                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-100 shadow-[0_2px_8px_rgba(0,0,0,0.03)] flex flex-col gap-2.5">
+                    <div className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_14px_-2px_rgba(3,100,255,0.08),0_2px_6px_rgba(15,23,42,0.04),inset_0_1px_0_rgba(255,255,255,0.95)] flex flex-col gap-2.5">
                       <div className="flex items-center justify-between text-[10px]">
                         <div className="flex items-center gap-1.5">
                           <span className="font-mono text-slate-500 text-[11px] font-bold">&gt;_</span>
                           <span className="font-bold text-slate-800 uppercase tracking-wider text-[9px] sm:text-[10px]">
-                            S2S Attribution Trace
+                            LATEST PARTNER ACTIVITY
                           </span>
                         </div>
                         <span className="text-[9px] sm:text-[10px] font-mono font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200/80">
@@ -414,7 +407,7 @@ export default function EcosystemSection() {
                     {/* Card 4: Double-Entry Ledger Stamp */}
                     <div className="p-3.5 sm:p-4 rounded-2xl bg-[#0f1218] text-white flex flex-col gap-2 shadow-sm overflow-hidden">
                       <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-slate-400">
-                        <span>DOUBLE-ENTRY USD LEDGER (MNY-01)</span>
+                        <span>USD PAYOUT LEDGER (MNY-01)</span>
                         <span className="text-emerald-400 font-bold tracking-wide">BALANCED</span>
                       </div>
 

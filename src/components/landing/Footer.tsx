@@ -21,65 +21,27 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     title: "Platform",
     links: [
       { label: "Performance", href: "/client" },
-      { label: "Creator", href: "/partner" },
-      { label: "Advocate", href: "/sign-up" },
       { label: "Discover and Recruit", href: "/sign-up" },
       { label: "Contract and Pay", href: "/sign-up" },
       { label: "Track", href: "/client" },
-      { label: "Engage", href: "/partner" },
-      { label: "Protect and Monitor" },
       { label: "Optimize" },
     ],
   },
   {
-    title: "For Brands",
+    title: "For companies",
     links: [
       { label: "Affiliate marketing", href: "/sign-up" },
-      { label: "Influencer marketing", href: "/sign-up" },
-      { label: "Creator Edit", href: "/sign-up", badge: "New" },
       { label: "Managed services: Influencer" },
       { label: "Referral marketing", href: "/sign-up" },
-      { label: "Amazon Seller" },
-      { label: "Business development" },
-      { label: "Mobile partnerships" },
-      { label: "SaaS partnership marketing", href: "/sign-up" },
       { label: "Analytics and attribution" },
       { label: "Services" },
     ],
   },
   {
-    title: "For Publishers",
+    title: "For partners",
     links: [
       { label: "Overview", href: "/partner" },
       { label: "Affiliates", href: "/partner" },
-      { label: "Influencers and creators", href: "/partner" },
-      { label: "Mobile apps" },
-      { label: "Content publishers" },
-      { label: "Premium news & media" },
-    ],
-  },
-  {
-    title: "Insights",
-    links: [
-      { label: "Press releases", href: "/sign-in" },
-      { label: "Resource hub", href: "/sign-in" },
-      { label: "Partnerships Academy" },
-      { label: "The Partnership Economy" },
-      { label: "Events" },
-      { label: "IPX Global Event" },
-      { label: "Creator directory" },
-      { label: "Glossary" },
-    ],
-  },
-  {
-    title: "Partner with BRDGR",
-    links: [
-      { label: "Agency partner program", href: "/sign-up" },
-      { label: "Agency directory" },
-      { label: "Technology partners", href: "/sign-up" },
-      { label: "Tech partners directory" },
-      { label: "Referral partner program", href: "/sign-up" },
-      { label: "Developer API", href: "/admin" },
     ],
   },
   {
@@ -88,10 +50,6 @@ const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "About BRDGR", href: "/sign-in" },
       { label: "Why partnerships", href: "/sign-in" },
       { label: "Contact", href: "/sign-in" },
-      { label: "Careers" },
-      { label: "Leadership" },
-      { label: "Awards" },
-      { label: "Sustainability" },
       { label: "Help center" },
       { label: "Security and privacy", href: "/sign-in" },
     ],
@@ -214,7 +172,7 @@ export default function Footer() {
         </div>
 
         {/* ─── 1. Navigation Columns: Desktop Grid (>= md) ──────────────────── */}
-        <div className="hidden md:grid md:grid-cols-6 gap-x-6 lg:gap-x-8 gap-y-10 pb-16">
+        <div className="hidden md:grid md:grid-cols-4 gap-x-8 lg:gap-x-12 gap-y-10 pb-16">
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title} className="flex flex-col gap-3">
               <span className="text-[13px] font-bold text-neutral-900 tracking-tight">

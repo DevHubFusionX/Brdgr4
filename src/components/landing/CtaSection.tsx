@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 
 export default function CtaSection() {
   return (
@@ -70,34 +71,28 @@ export default function CtaSection() {
 
       {/* ─── Centered Foreground Content ─── */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Mulish Headline - Strictly 2 Lines */}
+        {/* Mulish Headline */}
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-          className="text-[26px] min-[390px]:text-[30px] sm:text-[44px] md:text-[54px] lg:text-[62px] font-bold text-[#0f172a] tracking-[-0.03em] leading-[1.15] max-w-4xl mx-auto text-center"
+          className="text-[26px] min-[390px]:text-[30px] sm:text-[40px] md:text-[50px] lg:text-[56px] font-bold text-[#0f172a] tracking-[-0.03em] leading-[1.18] max-w-4xl mx-auto text-center"
         >
-          <span className="block whitespace-normal sm:whitespace-nowrap">
-            Built for the partnerships that can’t
-          </span>
-          <span className="block">
-            afford to get it wrong.
-          </span>
+          Your partnerships shouldn’t be difficult to manage
         </motion.h2>
 
-        {/* Subheadline grounded in brand identity brief */}
+        {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-          className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 font-normal max-w-xl mx-auto leading-relaxed"
+          className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed"
         >
-          Safe agreements, verified attribution rails, and guaranteed USD escrow payouts.
-          From first handshake to every payday.
+          From finding the right partners and setting clear terms to tracking performance and managing payments, BRDGR handles the partnership operations from start to finish – giving you the confidence to focus on what matters: growth.
         </motion.p>
 
         {/* Dual Action Pill Buttons */}
@@ -108,26 +103,26 @@ export default function CtaSection() {
           transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           className="mt-7 sm:mt-9 flex items-center justify-center gap-3 sm:gap-3.5"
         >
-          {/* Primary Dark Pill Button */}
+          {/* Primary 3D Pill Button */}
           <Link
             href="/sign-up"
-            style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-            className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#0f172a] hover:bg-black text-white text-xs sm:text-sm font-semibold tracking-tight shadow-md hover:shadow-lg active:scale-[0.98] transition-all cursor-pointer"
+            className="btn-3d-primary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight text-white gap-2 cursor-pointer"
           >
-            Start for free
+            <span>Start for free</span>
+            <ArrowFlight sizeClass="w-4 h-4" />
           </Link>
 
-          {/* Secondary Light Grey Pill Button */}
+          {/* Secondary 3D Pill Button */}
           <Link
             href="/sign-up?demo=true"
-            style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-            className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 hover:bg-white text-slate-800 hover:text-slate-950 text-xs sm:text-sm font-semibold tracking-tight border border-slate-200/80 shadow-xs hover:shadow-sm active:scale-[0.98] transition-all cursor-pointer backdrop-blur-xs"
+            className="btn-3d-secondary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
           >
-            Book a demo
+            <span>Book a demo</span>
+            <ArrowFlight sizeClass="w-4 h-4" />
           </Link>
         </motion.div>
 
-        {/* Institutional Trust Indicators (Without Dots) */}
+        {/* Institutional Trust Indicators */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -136,9 +131,9 @@ export default function CtaSection() {
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
           className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-[11px] sm:text-xs text-slate-600 font-medium"
         >
-          <span>Double-entry USD escrow</span>
-          <span>Institutional broker rails</span>
-          <span>14-day full access trial</span>
+          <span>Secure payments</span>
+          <span>All partnerships in one place</span>
+          <span>7 days to try BRDGR</span>
         </motion.div>
       </div>
     </section>

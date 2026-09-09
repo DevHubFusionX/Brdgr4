@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ArrowFlight from "@/components/ui/ArrowFlight";
 import WordReveal from "@/components/ui/WordReveal";
 
 type ChannelType = "supplied" | "byo";
@@ -71,7 +72,7 @@ export default function DualPathSection() {
             delay={0.1}
             stagger={0.035}
             className="text-2xl sm:text-4xl md:text-5xl font-normal text-slate-900 tracking-[-0.025em] leading-[1.2]"
-            text="Market supply or your existing network"
+            text="Brdgr sourced or your existing partners"
           />
 
           <WordReveal
@@ -79,7 +80,7 @@ export default function DualPathSection() {
             delay={0.22}
             stagger={0.02}
             className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-500 font-normal leading-relaxed"
-            text="A single infrastructure to discover verified performance talent or migrate your entire partner roster onto auditable escrow rails."
+            text="Get matched with the right partners through BRDGR, or bring your existing partners and let us manage everything in one place."
           />
         </div>
 
@@ -89,7 +90,7 @@ export default function DualPathSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="block lg:hidden rounded-[26px] bg-white border border-blue-100/80 shadow-[0_16px_40px_-10px_rgba(3,100,255,0.18),inset_0_1px_0_rgba(255,255,255,0.95)] card-specular-rim p-5 sm:p-6 transition-all"
+          className="block lg:hidden rounded-[26px] bg-white border border-blue-200/90 shadow-[0_18px_44px_-10px_rgba(3,100,255,0.2),0_4px_16px_rgba(15,23,42,0.06),inset_0_1.5px_0_rgba(255,255,255,1)] card-specular-rim p-5 sm:p-6 transition-all"
         >
           {/* Channel Selector Pill */}
           <div className="flex w-full p-1 rounded-full bg-slate-100/90 border border-slate-200/80 shadow-2xs mb-5">
@@ -102,7 +103,7 @@ export default function DualPathSection() {
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              Supplied Partners
+              BRDGR Sourced
             </button>
             <button
               type="button"
@@ -113,29 +114,29 @@ export default function DualPathSection() {
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              Bring Your Own
+              Bring Your Own [BYO]
             </button>
           </div>
 
           {/* Eyebrow */}
           <div className="text-slate-400 font-semibold text-[11px] tracking-wider uppercase">
             {activeChannel === "supplied"
-              ? "CURATED MARKET SUPPLY"
-              : "PRIVATE NETWORK MIGRATION"}
+              ? "BRDGR SOURCED"
+              : "BRING YOUR OWN [BYO]"}
           </div>
 
           {/* Heading */}
           <h3 className="mt-1.5 text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight leading-snug">
             {activeChannel === "supplied"
-              ? "Audited performance talent, on institutional rails."
-              : "Your affiliate roster, on auditable rails."}
+              ? "We find the right partners for you"
+              : "Bring your existing partners"}
           </h3>
 
           {/* Subtitle / Short Description */}
           <p className="mt-2 text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
             {activeChannel === "supplied"
-              ? "Pre-screened trading creators and brokers matched to your campaign brief."
-              : "Email or CSV onboarding with protected commercial terms."}
+              ? "Share what you need and BDRGR proposes vetted partners that match your brief. Once approved, we handle the agreement, tracking, and payouts."
+              : "Invite your partners individually or in bulk. We verify them, put the right agreements in place, and manage the entire programme through BDRGR."}
           </p>
 
           {/* Compact Vertical Pipeline: Vetting ↓ Contracts ↓ Tracking ↓ Settlement */}
@@ -221,14 +222,14 @@ export default function DualPathSection() {
           {/* Primary Action Button */}
           <Link
             href="/sign-up"
-            className="flex items-center justify-center gap-2 w-full py-3 px-5 rounded-full bg-[#0364FF] hover:bg-[#005CFF] text-white text-xs sm:text-sm font-medium shadow-md shadow-[#0364FF]/25 active:scale-[0.98] transition-all group"
+            className="btn-3d-primary group gap-2 w-full py-3 px-5 text-xs sm:text-sm font-semibold text-white"
           >
             <span>
               {activeChannel === "supplied"
                 ? "Submit Campaign Brief"
-                : "Onboard Your Roster"}
+                : "Onboard Your Partner"}
             </span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowFlight sizeClass="w-4 h-4" />
           </Link>
         </motion.div>
 
@@ -242,7 +243,7 @@ export default function DualPathSection() {
         >
           <div className="grid grid-cols-12 gap-7 items-stretch">
             {/* ─── LEFT COLUMN: Clean, Mature Editorial Panel with Signature Blue Shadow ─ */}
-            <div className="col-span-5 flex flex-col justify-between p-7 rounded-[26px] bg-white border border-blue-100/80 shadow-[0_16px_40px_-10px_rgba(3,100,255,0.18),inset_0_1px_0_rgba(255,255,255,0.95)] hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.24)] transition-all duration-300">
+            <div className="col-span-5 flex flex-col justify-between p-7 rounded-[26px] bg-white border border-blue-200/90 shadow-[0_18px_44px_-10px_rgba(3,100,255,0.18),0_4px_16px_rgba(15,23,42,0.06),inset_0_1.5px_0_rgba(255,255,255,1)] hover:shadow-[0_24px_54px_-8px_rgba(3,100,255,0.26)] hover:border-blue-300 card-specular-rim transition-all duration-300">
               <div>
                 {/* Segmented Channel Control */}
                 <div className="inline-flex p-1 rounded-full bg-white border border-slate-200/80 shadow-2xs mb-8">
@@ -255,7 +256,7 @@ export default function DualPathSection() {
                         : "text-slate-600 hover:text-slate-900"
                     }`}
                   >
-                    Supplied Partners
+                    BRDGR Sourced
                   </button>
                   <button
                     type="button"
@@ -266,7 +267,7 @@ export default function DualPathSection() {
                         : "text-slate-600 hover:text-slate-900"
                     }`}
                   >
-                    Bring Your Own
+                    Bring Your Own [BYO]
                   </button>
                 </div>
 
@@ -281,20 +282,20 @@ export default function DualPathSection() {
                   >
                     <div className="text-slate-400 font-medium text-sm tracking-tight">
                       {activeChannel === "supplied"
-                        ? "Curated Market Supply"
-                        : "Private Network Migration"}
+                        ? "BRDGR SOURCED"
+                        : "BRING YOUR OWN [BYO]"}
                     </div>
                     <h3 className="mt-1 text-2xl lg:text-3xl font-semibold text-slate-900 tracking-tight leading-[1.2]">
                       {activeChannel === "supplied"
-                        ? "Audited performance talent matched to your brief."
-                        : "Your entire affiliate roster on auditable rails."}
+                        ? "We find the right partners for you"
+                        : "Bring your existing partners"}
                     </h3>
 
                     {/* Concise Narrative */}
                     <p className="mt-4 text-sm lg:text-[15px] text-slate-600 font-normal leading-relaxed">
                       {activeChannel === "supplied"
-                        ? "Direct access to invite-only prop trading and forex partners. Each candidate is pre-screened for genuine audience reach, regulatory compliance, and verified conversion history."
-                        : "Onboard your private affiliates via direct email or bulk CSV upload. Partners clear expedited verification, receive custom commercial terms, and remain fully protected under non-circumvention covenants."}
+                        ? "Share what you need and BDRGR proposes vetted partners that match your brief. Once approved, we handle the agreement, tracking, and payouts."
+                        : "Invite your partners individually or in bulk. We verify them, put the right agreements in place, and manage the entire programme through BDRGR."}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -356,23 +357,20 @@ export default function DualPathSection() {
               <div className="mt-8 pt-2">
                 <Link
                   href="/sign-up"
-                  className="group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-[#0364FF] text-white text-sm font-medium transition-all duration-200 shadow-sm hover:shadow active:scale-[0.98]"
+                  className="btn-3d-primary group inline-flex items-center gap-2.5 px-6 py-3 text-sm font-semibold text-white cursor-pointer"
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6FA6FF] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0364FF] group-hover:bg-white transition-colors" />
-                  </span>
                   <span>
                     {activeChannel === "supplied"
                       ? "Submit Campaign Brief"
-                      : "Onboard Your Roster"}
+                      : "Onboard Your Partner"}
                   </span>
+                  <ArrowFlight sizeClass="w-4 h-4" />
                 </Link>
               </div>
             </div>
 
             {/* ─── RIGHT COLUMN: Light Blue Signature Card ──────────────────── */}
-            <div className="col-span-7 rounded-[30px] bg-gradient-to-b from-[#EFF5FF] to-[#E5EFFE] border border-[#6FA6FF]/40 shadow-[0_16px_40px_-10px_rgba(3,100,255,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] p-8 md:p-9 flex flex-col justify-between relative overflow-hidden transition-all">
+            <div className="col-span-7 rounded-[30px] bg-gradient-to-b from-[#EFF5FF] to-[#E5EFFE] border border-[#6FA6FF]/55 shadow-[0_20px_48px_-10px_rgba(3,100,255,0.22),0_6px_20px_rgba(15,23,42,0.06),inset_0_1.5px_0_rgba(255,255,255,1)] card-specular-rim p-8 md:p-9 flex flex-col justify-between relative overflow-hidden transition-all">
               {/* Soft Radial Ambient Lights */}
               <div
                 className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-[#6FA6FF]/25 blur-[80px] pointer-events-none"
@@ -539,8 +537,8 @@ export default function DualPathSection() {
                 >
                   <span>
                     {activeChannel === "supplied"
-                      ? "Explore Verified Supply"
-                      : "Onboard Your Roster"}
+                      ? "Submit Campaign Brief"
+                      : "Onboard Your Partner"}
                   </span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
