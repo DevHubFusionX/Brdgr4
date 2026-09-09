@@ -5,6 +5,7 @@ import EngineSection from "@/components/landing/EngineSection";
 import DualPathSection from "@/components/landing/DualPathSection";
 import EcosystemSection from "@/components/landing/EcosystemSection";
 import PricingPreview from "@/components/landing/PricingPreview";
+import FaqSection from "@/components/landing/FaqSection";
 import CtaSection from "@/components/landing/CtaSection";
 import SectionBlurReveal from "@/components/ui/SectionBlurReveal";
 
@@ -35,6 +36,10 @@ export default function LandingPage() {
 
       <SectionBlurReveal>
         <PricingPreview />
+      </SectionBlurReveal>
+
+      <SectionBlurReveal>
+        <FaqSection />
       </SectionBlurReveal>
 
       <SectionBlurReveal>
