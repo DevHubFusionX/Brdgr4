@@ -6,13 +6,11 @@ import { motion } from "framer-motion";
 import ConnectingLogoAnimation from "@/components/landing/ConnectingLogoAnimation";
 
 interface UnderConstructionProps {
-  portalName?: string;
   title?: string;
   description?: string;
 }
 
 export default function UnderConstruction({
-  portalName,
   title = "Under Construction",
   description = "We are currently engineering this section. Safe agreements, verified attribution rails, and guaranteed settlement will be available here soon.",
 }: UnderConstructionProps) {
@@ -134,21 +132,6 @@ export default function UnderConstruction({
         <div className="mb-6 sm:mb-8">
           <ConnectingLogoAnimation />
         </div>
-
-        {/* Portal Identifier Pill */}
-        {portalName && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.4 }}
-            className="mb-3 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 border border-white/80 shadow-2xs backdrop-blur-md"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#0364FF] animate-pulse" />
-            <span className="text-xs font-semibold text-slate-700 tracking-tight">
-              {portalName}
-            </span>
-          </motion.div>
-        )}
 
         {/* Main Headline */}
         <motion.h1

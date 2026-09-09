@@ -89,7 +89,7 @@ export default function DualPathSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="block lg:hidden rounded-[26px] bg-white card-blue-pop-hero card-specular-rim p-5 sm:p-6 transition-all"
+          className="block lg:hidden rounded-[26px] bg-white border border-blue-100/80 shadow-[0_16px_40px_-10px_rgba(3,100,255,0.18),inset_0_1px_0_rgba(255,255,255,0.95)] card-specular-rim p-5 sm:p-6 transition-all"
         >
           {/* Channel Selector Pill */}
           <div className="flex w-full p-1 rounded-full bg-slate-100/90 border border-slate-200/80 shadow-2xs mb-5">
@@ -241,8 +241,8 @@ export default function DualPathSection() {
           className="hidden lg:block rounded-[36px] lg:rounded-[40px] bg-white card-blue-pop-hero card-specular-rim p-6 lg:p-7 transition-all"
         >
           <div className="grid grid-cols-12 gap-7 items-stretch">
-            {/* ─── LEFT COLUMN: Clean, Mature Editorial Panel ────────────────── */}
-            <div className="col-span-5 flex flex-col justify-between p-7 rounded-[26px] bg-[#f8fafc] border border-slate-100/90">
+            {/* ─── LEFT COLUMN: Clean, Mature Editorial Panel with Signature Blue Shadow ─ */}
+            <div className="col-span-5 flex flex-col justify-between p-7 rounded-[26px] bg-white border border-blue-100/80 shadow-[0_16px_40px_-10px_rgba(3,100,255,0.18),inset_0_1px_0_rgba(255,255,255,0.95)] hover:shadow-[0_20px_48px_-8px_rgba(3,100,255,0.24)] transition-all duration-300">
               <div>
                 {/* Segmented Channel Control */}
                 <div className="inline-flex p-1 rounded-full bg-white border border-slate-200/80 shadow-2xs mb-8">

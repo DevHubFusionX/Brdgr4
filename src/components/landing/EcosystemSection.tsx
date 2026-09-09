@@ -177,10 +177,10 @@ export default function EcosystemSection() {
   const activeTab = ECOSYSTEMS.find((tab) => tab.id === activeTabId) || ECOSYSTEMS[0];
 
   return (
-    <section className="relative w-full bg-[#f6f8fb] py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <section className="relative w-full bg-[#f6f8fb] py-16 sm:py-24 md:py-32 px-0 sm:px-6 lg:px-8 font-sans overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* ─── Section Header ─────────────────────────────────────────────── */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-14 px-4 sm:px-0">
           <WordReveal
             as="h2"
             delay={0.15}
@@ -199,21 +199,21 @@ export default function EcosystemSection() {
         </div>
 
         {/* ─── Top Pill Switcher Tabs (Horizontal Swipeable on Mobile) ─────── */}
-        <div className="flex items-center justify-start sm:justify-center mb-6 sm:mb-12 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-full bg-slate-200/60 border border-slate-300/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] shrink-0">
+        <div className="w-full flex items-center justify-start sm:justify-center mb-6 sm:mb-12 overflow-x-auto no-scrollbar py-2 px-0">
+          <div className="w-full min-w-max sm:w-auto sm:min-w-0 inline-flex items-center gap-1 sm:gap-1.5 p-1 sm:p-1.5 rounded-none sm:rounded-full bg-slate-200/60 border-y sm:border border-slate-300/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)] shrink-0">
             {ECOSYSTEMS.map((tab) => {
               const isActive = tab.id === activeTabId;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`relative flex-1 sm:flex-initial px-3.5 sm:px-6 py-2.5 rounded-none sm:rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer text-center ${
                     isActive
                       ? "bg-[#0364FF] text-white shadow-md shadow-[#0364FF]/25 font-semibold"
                       : "text-neutral-600 hover:text-[#0364FF] hover:bg-white/60"
                   }`}
                 >
-                  <span className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="flex items-center justify-center gap-1.5 sm:gap-2">
                     {tab.label}
                     {tab.statusType === "live" && (
                       <span className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-white" : "bg-emerald-500"}`} />
@@ -231,7 +231,7 @@ export default function EcosystemSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded-[28px] sm:rounded-[36px] lg:rounded-[42px] bg-[#0364FF] bg-gradient-to-br from-[#0057ff] via-[#0364FF] to-[#0047df] border border-blue-400/40 shadow-[0_24px_64px_-12px_rgba(3,100,255,0.45),0_8px_24px_-4px_rgba(3,100,255,0.25)] p-5 sm:p-8 lg:p-12 overflow-hidden transition-all duration-300"
+          className="relative w-full rounded-none sm:rounded-[36px] lg:rounded-[42px] bg-[#0364FF] bg-gradient-to-br from-[#0057ff] via-[#0364FF] to-[#0047df] border-y sm:border border-blue-400/40 shadow-[0_24px_64px_-12px_rgba(3,100,255,0.45),0_8px_24px_-4px_rgba(3,100,255,0.25)] px-5 py-8 sm:p-8 lg:p-12 overflow-hidden transition-all duration-300"
         >
           {/* Ambient Lighting Gradients inside card */}
           <div
@@ -330,8 +330,8 @@ export default function EcosystemSection() {
                 </div>
               </div>
 
-              {/* ─── Right Column: High-Fidelity UI Showcase Window Card ─────── */}
-              <div className="col-span-12 lg:col-span-6 mt-6 lg:mt-0">
+              {/* ─── Right Column: High-Fidelity UI Showcase Window Card (Desktop only) ─── */}
+              <div className="hidden lg:block lg:col-span-6">
                 <div className="rounded-2xl sm:rounded-[28px] bg-white shadow-[0_25px_50px_-12px_rgba(0,10,60,0.35)] border border-white/40 overflow-hidden">
                   {/* Browser / Console Chrome Bar */}
                   <div className="px-4 py-3 bg-white border-b border-slate-200/80 flex items-center justify-between gap-2">
