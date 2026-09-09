@@ -350,7 +350,7 @@ export default function TrustSection() {
   const row2Repeated = [...ROW_2_BRANDS, ...ROW_2_BRANDS, ...ROW_2_BRANDS];
 
   return (
-    <section className="relative w-full bg-[#f6f8fb] pt-14 sm:pt-20 md:pt-24 pb-12 sm:pb-20 md:pb-24 px-3 sm:px-6 lg:px-8 font-sans overflow-hidden">
+    <section className="relative w-full bg-[#f6f8fb] pt-14 sm:pt-20 md:pt-24 pb-12 sm:pb-20 md:pb-24 font-sans overflow-hidden">
       {/* ─── Ambient Sky Blue Radial Glow (Matched with reference image) ─── */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[480px] bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(191,219,254,0.55)_0%,rgba(224,238,255,0.3)_45%,transparent_80%)] pointer-events-none"
@@ -401,8 +401,8 @@ export default function TrustSection() {
         </defs>
       </svg>
 
-      <div className="relative max-w-7xl mx-auto z-10">
-        {/* ─── Header: Exact user copy & elevated typography ───────────────── */}
+      {/* ─── Header: Exact user copy & elevated typography ───────────────── */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="text-center max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -419,25 +419,30 @@ export default function TrustSection() {
             </p>
           </motion.div>
         </div>
+      </div>
 
-        {/* ─── Marquee Showcase Container ──────────────────────────────────── */}
-        <div className="relative mt-8 sm:mt-14 marquee-container">
-          {/* ─── Edge Fade Gradients (Fade-away effect matching screenshot) ─── */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-12 sm:w-32 md:w-56 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute right-0 top-0 bottom-0 w-12 sm:w-32 md:w-56 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20"
-            aria-hidden="true"
-          />
+      {/* ─── Full-Bleed Marquee Showcase Container ───────────────────────── */}
+      <div className="relative mt-8 sm:mt-14 w-full overflow-hidden marquee-container z-10">
+        {/* ─── Edge Fade Gradients (Pinned to exact screen edges) ──────────── */}
+        <div
+          className="absolute left-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 backdrop-blur-[1px]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 backdrop-blur-[1px]"
+          aria-hidden="true"
+        />
 
-          {/* ─── Dual Track Marquee Stream ─────────────────────────────────── */}
-          <div
-            tabIndex={0}
-            aria-label="Partner brand logos marquee. Hover or focus to pause."
-            className="space-y-3 sm:space-y-5 md:space-y-6 focus:outline-hidden"
-          >
+        {/* ─── Dual Track Marquee Stream with Native Edge Mask ─────────────── */}
+        <div
+          tabIndex={0}
+          aria-label="Partner brand logos marquee. Hover or focus to pause."
+          className="space-y-3 sm:space-y-5 md:space-y-6 focus:outline-hidden py-1"
+          style={{
+            maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
+        >
             {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
             <div className="flex items-center w-max animate-marquee-left">
               {row1Repeated.map((brand, idx) => (
@@ -502,6 +507,8 @@ export default function TrustSection() {
           </div>
         </div>
 
+      {/* ─── Bottom Content: Active Brand Spotlight & Proof Ribbon ───────── */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* ─── Active Brand Spotlight Strip (When tapped or hovered) ─────── */}
         <div className="mt-6 sm:mt-8 flex items-center justify-center min-h-[28px] px-2">
           {activeBrand ? (
