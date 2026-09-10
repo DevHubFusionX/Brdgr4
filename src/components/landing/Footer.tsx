@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUp, ChevronRight, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import NavLogo from "./navbar/NavLogo";
 
 interface FooterLink {
@@ -172,7 +173,13 @@ export default function Footer() {
         </div>
 
         {/* ─── 1. Navigation Columns: Desktop Grid (>= md) ──────────────────── */}
-        <div className="hidden md:grid md:grid-cols-4 gap-x-8 lg:gap-x-12 gap-y-10 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden md:grid md:grid-cols-4 gap-x-8 lg:gap-x-12 gap-y-10 pb-16"
+        >
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title} className="flex flex-col gap-3">
               <span className="text-[13px] font-bold text-neutral-900 tracking-tight">
@@ -203,13 +210,19 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* ─── 2. Full-Width Clean Divider Line ──────────────────────────────── */}
         <div className="w-full border-t border-slate-200/90 pt-8 sm:pt-10" />
 
         {/* ─── 3. Newsletter Subscription & Social Badges Row ───────────────── */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 sm:pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-10 sm:pb-12"
+        >
           {/* Newsletter Input Form */}
           <div className="flex flex-col gap-3 max-w-lg w-full">
             <span className="text-sm sm:text-[14.5px] font-semibold text-neutral-900">
@@ -345,13 +358,19 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ─── 4. Full-Width Clean Divider Line ──────────────────────────────── */}
         <div className="w-full border-t border-slate-200/90 pt-6 sm:pt-8" />
 
         {/* ─── 5. Bottom Brand Logo & Legal Policies Bar ────────────────────── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6 text-xs sm:text-[13px] text-neutral-500">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6 text-xs sm:text-[13px] text-neutral-500"
+        >
           {/* Logo Mark & Mobile Scroll to Top */}
           <div className="flex items-center justify-between w-full sm:w-auto">
             <NavLogo />
@@ -390,7 +409,7 @@ export default function Footer() {
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

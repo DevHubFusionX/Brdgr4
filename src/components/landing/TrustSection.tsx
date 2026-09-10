@@ -420,11 +420,11 @@ export default function TrustSection() {
       <div className="relative mt-8 sm:mt-14 w-full overflow-hidden marquee-container z-10">
         {/* ─── Edge Fade Gradients (Pinned to exact screen edges) ──────────── */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 backdrop-blur-[1px]"
+          className="absolute left-0 top-0 bottom-0 w-8 sm:w-36 md:w-56 bg-gradient-to-r from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 sm:backdrop-blur-[1px]"
           aria-hidden="true"
         />
         <div
-          className="absolute right-0 top-0 bottom-0 w-16 sm:w-36 md:w-56 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 backdrop-blur-[1px]"
+          className="absolute right-0 top-0 bottom-0 w-8 sm:w-36 md:w-56 bg-gradient-to-l from-[#f6f8fb] via-[#f6f8fb]/90 to-transparent pointer-events-none z-20 sm:backdrop-blur-[1px]"
           aria-hidden="true"
         />
 

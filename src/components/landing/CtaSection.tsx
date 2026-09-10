@@ -3,9 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ShieldCheck, CheckCircle2, Sparkles } from "lucide-react";
 import ArrowFlight from "@/components/ui/ArrowFlight";
+import WordReveal from "@/components/ui/WordReveal";
 
 export default function CtaSection() {
+  const trustBadges = [
+    { icon: ShieldCheck, text: "Secure payments" },
+    { icon: CheckCircle2, text: "All partnerships in one place" },
+    { icon: Sparkles, text: "7 days to try BRDGR" },
+  ];
+
   return (
     <section 
       style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
@@ -71,70 +79,80 @@ export default function CtaSection() {
 
       {/* ─── Centered Foreground Content ─── */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Mulish Headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
+        {/* Mulish Headline with WordReveal */}
+        <WordReveal
+          as="h2"
+          delay={0.1}
+          stagger={0.035}
           className="text-[26px] min-[390px]:text-[30px] sm:text-[40px] md:text-[50px] lg:text-[56px] font-bold text-[#0f172a] tracking-[-0.03em] leading-[1.18] max-w-4xl mx-auto text-center"
-        >
-          Your partnerships shouldn’t be difficult to manage
-        </motion.h2>
+          text="Your partnerships shouldn’t be difficult to manage"
+        />
 
         {/* Subheadline */}
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
           className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed"
         >
           From finding the right partners and setting clear terms to tracking performance and managing payments, BRDGR handles the partnership operations from start to finish – giving you the confidence to focus on what matters: growth.
         </motion.p>
 
-        {/* Dual Action Pill Buttons */}
+        {/* Dual Action Pill Buttons with Tactile 3D Micro-interactions */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mt-7 sm:mt-9 flex items-center justify-center gap-3 sm:gap-3.5"
         >
           {/* Primary 3D Pill Button */}
-          <Link
-            href="/sign-up"
-            className="btn-3d-primary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight text-white gap-2 cursor-pointer"
-          >
-            <span>Start for free</span>
-            <ArrowFlight sizeClass="w-4 h-4" />
-          </Link>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <Link
+              href="/sign-up"
+              className="btn-3d-primary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight text-white gap-2 cursor-pointer"
+            >
+              <span>Start for free</span>
+              <ArrowFlight sizeClass="w-4 h-4" />
+            </Link>
+          </motion.div>
 
           {/* Secondary 3D Pill Button */}
-          <Link
-            href="/sign-up?demo=true"
-            className="btn-3d-secondary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
-          >
-            <span>Book a demo</span>
-            <ArrowFlight sizeClass="w-4 h-4" />
-          </Link>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <Link
+              href="/sign-up?demo=true"
+              className="btn-3d-secondary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold tracking-tight gap-2 cursor-pointer"
+            >
+              <span>Book a demo</span>
+              <ArrowFlight sizeClass="w-4 h-4" />
+            </Link>
+          </motion.div>
         </motion.div>
 
-        {/* Institutional Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.24 }}
+        {/* Institutional Trust Indicators with Staggered Badges */}
+        <div
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 gap-y-2 text-[11px] sm:text-xs text-slate-600 font-medium"
+          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-7 gap-y-2.5 text-[11px] sm:text-xs text-slate-600 font-medium"
         >
-          <span>Secure payments</span>
-          <span>All partnerships in one place</span>
-          <span>7 days to try BRDGR</span>
-        </motion.div>
+          {trustBadges.map((badge, idx) => {
+            const Icon = badge.icon;
+            return (
+              <motion.div
+                key={badge.text}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.38 + idx * 0.08 }}
+                className="inline-flex items-center gap-1.5"
+              >
+                <Icon className="w-3.5 h-3.5 text-[#0364FF] shrink-0" />
+                <span>{badge.text}</span>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

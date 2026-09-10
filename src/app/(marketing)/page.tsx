@@ -38,12 +38,13 @@ export default function LandingPage() {
         <PricingPreview />
       </SectionBlurReveal>
 
-      <SectionBlurReveal>
-        <FaqSection />
-      </SectionBlurReveal>
 
       <SectionBlurReveal>
         <CtaSection />
+      </SectionBlurReveal>
+      
+      <SectionBlurReveal>
+        <FaqSection />
       </SectionBlurReveal>
     </>
   );

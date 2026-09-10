@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ArrowFlight from "@/components/ui/ArrowFlight";
+import WordReveal from "@/components/ui/WordReveal";
 
 export default function PricingPreview() {
   const [role, setRole] = useState<"client" | "partner">("client");
@@ -14,18 +15,34 @@ export default function PricingPreview() {
       <div className="max-w-6xl mx-auto">
         {/* ─── Header ──────────────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.18]">
-            Simple plans. Clear Pricing.
-          </h2>
+          <WordReveal
+            as="h2"
+            delay={0.1}
+            stagger={0.035}
+            className="text-3xl sm:text-4xl md:text-5xl font-normal text-neutral-900 tracking-[-0.025em] leading-[1.18]"
+            text="Simple plans. Clear Pricing."
+          />
 
-          <p className="mt-3.5 text-base sm:text-lg text-neutral-500 font-normal leading-relaxed">
+          <motion.p
+            key={role}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.15 }}
+            className="mt-3.5 text-base sm:text-lg text-neutral-500 font-normal leading-relaxed"
+          >
             {role === "client"
               ? "Choose the plan that fits your business. As your partnership volume grows, your platform commission rate decreases – so you keep more as you grow."
               : "Choose the plan that fits your growth. Scale your partnership earnings with direct tracking, verified badges, and guaranteed on-time payouts."}
-          </p>
+          </motion.p>
 
           {/* Role Switcher Pill */}
-          <div className="mt-7 inline-flex items-center p-1 rounded-full bg-slate-200/60 border border-slate-300/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.2 }}
+            className="mt-7 inline-flex items-center p-1 rounded-full bg-slate-200/60 border border-slate-300/60 shadow-[inset_0_1px_3px_rgba(0,0,0,0.04)]"
+          >
             <button
               onClick={() => setRole("client")}
               className={`px-5 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer ${role === "client"
@@ -44,7 +61,7 @@ export default function PricingPreview() {
             >
               Partners
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* ─── 3 Tier Cards ────────────────────────────────────────────────── */}
@@ -86,40 +103,81 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-neutral-600 font-medium min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-neutral-600 font-medium leading-snug text-left">
                       For companies starting out with structured partnerships.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-neutral-700">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Manage up to 10 active partnerships</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Track activities automatically</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Standard partner matching</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Onboard up to 10 of your own partners</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-slate-200/70 my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            10 active partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Launch your initial partner program
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Automated tracking
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Monitor partner activities hands-free
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Standard matching
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Discover relevant, vetted collaborators
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            10 owned partners
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Bring your existing relationships
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Black 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/sign-up"
-                      className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/sign-up"
+                        className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -193,7 +251,7 @@ export default function PricingPreview() {
                           <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
                           <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.45" />
                           <stop offset="80%" stopColor="#FFFFFF" stopOpacity="0.5" />
-                          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="1" />
                         </linearGradient>
                       </defs>
                     </svg>
@@ -219,40 +277,81 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-slate-300 font-normal min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-slate-300 font-normal leading-snug text-left">
                       For growing companies managing more partners and increasing partnership volume.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-slate-300">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Manage up to 50 partnerships</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Priority partner matching</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Onboard up to 50 of your own partners</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Priority support</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-white/[0.08] my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            50 partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Manage more partners at scale
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            Priority matching
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Find the right partners faster
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            50 owned partners
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Bring your existing network
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            Priority support
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Get help when it matters
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Blue 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/sign-up"
-                      className="btn-3d-primary w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/sign-up"
+                        className="btn-3d-primary w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -283,44 +382,81 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-neutral-600 font-medium min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-neutral-600 font-medium leading-snug text-left">
                       For established companies running partnerships at scale.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-neutral-700">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Manage unlimited active partnerships</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Onboard unlimited partners of your own</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Dedicated operations Manager</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Exclusive access to top Growth Partners</span>
-                      </li>
-                      <li className="flex items-center gap-2.5 text-neutral-500 font-medium">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>And more.</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-slate-200/70 my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Unlimited partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Scale without partner limits or caps
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Unlimited owned partners
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Onboard your complete network
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Dedicated operations manager
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Hands-on setup and custom workflows
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Top growth partners
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Exclusive access to elite affiliates
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Black 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/sign-up"
-                      className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/sign-up"
+                        className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
               </>
@@ -348,36 +484,67 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-neutral-600 font-medium min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-neutral-600 font-medium leading-snug text-left">
                       For Growth Partners/Affiliates starting out and looking for new opportunities.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-neutral-700">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Access to BRDGR network</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Browse available opportunities</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Manage up to 3 active partnerships</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-slate-200/70 my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            BRDGR network access
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Join vetted brand partner campaigns
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Browse opportunities
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Discover deals that match your audience
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            3 active partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Perfect for launching your affiliate path
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Black 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/partner"
-                      className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/partner"
+                        className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -472,36 +639,81 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-slate-300 font-normal min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-slate-300 font-normal leading-snug text-left">
                       For growth partners ready to take on more opportunities and grow their earnings.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-slate-300">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Get a verified badge</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Manage up to 10 active Partnerships</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-blue-400 stroke-[2.2] shrink-0" />
-                        <span>Get priority access to new opportunities</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-white/[0.08] my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            Verified partner badge
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Build trust and stand out to top brands
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            10 active partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Scale your revenue across campaigns
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            Priority access
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Early invites to high-paying offers
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500/15 border border-blue-400/30 flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_8px_rgba(59,130,246,0.2)]">
+                          <Check className="w-3 h-3 text-blue-400 stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-white tracking-tight leading-snug">
+                            Direct tracking
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-slate-400 font-normal leading-tight mt-0.5">
+                            Real-time attribution and guaranteed payouts
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Blue 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/partner"
-                      className="btn-3d-primary w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/partner"
+                        className="btn-3d-primary w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -527,44 +739,81 @@ export default function PricingPreview() {
                   {/* Middle Content (Centered in card height) */}
                   <div className="flex-1 flex flex-col justify-center py-4 sm:py-5">
                     {/* Description */}
-                    <p className="mb-3.5 text-xs sm:text-[13px] text-neutral-600 font-medium min-h-[34px] leading-snug text-left">
+                    <p className="mb-2 text-xs sm:text-[13px] text-neutral-600 font-medium leading-snug text-left">
                       For established growth partners ready to take on bigger opportunities and scale their partnerships.
                     </p>
 
-                    {/* Feature Checklist */}
-                    <ul className="space-y-2.5 sm:space-y-3 text-xs sm:text-[13px] text-neutral-700">
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Get a verified badge</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Unlimited active partnerships</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Access to exclusive opportunities</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Dedicated account manager</span>
-                      </li>
-                      <li className="flex items-center gap-2.5 text-neutral-500 font-medium">
-                        <Check className="w-3.5 h-3.5 text-slate-400 stroke-[2.2] shrink-0" />
-                        <span>Priority support</span>
-                      </li>
-                    </ul>
+                    {/* Feature Benefit Rows */}
+                    <div className="divide-y divide-slate-200/70 my-auto">
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Verified elite badge
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Highest credibility and tier priority
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Unlimited active partnerships
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Uncapped deals and revenue streams
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Exclusive opportunities
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Private brand offers & bespoke payouts
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="py-3 sm:py-3.5 flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 border border-blue-200/80 flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                          <Check className="w-3 h-3 text-[#0364FF] stroke-[2.5]" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-sm sm:text-[15px] font-semibold text-neutral-900 tracking-tight leading-snug">
+                            Dedicated account manager
+                          </span>
+                          <span className="text-xs sm:text-[12.5px] text-neutral-500 font-normal leading-tight mt-0.5">
+                            Personalized strategy & priority support
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Black 3D Button (Compact) – pinned to bottom left */}
                   <div className="w-full flex justify-start mt-auto pt-2">
-                    <Link
-                      href="/partner"
-                      className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
-                    >
-                      <span>Get Started</span>
-                      <ArrowFlight sizeClass="w-3.5 h-3.5" />
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+                      <Link
+                        href="/partner"
+                        className="btn-3d-dark w-fit px-5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] font-semibold text-white cursor-pointer gap-2 group inline-flex items-center justify-center"
+                      >
+                        <span>Get Started</span>
+                        <ArrowFlight sizeClass="w-3.5 h-3.5" />
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
               </>

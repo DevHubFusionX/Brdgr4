@@ -76,7 +76,7 @@ export default function FaqSection() {
     <section
       id="faq"
       style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
-      className="relative w-full bg-[#f8fafc] py-20 sm:py-28 md:py-32 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden border-t border-slate-200/80"
+      className="relative w-full bg-[#f8fafc] py-14 sm:py-24 md:py-32 px-3.5 sm:px-6 lg:px-8 font-sans overflow-hidden border-t border-slate-200/80"
     >
       {/* ─── Ambient Atmospheric Lighting ─────────────────────────────── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-0" aria-hidden="true">
@@ -86,17 +86,23 @@ export default function FaqSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* ─── Section Header ───────────────────────────────────────────── */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#0364FF] text-xs font-semibold uppercase tracking-wider mb-4 shadow-2xs">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[#0364FF] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4 shadow-2xs"
+          >
             <span>FAQ</span>
-          </div>
+          </motion.div>
 
           <WordReveal
             as="h2"
             delay={0.1}
             stagger={0.03}
-            className="text-2xl sm:text-4xl md:text-[44px] font-bold text-slate-900 tracking-[-0.03em] leading-[1.18]"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold text-slate-900 tracking-[-0.03em] leading-[1.18]"
             text="Frequently asked questions"
           />
 
@@ -104,23 +110,27 @@ export default function FaqSection() {
             as="p"
             delay={0.25}
             stagger={0.02}
-            className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-500 font-normal leading-relaxed max-w-xl mx-auto"
+            className="mt-2.5 sm:mt-4 text-xs sm:text-sm md:text-base text-slate-500 font-normal leading-relaxed max-w-xl mx-auto px-2"
             text="Everything you need to know about BRDGR, partner recruiting, contracts, tracking, and automated payments."
           />
         </div>
 
-        {/* ─── FAQ Accordion List (Matching Reference Design) ───────────── */}
-        <div className="space-y-3 sm:space-y-3.5">
-          {FAQ_ITEMS.map((item) => {
+        {/* ─── FAQ Accordion List (Responsive Mobile & Desktop) ─────────── */}
+        <div className="space-y-2.5 sm:space-y-3.5">
+          {FAQ_ITEMS.map((item, idx) => {
             const isExpanded = expandedId === item.id;
 
             return (
-              <div
+              <motion.div
                 key={item.id}
-                className={`transition-all duration-300 rounded-[18px] sm:rounded-[24px] ${
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: 0.04 + idx * 0.03, ease: [0.22, 1, 0.36, 1] }}
+                className={`transition-all duration-300 rounded-2xl sm:rounded-[22px] p-4 sm:p-6 ${
                   isExpanded
-                    ? "bg-white card-blue-pop card-specular-rim border border-blue-200/90 shadow-[0_12px_32px_-6px_rgba(3,100,255,0.14),0_4px_16px_rgba(15,23,42,0.05),inset_0_1.5px_0_rgba(255,255,255,1)] p-5 sm:p-7"
-                    : "bg-transparent border-b border-slate-200/80 hover:border-slate-300/90 px-3 sm:px-5 py-4 sm:py-5"
+                    ? "bg-white card-blue-pop card-specular-rim border border-blue-200/90 shadow-[0_10px_28px_-6px_rgba(3,100,255,0.12),0_4px_16px_rgba(15,23,42,0.04),inset_0_1.5px_0_rgba(255,255,255,1)]"
+                    : "bg-white/70 backdrop-blur-sm border border-slate-200/80 hover:border-blue-200/80 hover:bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)]"
                 }`}
               >
                 {/* Accordion Toggle Header */}
@@ -128,10 +138,10 @@ export default function FaqSection() {
                   type="button"
                   onClick={() => toggleItem(item.id)}
                   aria-expanded={isExpanded}
-                  className="w-full flex items-center justify-between text-left gap-4 cursor-pointer group select-none"
+                  className="w-full flex items-center justify-between text-left gap-3 sm:gap-4 cursor-pointer select-none py-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0364FF] rounded-lg group"
                 >
                   <span
-                    className={`text-base sm:text-[17px] tracking-tight leading-snug transition-colors ${
+                    className={`text-[15px] sm:text-[17px] tracking-tight leading-snug transition-colors pr-1 ${
                       isExpanded
                         ? "font-bold text-slate-900"
                         : "font-semibold text-slate-800 group-hover:text-[#0364FF]"
@@ -144,14 +154,14 @@ export default function FaqSection() {
                   <div
                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
                       isExpanded
-                        ? "bg-slate-100 text-slate-700"
-                        : "text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100"
+                        ? "bg-[#0364FF] text-white shadow-sm shadow-[#0364FF]/25 rotate-180"
+                        : "bg-slate-100 text-slate-500 group-hover:text-slate-800 group-hover:bg-slate-200/80"
                     }`}
                   >
                     {isExpanded ? (
-                      <Minus className="w-4 h-4 stroke-[2.2]" />
+                      <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
                     ) : (
-                      <Plus className="w-4 h-4 stroke-[2.2]" />
+                      <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
                     )}
                   </div>
                 </button>
@@ -167,7 +177,7 @@ export default function FaqSection() {
                         opacity: 1,
                         transition: {
                           height: { duration: 0.28, ease: [0.16, 1, 0.3, 1] },
-                          opacity: { duration: 0.24, delay: 0.05 },
+                          opacity: { duration: 0.22, delay: 0.04 },
                         },
                       }}
                       exit={{
@@ -180,36 +190,44 @@ export default function FaqSection() {
                       }}
                       className="overflow-hidden"
                     >
-                      <p className="mt-3 text-sm sm:text-[15px] text-slate-600 font-normal leading-relaxed pr-6 sm:pr-8">
+                      <p className="mt-2.5 sm:mt-3 text-xs sm:text-[15px] text-slate-600 font-normal leading-relaxed pr-1 sm:pr-6 border-t border-slate-100/80 pt-2.5 sm:pt-3">
                         {item.answer}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* ─── Bottom Help Callout with 3D Button ───────────────────────── */}
-        <div className="mt-12 sm:mt-16 text-center pt-8 sm:pt-10 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 px-2 sm:px-4">
-          <div className="text-left sm:text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 sm:mt-14 rounded-2xl sm:rounded-3xl bg-white/90 backdrop-blur-sm border border-slate-200/90 p-4.5 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.04)] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6"
+        >
+          <div className="text-left w-full sm:w-auto">
             <h4 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
               Still have questions?
             </h4>
-            <p className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5">
-              Our partnership specialists are ready to help with your custom requirements.
+            <p className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5 leading-relaxed max-w-md">
+              Our partnership specialists are ready to help with your custom setup and requirements.
             </p>
           </div>
 
-          <Link
-            href="/#contact"
-            className="btn-3d-primary group px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white gap-2 cursor-pointer shrink-0 w-full sm:w-auto"
-          >
-            <span>Talk to our team</span>
-            <ArrowFlight sizeClass="w-3.5 h-3.5" />
-          </Link>
-        </div>
+          <div className="w-full sm:w-auto shrink-0">
+            <Link
+              href="/#contact"
+              className="btn-3d-primary group px-6 sm:px-7 py-3 text-xs sm:text-sm font-semibold text-white gap-2 cursor-pointer w-full sm:w-auto inline-flex items-center justify-center shadow-md active:scale-[0.98] transition-transform"
+            >
+              <span>Talk to our team</span>
+              <ArrowFlight sizeClass="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

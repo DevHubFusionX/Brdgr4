@@ -32,9 +32,9 @@ export default function HeroSection() {
           aria-hidden="true"
         />
 
-        {/* ─── Top-Left: Crisp White Arc Cutting Through Blue Gradient ─ */}
+        {/* ─── Top-Left: Crisp White Arc Cutting Through Blue Gradient (Desktop Card Only) ─ */}
         <svg
-          className="absolute top-0 left-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
+          className="hidden sm:block absolute top-0 left-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
           viewBox="0 0 500 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -85,9 +85,9 @@ export default function HeroSection() {
           aria-hidden="true"
         />
 
-        {/* ─── Bottom-Right: Crisp White Arc Cutting Through Blue Gradient ─ */}
+        {/* ─── Bottom-Right: Crisp White Arc Cutting Through Blue Gradient (Desktop Card Only) ─ */}
         <svg
-          className="absolute bottom-0 right-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
+          className="hidden sm:block absolute bottom-0 right-0 w-[220px] sm:w-[500px] h-[160px] sm:h-[370px] pointer-events-none overflow-visible"
           viewBox="0 0 500 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
