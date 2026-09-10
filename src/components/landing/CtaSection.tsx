@@ -3,15 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ShieldCheck, CheckCircle2, Sparkles } from "lucide-react";
 import ArrowFlight from "@/components/ui/ArrowFlight";
 import WordReveal from "@/components/ui/WordReveal";
 
 export default function CtaSection() {
   const trustBadges = [
-    { icon: ShieldCheck, text: "Secure payments" },
-    { icon: CheckCircle2, text: "All partnerships in one place" },
-    { icon: Sparkles, text: "7 days to try BRDGR" },
+    "Secure payments",
+    "All partnerships in one place",
+    "7 days to try BRDGR",
   ];
 
   return (
@@ -131,27 +130,23 @@ export default function CtaSection() {
           </motion.div>
         </motion.div>
 
-        {/* Institutional Trust Indicators with Staggered Badges */}
+        {/* Institutional Trust Indicators with Clean Text Badges */}
         <div
           style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
           className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-7 gap-y-2.5 text-[11px] sm:text-xs text-slate-600 font-medium"
         >
-          {trustBadges.map((badge, idx) => {
-            const Icon = badge.icon;
-            return (
-              <motion.div
-                key={badge.text}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.38 + idx * 0.08 }}
-                className="inline-flex items-center gap-1.5"
-              >
-                <Icon className="w-3.5 h-3.5 text-[#0364FF] shrink-0" />
-                <span>{badge.text}</span>
-              </motion.div>
-            );
-          })}
+          {trustBadges.map((text, idx) => (
+            <motion.div
+              key={text}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.38 + idx * 0.08 }}
+              className="inline-flex items-center"
+            >
+              <span>{text}</span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
