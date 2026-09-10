@@ -26,19 +26,19 @@ const METRICS: MetricCardData[] = [
     colClass: "lg:col-start-2 lg:row-start-1",
   },
   {
-    id: "contracts",
-    stat: "100%",
-    title: "Structured partnerships",
-    description: "Digital agreements lock clear terms and protect direct partner relationships.",
-    icon: Shield,
-    colClass: "lg:col-start-3 lg:row-start-1",
-  },
-  {
     id: "time",
     stat: "+480 hrs",
     title: "Admin time saved",
     description: "Eliminate manual partner checks, custom contracts, and spreadsheet disputes.",
     icon: Clock,
+    colClass: "lg:col-start-3 lg:row-start-1",
+  },
+  {
+    id: "contracts",
+    stat: "100%",
+    title: "Structured partnerships",
+    description: "Digital agreements lock clear terms and protect direct partner relationships.",
+    icon: Shield,
     colClass: "lg:col-start-2 lg:row-start-2",
   },
   {
@@ -191,7 +191,7 @@ export default function ValueMetricsSection() {
             <div>
               {/* Main Headline */}
               <h2 className="text-[26px] sm:text-3xl lg:text-[42px] font-bold text-slate-900 tracking-[-0.03em] leading-[1.16] sm:leading-[1.14] mb-3 sm:mb-4">
-                Real impact for<br className="hidden sm:inline" /> companies and<br className="hidden sm:inline" /> growth partners.
+                Real impact for<br className="hidden sm:inline" /> companies and<br className="hidden sm:inline" /> growth partners
               </h2>
 
               {/* Subtitle */}

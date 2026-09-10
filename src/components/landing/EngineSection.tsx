@@ -3,15 +3,16 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import WordReveal from "@/components/ui/WordReveal";
-import { 
-  ShieldCheck, 
-  FileCheck2, 
-  Activity, 
-  Lock, 
-  CheckCircle2, 
-  Zap, 
+import {
+  ShieldCheck,
+  FileCheck2,
+  Activity,
+  Lock,
+  CheckCircle2,
+  Zap,
   Building2,
-  UserPlus
+  UserPlus,
+  ArrowRight
 } from "lucide-react";
 
 /* ─── Butter-Smooth 3D Tilt Card with Progressive Sticky Stacking ────────── */
@@ -21,12 +22,14 @@ function Engine3DCard({
   glowColor = "from-[#6FA6FF]/25 via-[#0364FF]/12",
   delay = 0,
   index = 0,
+  stepNumber,
 }: {
   children: React.ReactNode;
   className?: string;
   glowColor?: string;
   delay?: number;
   index?: number;
+  stepNumber?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -78,33 +81,35 @@ function Engine3DCard({
   return (
     <div
       style={{
-        top: `calc(4.75rem + ${index * 10}px)`,
+        top: `calc(4.75rem + ${index * 24}px)`,
         zIndex: index + 10,
+        willChange: "transform",
+        backfaceVisibility: "hidden",
       }}
       className="sticky w-full"
     >
       {/* ─── Card Motion Frame ────────────────────────────────────────── */}
       <motion.div
         ref={ref}
-        initial={{ 
-          opacity: 0, 
-          y: isMobile ? 16 : 28, 
-          scale: isMobile ? 1 : 0.985, 
+        initial={{
+          opacity: 0,
+          y: isMobile ? 16 : 28,
+          scale: isMobile ? 1 : 0.985,
         }}
-        whileInView={{ 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
         }}
-        viewport={{ 
-          once: true, 
-          amount: isMobile ? 0.02 : 0.08, 
-          margin: isMobile ? "60px 0px -10px 0px" : "0px" 
+        viewport={{
+          once: true,
+          amount: isMobile ? 0.02 : 0.08,
+          margin: isMobile ? "60px 0px -10px 0px" : "0px"
         }}
-        transition={{ 
-          duration: isMobile ? 0.4 : 0.55, 
-          delay: isMobile ? 0 : delay, 
-          ease: [0.16, 1, 0.3, 1] 
+        transition={{
+          duration: isMobile ? 0.4 : 0.55,
+          delay: isMobile ? 0 : delay,
+          ease: [0.16, 1, 0.3, 1]
         }}
         onAnimationComplete={() => setIsAnimationDone(true)}
         onMouseEnter={() => !isMobile && setIsHovered(true)}
@@ -136,6 +141,56 @@ function Engine3DCard({
           }}
         />
 
+        {/* Hero Section Style Overlay Background Number & Light Effects */}
+        {stepNumber !== undefined && (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0" aria-hidden="true">
+            {/* Top-Right Soft Sky Glow Wash (matching Hero Section Card) */}
+            <div
+              className="absolute top-0 right-0 w-52 sm:w-72 h-52 sm:h-72 bg-[radial-gradient(ellipse_at_top_right,rgba(147,197,253,0.65)_0%,rgba(191,219,254,0.3)_40%,transparent_72%)]"
+            />
+
+            {/* Crisp White Arc Cutting Through Blue Gradient (matching Hero Section Card) */}
+            <svg
+              className="absolute top-0 right-0 w-36 sm:w-56 h-28 sm:h-44 pointer-events-none overflow-visible opacity-90"
+              viewBox="0 0 220 160"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Diffuse white halo */}
+              <path
+                d="M 35,0 C 80,50 135,80 220,105"
+                stroke="#FFFFFF"
+                strokeWidth="10"
+                strokeOpacity="0.5"
+                strokeLinecap="round"
+                className="blur-[5px]"
+              />
+              {/* Razor-sharp white glass reflection arc */}
+              <path
+                d="M 35,0 C 80,50 135,80 220,105"
+                stroke={`url(#engine-hero-arc-${stepNumber})`}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <defs>
+                <linearGradient id={`engine-hero-arc-${stepNumber}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
+                  <stop offset="30%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                  <stop offset="75%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                  <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Giant Watermark Background Step Number */}
+            <div
+              className="absolute -top-2 right-2 sm:-top-1 sm:right-5 font-black text-[105px] sm:text-[145px] md:text-[170px] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#0252D4]/48 via-[#0364FF]/26 to-[#6FA6FF]/10 drop-shadow-[0_2px_12px_rgba(3,100,255,0.12)] group-hover:scale-105 transition-all duration-300"
+            >
+              {stepNumber}
+            </div>
+          </div>
+        )}
+
         {/* Content with 3D Parallax Depth */}
         <div
           style={{ transform: "translateZ(20px)" }}
@@ -150,7 +205,7 @@ function Engine3DCard({
 
 export default function EngineSection() {
   return (
-    <section 
+    <section
       style={{ fontFamily: "var(--font-mulish), Mulish, sans-serif" }}
       className="relative w-full bg-[#f8fafc] py-14 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 font-sans border-t border-b border-slate-200/80"
     >
@@ -163,7 +218,7 @@ export default function EngineSection() {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* ─── 2-Column Layout: Left Sticky Pinned, Right Stacking Deck ─────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-start">
-          
+
           {/* ═══════════════════════════════════════════════════════════════════ */}
           {/* ─── LEFT COLUMN: STICKY & PINNED ─────────────────────────────────── */}
           {/* ═══════════════════════════════════════════════════════════════════ */}
@@ -231,31 +286,195 @@ export default function EngineSection() {
           {/* ═══════════════════════════════════════════════════════════════════ */}
           {/* ─── RIGHT COLUMN: STACKING CARDS ON SCROLL ───────────────────────── */}
           {/* ═══════════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-7 space-y-5 sm:space-y-8">
-            
-            {/* ─── Card 0: Narrative Overview Block ──────────────────────────── */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-10 pb-[30vh] sm:pb-[40vh]">
+
+            {/* ─── Card 0: How It Works (Hero Sky Background & White Arc Glass Styling) ── */}
             <Engine3DCard
-              glowColor="from-[#0364FF]/20 via-[#6FA6FF]/10"
-              className="bg-white/95"
+              glowColor="from-[#0364FF]/25 via-[#6FA6FF]/15"
+              className="!bg-[linear-gradient(160deg,#c8defc_0%,#d8e8fc_25%,#eaf2fe_55%,#f6f8fb_85%,#ffffff_100%)] !border-blue-200/90 shadow-blue-pop-hero overflow-hidden"
               delay={0}
               index={0}
             >
-              <div>
-                <WordReveal
-                  as="h3"
-                  delay={0.15}
-                  stagger={0.03}
-                  className="text-xl sm:text-2xl md:text-[26px] font-bold text-neutral-900 tracking-tight leading-snug mb-2.5 sm:mb-4"
-                  text="HOW IT WORKS"
-                />
+              {/* ─── Hero Style Top-Right: Soft Blue Gradient Wash ───────── */}
+              <div
+                className="absolute -top-16 -right-16 w-[320px] sm:w-[400px] h-[320px] sm:h-[400px] bg-[radial-gradient(ellipse_at_top_right,rgba(147,197,253,0.7)_0%,rgba(191,219,254,0.4)_40%,transparent_70%)] pointer-events-none -z-0"
+                aria-hidden="true"
+              />
 
-                <WordReveal
-                  as="p"
-                  delay={0.25}
-                  stagger={0.015}
-                  className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed"
-                  text="A clear, structured process built to simplify."
+              {/* ─── Hero Style Top-Right: Crisp White Glass Arc ─────────── */}
+              <svg
+                className="absolute top-0 right-0 w-[240px] sm:w-[360px] h-[160px] sm:h-[240px] pointer-events-none overflow-visible -z-0"
+                viewBox="0 0 360 240"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                {/* Diffuse white halo */}
+                <path
+                  d="M 60,0 C 130,80 220,130 380,160"
+                  stroke="#FFFFFF"
+                  strokeWidth="12"
+                  strokeOpacity="0.5"
+                  strokeLinecap="round"
+                  className="blur-[6px]"
                 />
+                {/* Razor-sharp white glass reflection arc */}
+                <path
+                  d="M 60,0 C 130,80 220,130 380,160"
+                  stroke="url(#card-white-arc)"
+                  strokeWidth="2.75"
+                  strokeLinecap="round"
+                />
+                {/* Subtle secondary glass refraction line */}
+                <path
+                  d="M 90,0 C 150,75 235,120 370,145"
+                  stroke="url(#card-white-arc-soft)"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                />
+                <defs>
+                  <linearGradient id="card-white-arc" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
+                    <stop offset="30%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                    <stop offset="75%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                    <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                  </linearGradient>
+                  <linearGradient id="card-white-arc-soft" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0" />
+                    <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.45" />
+                    <stop offset="80%" stopColor="#FFFFFF" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div className="relative z-10 flex flex-col justify-between h-full gap-6 sm:gap-8">
+                {/* ─── Top Header: Icon + Heading + Subtitle ───────────────── */}
+                <div>
+                  {/* Top Left Icon: Light-blue circular badge matching hero & reference image */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.85, y: -6 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#d0e5fc] border border-white/90 shadow-sm flex items-center justify-center text-[#0364FF] mb-3.5 sm:mb-4"
+                  >
+                    <svg
+                      className="w-5 h-5 sm:w-6 sm:h-6"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="4" y1="9" x2="20" y2="9" />
+                      <circle cx="8" cy="9" r="2.5" fill="currentColor" />
+                      <line x1="4" y1="15" x2="20" y2="15" />
+                      <circle cx="16" cy="15" r="2.5" fill="currentColor" />
+                    </svg>
+                  </motion.div>
+
+                  <WordReveal
+                    as="h3"
+                    delay={0.15}
+                    stagger={0.03}
+                    className="text-xl sm:text-2xl md:text-[26px] font-bold text-neutral-900 tracking-tight leading-snug"
+                    text="HOW IT WORKS"
+                  />
+
+                  <WordReveal
+                    as="p"
+                    delay={0.25}
+                    stagger={0.015}
+                    className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed mt-1.5 max-w-xl"
+                    text="4 clear, structured processes built to run smoothly, from onboarding to payout."
+                  />
+                </div>
+
+                {/* ─── 4-Step Process Stepper in Clean Grayscale with Staggered Animation ── */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-3 md:gap-4 items-start pt-3 sm:pt-5 border-t border-slate-200/70">
+                  {[
+                    {
+                      num: 1,
+                      title: "Onboard",
+                      desc: "Invite and verify partners, set up agreements.",
+                    },
+                    {
+                      num: 2,
+                      title: "Track",
+                      desc: "Monitor performance and activity in real time.",
+                    },
+                    {
+                      num: 3,
+                      title: "Approve",
+                      desc: "Review and confirm commissions & payouts.",
+                    },
+                    {
+                      num: 4,
+                      title: "Pay",
+                      desc: "Automated, secure payouts — on time, every time.",
+                    },
+                  ].map((step, idx, arr) => {
+                    const baseDelay = 0.32 + idx * 0.18;
+                    return (
+                      <div key={step.num} className="flex flex-col items-start text-left group">
+                        {/* Step Number Badge + Connector Arrow */}
+                        <div className="flex items-center justify-between w-full mb-2.5 sm:mb-3">
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.75, y: 8 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: 0.45,
+                              delay: baseDelay,
+                              ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-900 text-white font-bold text-xs sm:text-sm flex items-center justify-center shadow-md shadow-slate-900/15 ring-4 ring-white/90 group-hover:bg-[#0364FF] transition-colors duration-200"
+                          >
+                            {step.num}
+                          </motion.div>
+
+                          {idx < arr.length - 1 && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -6 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{
+                                duration: 0.35,
+                                delay: baseDelay + 0.12,
+                                ease: "easeOut",
+                              }}
+                              className="hidden sm:flex items-center justify-center flex-1 px-2"
+                            >
+                              <ArrowRight className="w-3.5 h-3.5 text-slate-400/80" />
+                            </motion.div>
+                          )}
+                        </div>
+
+                        {/* Title with WordReveal */}
+                        <WordReveal
+                          as="span"
+                          text={step.title}
+                          delay={baseDelay + 0.05}
+                          stagger={0.03}
+                          initialOpacity={0}
+                          className="text-sm sm:text-[15px] font-bold text-neutral-900 tracking-tight block"
+                        />
+
+                        {/* Description with WordReveal */}
+                        <WordReveal
+                          as="p"
+                          text={step.desc}
+                          delay={baseDelay + 0.1}
+                          stagger={0.02}
+                          initialOpacity={0}
+                          className="text-[11px] sm:text-xs text-neutral-600 font-normal leading-relaxed mt-1"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </Engine3DCard>
 
@@ -264,6 +483,7 @@ export default function EngineSection() {
               glowColor="from-[#0364FF]/22 via-[#6FA6FF]/12"
               delay={0.04}
               index={1}
+              stepNumber={1}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -303,6 +523,7 @@ export default function EngineSection() {
               glowColor="from-[#6FA6FF]/30 via-[#0364FF]/15"
               delay={0.04}
               index={2}
+              stepNumber={2}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -342,6 +563,7 @@ export default function EngineSection() {
               glowColor="from-[#005CFF]/25 via-[#6FA6FF]/15"
               delay={0.04}
               index={3}
+              stepNumber={3}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -380,6 +602,7 @@ export default function EngineSection() {
               glowColor="from-[#0364FF]/25 via-[#6FA6FF]/18"
               delay={0.04}
               index={4}
+              stepNumber={4}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">
@@ -418,6 +641,7 @@ export default function EngineSection() {
               glowColor="from-[#005CFF]/22 via-[#6FA6FF]/15"
               delay={0.04}
               index={5}
+              stepNumber={5}
             >
               {/* Top Elevated Floating Stage */}
               <div className="h-20 sm:h-28 md:h-32 flex items-center justify-center">

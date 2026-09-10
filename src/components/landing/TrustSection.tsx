@@ -409,7 +409,8 @@ export default function TrustSection() {
             </h2>
 
             <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto px-2 sm:px-0">
-              Proprietary trading firms, Brokers, and high-volume performance growth partners.
+              Proprietary trading firms, Brokers, and high-volume performance{" "}
+              <strong className="font-bold text-neutral-900">Growth Partners.</strong>
             </p>
           </motion.div>
         </div>
@@ -437,69 +438,69 @@ export default function TrustSection() {
             WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
           }}
         >
-            {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
-            <div className="flex items-center w-max animate-marquee-left">
-              {row1Repeated.map((brand, idx) => (
-                <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
-                  <div
-                    onMouseEnter={() => setActiveBrand(brand)}
-                    onMouseLeave={() => setActiveBrand(null)}
-                    onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
-                    className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
-                  >
-                    <div className="transition-transform duration-200 group-hover:scale-105">
-                      {brand.logoSvg}
-                    </div>
-
-                    {/* Interactive Hover Tooltip Card */}
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-                        <span className="text-slate-300">{brand.categoryLabel}</span>
-                        <span className="text-slate-500">•</span>
-                        <span className="text-white font-semibold">{brand.metric}</span>
-                      </div>
-                    </div>
+          {/* ─── Track 1: Scrolling Left ─────────────────────────────────── */}
+          <div className="flex items-center w-max animate-marquee-left">
+            {row1Repeated.map((brand, idx) => (
+              <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                <div
+                  onMouseEnter={() => setActiveBrand(brand)}
+                  onMouseLeave={() => setActiveBrand(null)}
+                  onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
+                  className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
+                >
+                  <div className="transition-transform duration-200 group-hover:scale-105">
+                    {brand.logoSvg}
                   </div>
 
-                  {/* Subtle Vertical Divider Line (From Reference Image) */}
-                  <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
-                </div>
-              ))}
-            </div>
-
-            {/* ─── Track 2: Scrolling Right ────────────────────────────────── */}
-            <div className="flex items-center w-max animate-marquee-right">
-              {row2Repeated.map((brand, idx) => (
-                <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
-                  <div
-                    onMouseEnter={() => setActiveBrand(brand)}
-                    onMouseLeave={() => setActiveBrand(null)}
-                    onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
-                    className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
-                  >
-                    <div className="transition-transform duration-200 group-hover:scale-105">
-                      {brand.logoSvg}
-                    </div>
-
-                    {/* Interactive Hover Tooltip Card */}
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
-                        <span className="text-slate-300">{brand.categoryLabel}</span>
-                        <span className="text-slate-500">•</span>
-                        <span className="text-white font-semibold">{brand.metric}</span>
-                      </div>
+                  {/* Interactive Hover Tooltip Card */}
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                      <span className="text-slate-300">{brand.categoryLabel}</span>
+                      <span className="text-slate-500">•</span>
+                      <span className="text-white font-semibold">{brand.metric}</span>
                     </div>
                   </div>
-
-                  {/* Subtle Vertical Divider Line */}
-                  <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
                 </div>
-              ))}
-            </div>
+
+                {/* Subtle Vertical Divider Line (From Reference Image) */}
+                <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+              </div>
+            ))}
+          </div>
+
+          {/* ─── Track 2: Scrolling Right ────────────────────────────────── */}
+          <div className="flex items-center w-max animate-marquee-right">
+            {row2Repeated.map((brand, idx) => (
+              <div key={`${brand.id}-${idx}`} className="flex items-center shrink-0">
+                <div
+                  onMouseEnter={() => setActiveBrand(brand)}
+                  onMouseLeave={() => setActiveBrand(null)}
+                  onClick={() => setActiveBrand((prev) => (prev?.id === brand.id ? null : brand))}
+                  className="group relative flex items-center px-3 sm:px-6 py-1.5 sm:py-2 rounded-xl transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:bg-white/80 hover:shadow-xs active:scale-95"
+                >
+                  <div className="transition-transform duration-200 group-hover:scale-105">
+                    {brand.logoSvg}
+                  </div>
+
+                  {/* Interactive Hover Tooltip Card */}
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-40 hidden sm:block">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900/95 text-white text-[11px] font-medium shadow-xl backdrop-blur-md whitespace-nowrap border border-white/10">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0364FF]" />
+                      <span className="text-slate-300">{brand.categoryLabel}</span>
+                      <span className="text-slate-500">•</span>
+                      <span className="text-white font-semibold">{brand.metric}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtle Vertical Divider Line */}
+                <div className="h-5 sm:h-6 w-[1px] bg-slate-300/70 shrink-0 mx-2 sm:mx-4" />
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
       {/* ─── Bottom Content: Active Brand Spotlight & Proof Ribbon ───────── */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
