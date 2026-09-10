@@ -4,20 +4,22 @@ import Link from "next/link";
 
 export default function NavLogo({
   onClick,
+  id = "main-navbar-logo",
 }: {
   onClick?: () => void;
   variant?: "white" | "dark";
+  id?: string;
 }) {
   return (
     <Link
       href="/"
-      id="main-navbar-logo"
+      id={id}
       onClick={onClick}
       className="inline-flex items-center gap-2.5 sm:gap-3 group select-none transition-transform duration-200 hover:scale-[1.02] cursor-pointer"
       aria-label="BRDGR Home"
     >
       {/* ─── 3D Tactile Blue Icon Badge ─── */}
-      <div id="main-navbar-logo-icon" className="relative shrink-0 flex items-center justify-center">
+      <div id={`${id}-icon`} className="relative shrink-0 flex items-center justify-center">
         <svg
           viewBox="0 0 64 64"
           fill="none"

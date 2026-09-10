@@ -39,7 +39,6 @@ export default function SectionBlurReveal({
   deferred = true,
   ...props
 }: SectionBlurRevealProps) {
-  const [isAnimationDone, setIsAnimationDone] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -86,14 +85,6 @@ export default function SectionBlurReveal({
         duration: effectiveDuration,
         delay: isMobile ? 0 : delay,
         ease: [0.16, 1, 0.3, 1], // High-performance easeOutExpo curve
-      }}
-      onAnimationComplete={() => {
-        setIsAnimationDone(true);
-      }}
-      style={{
-        transform: isAnimationDone || isMobile ? "none" : undefined,
-        filter: isAnimationDone || isMobile ? "none" : undefined,
-        willChange: isAnimationDone || isMobile ? "auto" : "opacity",
       }}
       className={`w-full ${deferred ? "section-deferred-render" : ""} ${className}`}
       {...props}

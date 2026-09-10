@@ -87,7 +87,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative w-full bg-white border-t border-slate-200/80 font-sans text-neutral-600 select-none overflow-hidden">
+    <footer
+      suppressHydrationWarning
+      className="relative w-full bg-white border-t border-slate-200/80 font-sans text-neutral-600 select-none overflow-hidden"
+    >
       {/* ─── Blue Gradient Wash: Top-Left Radiant Ambient Glow ──────────────── */}
       <div
         className="absolute top-0 left-0 w-[320px] sm:w-[620px] h-[320px] sm:h-[480px] bg-[radial-gradient(ellipse_at_top_left,rgba(3,100,255,0.18)_0%,rgba(147,197,253,0.26)_38%,transparent_70%)] pointer-events-none"
@@ -373,7 +376,7 @@ export default function Footer() {
         >
           {/* Logo Mark & Mobile Scroll to Top */}
           <div className="flex items-center justify-between w-full sm:w-auto">
-            <NavLogo />
+            <NavLogo id="footer-logo" />
             <button
               onClick={scrollToTop}
               aria-label="Back to top"
