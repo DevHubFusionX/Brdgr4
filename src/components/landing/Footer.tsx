@@ -58,14 +58,9 @@ const FOOTER_COLUMNS: FooterColumn[] = [
 ];
 
 export default function Footer() {
-  const [year, setYear] = useState(2026);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
 
   const toggleSection = (title: string) => {
     setOpenSections((prev) => ({
@@ -400,7 +395,7 @@ export default function Footer() {
             </div>
 
             <span className="text-neutral-500 text-[11px] sm:text-xs">
-              © {year} BRDGR Solutions Ltd. All rights reserved.
+              © 2026 BRDGR Solutions Ltd. All rights reserved.
             </span>
 
             {/* Desktop Back to top button */}

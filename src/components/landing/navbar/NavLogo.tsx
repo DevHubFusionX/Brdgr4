@@ -29,14 +29,14 @@ export default function NavLogo({
         >
           <defs>
             {/* 3D Blue Surface Gradient */}
-            <linearGradient id="island-bg-3d" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient id={`${id}-bg-3d`} x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#2D7EFF" />
               <stop offset="45%" stopColor="#0364FF" />
               <stop offset="100%" stopColor="#0043CC" />
             </linearGradient>
 
             {/* Tactile Highlight Rim */}
-            <linearGradient id="island-rim-3d" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient id={`${id}-rim-3d`} x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.80" />
               <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.15" />
               <stop offset="70%" stopColor="#002D8F" stopOpacity="0.25" />
@@ -44,13 +44,13 @@ export default function NavLogo({
             </linearGradient>
 
             {/* Emboss Depth on White Circuit Lines */}
-            <filter id="island-emboss" x="-15%" y="-15%" width="130%" height="130%">
+            <filter id={`${id}-emboss`} x="-15%" y="-15%" width="130%" height="130%">
               <feDropShadow dx="0" dy="0.75" stdDeviation="0.4" floodColor="#00247A" floodOpacity="0.75" />
             </filter>
           </defs>
 
           {/* 3D Blue Squircle Base */}
-          <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#island-bg-3d)" />
+          <rect x="2" y="2" width="60" height="60" rx="14" fill={`url(#${id}-bg-3d)`} />
 
           {/* Tactile Bevel Rim */}
           <rect
@@ -60,12 +60,12 @@ export default function NavLogo({
             height="58.8"
             rx="13.4"
             fill="none"
-            stroke="url(#island-rim-3d)"
+            stroke={`url(#${id}-rim-3d)`}
             strokeWidth="1.2"
           />
 
           {/* Centered White Circuit Lines */}
-          <g transform="translate(-70.0959, -64.8948) scale(0.9479)" filter="url(#island-emboss)">
+          <g transform="translate(-70.0959, -64.8948) scale(0.9479)" filter={`url(#${id}-emboss)`}>
             <g
               fill="#FFFFFF"
               stroke="#FFFFFF"
