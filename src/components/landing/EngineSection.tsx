@@ -36,7 +36,6 @@ function Engine3DCard({
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50 });
-  const [isAnimationDone, setIsAnimationDone] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   React.useEffect(() => {
@@ -114,14 +113,12 @@ function Engine3DCard({
           delay: isMobile ? 0 : delay,
           ease: [0.22, 1, 0.36, 1]
         }}
-        onAnimationComplete={() => setIsAnimationDone(true)}
         onMouseEnter={() => !isMobile && setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
           rotateX: !isMobile && isHovered ? rotateX : 0,
           rotateY: !isMobile && isHovered ? rotateY : 0,
-          transform: isAnimationDone && (!isHovered || isMobile) ? "none" : undefined,
           transformStyle: !isMobile && isHovered ? "preserve-3d" : undefined,
         }}
         className={`group relative rounded-[20px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-4 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[220px] sm:min-h-[300px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_30px_-6px_rgba(3,100,255,0.14),0_4px_16px_rgba(15,23,42,0.05),inset_0_1.5px_0_rgba(255,255,255,1)] border-blue-200/90 hover:border-blue-400/80 hover:shadow-[0_24px_56px_-8px_rgba(3,100,255,0.28),0_8px_24px_-4px_rgba(15,23,42,0.08),inset_0_1.5px_0_#ffffff] ${className}`}
@@ -430,21 +427,13 @@ export default function EngineSection() {
                     </svg>
                   </motion.div>
 
-                  <WordReveal
-                    as="h3"
-                    delay={0.1}
-                    stagger={0.03}
-                    className="text-lg sm:text-2xl md:text-[26px] font-bold text-neutral-900 tracking-tight leading-snug"
-                    text="HOW IT WORKS"
-                  />
+                  <h3 className="text-lg sm:text-2xl md:text-[26px] font-bold text-neutral-900 tracking-tight leading-snug">
+                    HOW IT WORKS
+                  </h3>
 
-                  <WordReveal
-                    as="p"
-                    delay={0.18}
-                    stagger={0.015}
-                    className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-xl"
-                    text="4 clear, structured processes built to run smoothly, from onboarding to payout."
-                  />
+                  <p className="text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed mt-1 sm:mt-1.5 max-w-xl">
+                    4 clear, structured processes built to run smoothly, from onboarding to payout.
+                  </p>
                 </div>
 
                 {/* ─── 4-Step Process Stepper (Tablet / Desktop Grid) ─────────── */}

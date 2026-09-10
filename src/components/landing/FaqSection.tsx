@@ -170,7 +170,7 @@ export default function FaqSection() {
                 <AnimatePresence initial={false}>
                   {isExpanded && (
                     <motion.div
-                      key="content"
+                      key={`faq-answer-${item.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{
                         height: "auto",
