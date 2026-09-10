@@ -83,7 +83,6 @@ function Engine3DCard({
     <div
       style={{
         zIndex: index + 10,
-        willChange: "transform",
         backfaceVisibility: "hidden",
         ["--stack-offset" as any]: `${index * 24}px`,
         ["--stack-offset-mobile" as any]: `${Math.max(0, index - 1) * 12}px`,
@@ -121,7 +120,7 @@ function Engine3DCard({
           rotateY: !isMobile && isHovered ? rotateY : 0,
           transformStyle: !isMobile && isHovered ? "preserve-3d" : undefined,
         }}
-        className={`group relative rounded-[20px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-4 sm:p-7 md:p-9 flex flex-col justify-between transition-all duration-300 min-h-[220px] sm:min-h-[300px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_30px_-6px_rgba(3,100,255,0.14),0_4px_16px_rgba(15,23,42,0.05),inset_0_1.5px_0_rgba(255,255,255,1)] border-blue-200/90 hover:border-blue-400/80 hover:shadow-[0_24px_56px_-8px_rgba(3,100,255,0.28),0_8px_24px_-4px_rgba(15,23,42,0.08),inset_0_1.5px_0_#ffffff] ${className}`}
+        className={`group relative rounded-[20px] sm:rounded-[28px] bg-white sm:bg-white/98 sm:backdrop-blur-xl border card-specular-rim p-4 sm:p-7 md:p-9 flex flex-col justify-between transition-[border-color,box-shadow,transform] duration-300 min-h-[220px] sm:min-h-[300px] md:min-h-[360px] overflow-hidden select-none shadow-[0_10px_30px_-6px_rgba(3,100,255,0.14),0_4px_16px_rgba(15,23,42,0.05),inset_0_1.5px_0_rgba(255,255,255,1)] border-blue-200/90 hover:border-blue-400/80 hover:shadow-[0_24px_56px_-8px_rgba(3,100,255,0.28),0_8px_24px_-4px_rgba(15,23,42,0.08),inset_0_1.5px_0_#ffffff] ${className}`}
       >
         {/* Specular Beveled Crystal Highlight along the top rim */}
         <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent opacity-90 pointer-events-none" />

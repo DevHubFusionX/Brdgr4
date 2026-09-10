@@ -77,6 +77,10 @@ export default function WordReveal({
 
   if (!content) return null;
 
+  if (isMobile) {
+    return <Component className={className}>{content}</Component>;
+  }
+
   if (mode === "scroll") {
     return (
       <ScrollModeWordReveal

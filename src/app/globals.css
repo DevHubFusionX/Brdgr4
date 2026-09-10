@@ -54,6 +54,7 @@ html {
   font-family: var(--font-mulish);
   scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 body {
@@ -63,6 +64,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ─── Scroll Performance & Touch Momentum Optimizations ────────────────────── */
+@media (min-width: 1024px) {
+  .section-deferred-render {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 750px;
+  }
+}
+
+/* Prevent layout shifts and flickers on mobile during inertia scroll */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* Custom sleek scrollbar */
@@ -413,17 +430,4 @@ textarea {
     0 22px 52px -6px rgba(3, 100, 255, 0.32),
     0 38px 76px -10px rgba(3, 100, 255, 0.26),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
-}
-
-/* ─── Scroll Performance & Touch Momentum Optimizations ────────────────────── */
-.section-deferred-render {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 750px;
-}
-
-/* Prevent layout shifts and flickers on mobile during inertia scroll */
-@media (max-width: 768px) {
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
 }

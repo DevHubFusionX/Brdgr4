@@ -62,13 +62,21 @@ export default function SectionBlurReveal({
   // Eager margin ensures content reveals smoothly before the user has to scroll deep
   const effectiveMargin = isMobile ? "160px 0px 0px 0px" : "40px 0px -20px 0px";
 
+  if (isMobile) {
+    return (
+      <div className={`w-full ${deferred ? "section-deferred-render" : ""} ${className}`}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       initial={{
-        opacity: isMobile ? 0.4 : 0,
-        filter: effectiveBlur > 0 ? `blur(${effectiveBlur}px)` : "none",
-        y: isMobile ? 0 : effectiveY,
-        scale: effectiveScale,
+        opacity: 0,
+        filter: blur > 0 ? `blur(${blur}px)` : "none",
+        y: y,
+        scale: scale,
       }}
       whileInView={{
         opacity: 1,
@@ -78,12 +86,12 @@ export default function SectionBlurReveal({
       }}
       viewport={{
         once,
-        amount: isMobile ? 0.01 : amount,
-        margin: effectiveMargin,
+        amount,
+        margin: "40px 0px -20px 0px",
       }}
       transition={{
-        duration: effectiveDuration,
-        delay: isMobile ? 0 : delay,
+        duration,
+        delay,
         ease: [0.16, 1, 0.3, 1], // High-performance easeOutExpo curve
       }}
       className={`w-full ${deferred ? "section-deferred-render" : ""} ${className}`}
